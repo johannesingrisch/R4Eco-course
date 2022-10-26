@@ -1,0 +1,5 @@
+# Preface {.unnumbered}
+
+Welcome to the course website of "Data management and analysis in environmental sciences". 
+
+This site contain slides and additional study material provided by Johannes Ingrisch, University of Innsbruck. 

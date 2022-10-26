@@ -1,0 +1,530 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+library(tidyverse)
+library(knitr)
+options("kableExtra.html.bsTable" = T)
+kable_pretty <- function(data) {
+  kable(data, "html") %>%
+    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
+}
+```
+
+
+## Data Exploration & Visualization
+
+```{r echo = FALSE, out.width = "100%"}
+include_graphics("./figures/Data_exploration.png")
+
+```
+
+
+## Data Exploration
+
+- Example Dataset 'mpg': fuel economy data of cars
+
+- how does the data look like?
+
+```{r echo = FALSE, out.width = "70%"}
+include_graphics("./figures/mpg_excel.png")
+
+```
+
+
+
+## mpg dataset
+
+```{r}
+head(mpg)
+```
+
+displ: engine displacement in litres
+
+hwy: highway efficiency (miles per gallon)
+
+## mpg dataset
+
+Also useful
+
+```{r, eval = FALSE}
+summary(mpg)
+```
+
+
+```{r, eval = FALSE}
+glimpse(mpg)
+```
+
+
+```{r, eval = FALSE}
+view(mpg)
+```
+
+```{r, eval = FALSE}
+dim(mpg)
+```
+
+
+
+## Data Visualization 
+
+Different options to create plots in R
+
+- base R: ok, but sometimes well annoying
+- plotly
+- ggplot2: versatile. elegant. consistent. fun. wohooo!
+
+
+
+## Data Visualization in ggplot2
+
+The grammar of graphics. 
+
+
+```{r echo = FALSE, out.width = "90%"}
+include_graphics("./figures/ggplot_examples.png")
+
+```
+
+
+
+## Visualization: Canvas
+
+```{r, out.width = "50%"}
+mpg %>% 
+  ggplot()
+```
+
+## Visualization: Axes
+
+displ: engine volume
+hwy: fuel efficiency (miles per gallon)
+
+```{r, out.width = "50%"}
+mpg %>% 
+  ggplot(aes(x = displ, y = hwy))
+```
+
+
+## Visualization: Data
+
+-> adding layers
+
+```{r, out.width = "50%"}
+mpg %>% 
+  ggplot(aes(x = displ, y = hwy)) + 
+  geom_point()
+```
+
+
+## Visualization: Color Coding
+
+```{r, out.width = "50%"}
+mpg %>% 
+  ggplot(aes(x = displ, y = hwy, color = manufacturer)) + 
+  geom_point()
+```
+
+## Visualization: Labels
+
+```{r, out.width = "50%"}
+mpg %>% 
+  ggplot(aes(x = displ, y = hwy, color = manufacturer)) + 
+  geom_point() + 
+  labs(title = "Large displacement lowers fuel efficiency", 
+       x = "Displacement", y = "Efficiency", 
+       caption = "mgp data")
+```
+
+
+## Visualization: save plot
+
+```{r, eval = FALSE}
+p <- mpg %>% 
+  ggplot(aes(x = displ, y = hwy, color = manufacturer)) + 
+  geom_point() 
+ggsave("displ_vs_hwy.png", plot = p)
+
+```
+
+>- free choice of data format (.pdf, .png)
+>- numerous options to change size, scaling etc., see ?ggsave
+>- saves directly into working directory, unless specified differently (e.g. in subfolder)
+
+
+## Time to check it out..
+
+Exercise Part 1. 
+
+pdf sheet on OLAT
+
+## ggplot: General template
+
+```{r, eval = FALSE}
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(aes(<MAPPINGS>))
+```
+
+to make a graph, we replace the bracketed sections with 
+
+- a dataset
+- a geom function
+- a collection of mappings/aestethics
+
+## mappings/aestethics
+
+- color
+- fill
+- shape
+- linetype
+- size
+- alpha
+
+```{r echo = FALSE, out.width = "90%"}
+include_graphics("./figures/ggplot_aes.png")
+
+```
+
+
+
+
+## mappings/aestethics
+
+Example: color and shape
+
+<div class="columns-2">
+```{r out.width="100%"}
+ggplot(data = mpg) + 
+  geom_point(aes(x = displ, y = hwy, 
+                           color = drv))
+
+ggplot(data = mpg) + 
+  geom_point(aes(x = displ, y = hwy, 
+             shape = drv))
+```
+</div>
+
+
+## mappings/aestethics
+
+automatic vs. manual setting of mappings
+
+<div class="columns-2">
+```{r out.width="100%"}
+ggplot(data = mpg) + 
+  geom_point(aes(x = displ, y = hwy, 
+                           color = drv))
+
+ggplot(data = mpg) + 
+  geom_point(aes(x = displ, y = hwy), 
+             color = "red")
+```
+</div>
+
+
+
+## geoms
+
+geom_point(), geom_line(), geom_smooth(), ... and tons of others!
+
+<div class="columns-2">
+```{r, out.width="80%", message = FALSE}
+ggplot(data = mpg) + 
+  geom_point(aes(x = displ, y = hwy))
+
+ggplot(data = mpg) + 
+  geom_smooth(aes(x = displ, y = hwy))
+
+```
+</div>
+
+
+## Combine it!
+
+
+```{r, out.width = "50%"}
+ggplot(data = mpg) + 
+  geom_point(aes(x = displ, y = hwy, color = drv)) +
+  geom_smooth(aes(x = displ, y = hwy))
+```
+
+
+
+## Avoid Code Duplication
+
+```{r, eval = FALSE}
+ggplot(data = mpg) + 
+  geom_point(aes(x = displ, y = hwy)) +
+  geom_smooth(aes(x = displ, y = hwy))
+```
+
+
+```{r, eval = FALSE}
+ggplot(data = mpg, 
+       aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
+```
+
+
+## Note the difference!
+
+<div class="columns-2">
+```{r, out.width="80%", message = FALSE}
+ggplot(data = mpg) + 
+  geom_point(aes(x = displ, y = hwy, 
+                 color = drv)) +
+  geom_smooth(aes(x = displ, y = hwy))
+
+ggplot(data = mpg, 
+       aes(x = displ, y = hwy, color = drv)) + 
+  geom_point() + 
+  geom_smooth()
+
+```
+</div>
+
+>__How can we fix it?__
+
+
+## Solution: Individual aes() for different geoms
+
+<div class="columns-2">
+```{r, out.width="80%", message = FALSE}
+ggplot(data = mpg, 
+       aes(x = displ, y = hwy, color = drv)) + 
+  geom_point() + 
+  geom_smooth()
+
+ggplot(data = mpg, 
+       aes(x = displ, y = hwy)) + 
+  geom_point(aes(color = drv)) + 
+  geom_smooth()
+
+```
+</div>
+
+
+## Individual aes() for different geoms
+
+Different ways to achieve the same.
+
+
+<div class="columns-2">
+
+```{r, out.width="80%", message = FALSE}
+ggplot(data = mpg, 
+       aes(x = displ, y = hwy)) + 
+  geom_point(aes(color = drv)) + 
+  geom_smooth()
+
+ggplot(data = mpg, 
+       aes(x = displ, y = hwy, color = drv)) + 
+  geom_point() + 
+  geom_smooth(aes(group = 1))
+
+```
+
+</div>
+
+
+## Discrete vs. continuous variables
+
+
+```{r}
+
+head(mpg)
+
+```
+
+
+## Discrete vs. continuous variables
+
+
+
+<div class="columns-2">
+
+```{r, out.width="80%", message = FALSE}
+ggplot(data = mpg, 
+       aes(x = displ, y = hwy)) + 
+  geom_point(aes(color = drv)) 
+
+ggplot(data = mpg, 
+       aes(x = displ, y = hwy, color = cty)) + 
+  geom_point() 
+```
+
+</div>
+
+
+
+## Geoms with statistical transformation
+
+- geom_smooth
+- geom_bar
+- geom_boxplot
+- geom_density
+- geom_violine
+
+
+## Example: geom_bar
+
+
+```{r, out.width="50%"}
+ggplot(data = mpg) + 
+  geom_bar(aes(x = class))
+```
+
+Count does not show up in the original data!
+
+-> calculated by algorithm, the so-called __stat__
+
+## Example: geom_bar
+
+
+```{r echo = FALSE, out.width = "85%"}
+include_graphics("./figures/visualization-stat-bar.png")
+```
+
+Different __geom__ have different default __stat__. 
+
+check __?geom_bar__ for details to each geom.
+
+
+
+
+
+## Example: geom_bar
+
+- We can override the default __stat__. 
+- Example: proportion instead of absolute count
+- look up the 'computed variables' in the help section
+
+```{r, out.width = "50%"}
+ggplot(data = mpg) + 
+  geom_bar(aes(x = class, y = ..prop.., group = 1))
+```
+
+## Boxplots & Violin-Plots
+
+<div class="columns-2">
+```{r out.width="80%"}
+ggplot(data = mpg) + 
+  geom_boxplot(aes(x = class, y = hwy, 
+                   fill = class))
+
+ggplot(data = mpg) + 
+  geom_violin(aes(x = class, y = hwy, 
+                  fill = class))
+```
+</div>
+
+
+## Visualize distributions
+```{r, out.width = "70%"}
+ggplot(data = mpg) + 
+  geom_density(aes(x = hwy, fill = drv), alpha = 0.5)
+```
+
+
+## facets
+
+facet_wrap
+
+```{r, out.width = "50%"}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2)
+```
+
+
+
+## facets
+
+facet_grid
+
+```{r, out.width = "50%"}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(drv ~ cyl)
+```
+
+Variables for facet_wrap and facet_grid should be discrete!
+
+
+## Unhappy how it looks?
+
+Many ways to customize your figures
+
+>- change general appearance: __themes__ 
+>- change color, linetypes, shapes, etc.: __scales__
+>- adjust axis labels, ...
+>- ...
+
+
+
+
+
+## Urgent Help: The ggplot cheatsheet
+
+https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf
+
+```{r echo = FALSE, out.width = "75%"}
+include_graphics("./figures/ggplot_cheatsheet.png")
+```
+
+
+## Useful Resources
+
+__Hands on__
+
+- http://www.cookbook-r.com/Graphs/
+- https://ggplot2.tidyverse.org/
+- Stackoverflow
+- Twitter: #rstats
+- https://www.springer.com/de/book/9783319242750: great book, but not for free :(
+
+
+
+__Theory__
+
+H. Wickham (2010): A layered grammar of graphics. Journal of Computational and Graphical Statistics, 19(1), pp 3-28.
+
+https://vita.had.co.nz/papers/layered-grammar.html
+
+Claus Wilke: Fundamentals of Data Visualization
+
+https://clauswilke.com/dataviz/
+
+
+
+## Exercise Part 2
+
+
+
+## Assignment
+
+```{r echo = FALSE, out.width = "65%"}
+include_graphics("./figures/iris.png")
+
+iris
+
+```
+
+
+
+## Wrap-up
+
+```{r echo = FALSE, out.width = "100%"}
+include_graphics("./figures/Data_exploration.png")
+
+```
+
+
+
+
+
+
+
+
