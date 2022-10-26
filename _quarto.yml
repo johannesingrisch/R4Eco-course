@@ -1,8 +1,11 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "R4Eco"
+  title: "R4Eco: Data management and analysis in environmental sciences"
+  repo-url: https://github.com/johannesingrisch/R4Eco-course
+  repo-actions: [issue]
   navbar:
     background: primary
     search: true
@@ -28,7 +31,8 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
     toc: true
+    code-copy: true
 
