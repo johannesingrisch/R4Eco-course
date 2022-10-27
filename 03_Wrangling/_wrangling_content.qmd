@@ -16,7 +16,7 @@ kable_pretty <- function(data) {
 ## On Today's Plate
 
 ```{r echo = FALSE, out.width = "75%"}
-include_graphics("../figures/Data_wrangling.png")
+include_graphics("./figures/Data_wrangling.png")
 ```
 
 The art of getting data into a useful form for visualisation and modelling.
@@ -25,17 +25,13 @@ The art of getting data into a useful form for visualisation and modelling.
 ## Transform Data
 
 ```{r echo = FALSE, out.width = "15%"}
-include_graphics("../figures/dplyr.png")
+include_graphics("./figures/dplyr.png")
 ```
 
 >- create subsets of data
-
 >- create new variables
-
 >- rename variables
-
 >- reorder observations
-
 >- ...
 
 
@@ -78,7 +74,7 @@ Take care:
 ## Logical operators
 
 ```{r echo = FALSE, out.width = "60%"}
-include_graphics("../figures/Boolean_operators.png")
+include_graphics("./figures/Boolean_operators.png")
 ```
 
 ```{r, eval = FALSE}
@@ -217,7 +213,7 @@ ggplot(data = mpg2, aes(x = displ, y = consump)) +
 # The Pipe: %>%
 
 ```{r echo = FALSE, out.width = "25%"}
-include_graphics("../figures/pipe.png")
+include_graphics("./figures/pipe.png")
 ```
 
 
@@ -433,7 +429,7 @@ mpg %>%
 https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
 
 ```{r echo = FALSE, out.width = "60%"}
-include_graphics("../figures/Cheatsheet_wrangling.png")
+include_graphics("./figures/Cheatsheet_wrangling.png")
 ```
 
 
@@ -441,11 +437,11 @@ include_graphics("../figures/Cheatsheet_wrangling.png")
 ## Summing up
 
 ```{r echo = FALSE, out.width = "60%"}
-include_graphics("../figures/Data_wrangling.png")
+include_graphics("./figures/Data_wrangling.png")
 ```
 
 ```{r echo = FALSE, out.width = "35%"}
-include_graphics("../figures/tidyverse_0.png")
+include_graphics("./figures/tidyverse_0.png")
 ```
 
 
@@ -461,11 +457,11 @@ Things are coming together...
 ## Summing up
 
 ```{r echo = FALSE, out.width = "60%"}
-include_graphics("../figures/Data_wrangling.png")
+include_graphics("./figures/Data_wrangling.png")
 ```
 
 ```{r echo = FALSE, out.width = "35%"}
-include_graphics("../figures/tidyverse_0.png")
+include_graphics("./figures/tidyverse_0.png")
 ```
 
 
@@ -474,7 +470,7 @@ include_graphics("../figures/tidyverse_0.png")
 # Reading Data 
 
 ```{r echo = FALSE, out.width = "25%"}
-include_graphics("../figures/readr_readxl.png")
+include_graphics("./figures/readr_readxl.png")
 ```
 
 
@@ -485,13 +481,13 @@ include_graphics("../figures/readr_readxl.png")
 
 
 ```{r echo = FALSE, out.width = "20%"}
-include_graphics("../figures/read_data_example.png")
+include_graphics("./figures/read_data_example.png")
 ```
 
 
 ```{r}
 
-data <- read.table("bigmess.csv", sep = ",", dec = ".",
+data <- read.table("./datasets/bigmess.csv", sep = ",", dec = ".",
                    skip = 0, header = TRUE)
 
 head(data)
@@ -503,7 +499,7 @@ head(data)
 For the import we need to define a number of variables
 
 ```{r, eval = FALSE}
-data <- read.table("bigmess.csv", 
+data <- read.table("./datasets/bigmess.csv", 
                    sep = ",", 
                    dec = ".",
                    skip = 0,
@@ -599,7 +595,7 @@ Option 2:
 ```{r, eval = FALSE}
 library(readxl) 
 
-data <- read_excel("bigmess.xlsx", 
+data <- read_excel("./datasets/bigmess.xlsx", 
                    col_names = TRUE, 
                    sheet = "data") # specify the worksheet, either by number or name, default is 1
 ```
@@ -608,11 +604,11 @@ data <- read_excel("bigmess.xlsx",
 ## Summing up
 
 ```{r echo = FALSE, out.width = "60%"}
-include_graphics("../figures/Data_wrangling.png")
+include_graphics("./figures/Data_wrangling.png")
 ```
 
 ```{r echo = FALSE, out.width = "35%"}
-include_graphics("../figures/tidyverse_2.png")
+include_graphics("./figures/tidyverse_2.png")
 ```
 
 

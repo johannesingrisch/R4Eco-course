@@ -1,4 +1,4 @@
 # Data Wrangling
 
 
-{{< include 02_Wrangling/_wrangling_content.qmd >}}
+{{< include 03_Wrangling/_wrangling_content.qmd >}}

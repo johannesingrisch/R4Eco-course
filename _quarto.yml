@@ -16,16 +16,26 @@ website:
     contents:
       - text: "Home"
         file: index.qmd
-      - section: "Introduction"
-        contents:
-          - href: Organisation.qmd
-            text: Course organisation
-          - href: 01_Introduction.qmd
-            text: "Getting started with R"
-      - section: "Vizualisation"
-        contents:
-          - href: 02_Visualisation.qmd
-            text: "Data viz"
+      - text: "Course introduction"
+        file: Organisation.qmd
+      - text: "Getting started with R"
+        file: 01_Introduction.qmd
+      - text: "Data Visualisation"
+        file: 02_Visualisation.qmd
+      - text: "Data Wrangling"
+        file: 03_Wrangling.qmd
+#      - section: "Data Manipulation"
+#        contents: 
+#          - href: 03_xxxx.qmd
+#            text: "Tidy data"
+#          - href: ....qmd
+#            text: "Data wrangling"
+#      - section: "Useful stuff"
+#        contents: 
+#          - href: ...
+#            text: Dates & Times
+
+
   page-footer: "Copyright 2022, Johannes Ingrisch" 
 
 
