@@ -1,0 +1,67 @@
+---
+project:
+  output-dir: _slides
+title: "Data Wrangling"
+subtitle: "Data management and analysis in environmental sciences"
+author: "Jesse Radolinski, Johannes Ingrisch"
+institute: "Department of Ecology, University of Innsbruck"
+format:
+  revealjs: 
+    theme: moon
+    slide-number: true
+    logo: "./figures/logo_uibk.jpg"
+    smaller: true
+---
+
+## Last Week: Visualisation
+
+```{r echo = FALSE, out.width = "10%"}
+include_graphics("../figures/ggplot.png")
+```
+
+<div class="columns-2">
+```{r out.width="80%", message = FALSE}
+ggplot(data = mpg, aes(x = displ, y = hwy)) + 
+  geom_point(aes(color = class)) + 
+  geom_smooth()
+
+ggplot(data = mpg) + 
+  geom_violin(aes(x = class, y = hwy, 
+                  fill = class))
+```
+</div>
+
+## The Big Mess
+
+```{r, include = FALSE}
+data <- read.csv("../Day_1/bigmess.csv", header = TRUE)
+```
+
+
+<div class="columns-2">
+```{r out.width="80%"}
+ggplot(data = data, aes(x = x, y = y)) + 
+  geom_point()
+
+ggplot(data = data, aes(x = dataset, y = x)) + 
+  geom_boxplot()
+
+```
+</div>
+
+## The Solution?
+
+## The Solution
+
+```{r}
+
+ggplot(data = data, aes(x, y)) + 
+  geom_point(aes(color = dataset)) +
+  facet_wrap(~ dataset)
+
+
+```
+
+
+
+{{< include 03_Wrangling/_wrangling_content.qmd >}}

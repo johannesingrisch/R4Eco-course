@@ -1,0 +1,618 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+library(tidyverse)
+library(datasauRus)
+library(knitr)
+options("kableExtra.html.bsTable" = T)
+kable_pretty <- function(data) {
+  kable(data, "html") %>%
+    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
+}
+```
+
+
+## On Today's Plate
+
+```{r echo = FALSE, out.width = "75%"}
+include_graphics("../figures/Data_wrangling.png")
+```
+
+The art of getting data into a useful form for visualisation and modelling.
+
+
+## Transform Data
+
+```{r echo = FALSE, out.width = "15%"}
+include_graphics("../figures/dplyr.png")
+```
+
+>- create subsets of data
+
+>- create new variables
+
+>- rename variables
+
+>- reorder observations
+
+>- ...
+
+
+
+## Filter rows with filter()
+
+Create a subset of observations based on values. 
+
+Use logical operators. 
+
+```{r}
+filter(mpg, class == "2seater")
+```
+
+## Filter rows with filter()
+
+Use multiple conditions. 
+
+```{r}
+filter(mpg, class == "2seater", trans == "auto(l4)")
+```
+
+
+## Comparisons
+
+`>`, `>=`, `<`, `<=`, `==`, `!=` 
+
+```{r}
+
+filter(mpg, hwy >= 30, cyl <= 4)
+
+```
+
+
+Take care: 
+
+`=` instead of `==` produces error. Happens to me all the time...
+
+
+## Logical operators
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("../figures/Boolean_operators.png")
+```
+
+```{r, eval = FALSE}
+filter(mpg, cyl == 4 | cyl == 5)
+
+filter(mpg, cyl == 4,  drv != "f")
+
+```
+
+
+## Logical operators
+
+%in% can simplify life.
+
+```{r, eval = FALSE}
+
+filter(mpg, cyl == 4 | cyl == 5)
+
+
+filter(mpg, cyl %in% c(4,5))
+
+```
+
+Combining multiple conditions can quickly become confusing. Consider doing it stepwise.
+
+
+## Logical operators
+
+Sometimes it is easier to define what should stay out, instead of what should stay in.
+
+Example: exclude all SUVs from manufacturer Chevrolet
+
+```{r, eval = FALSE}
+
+filter(mpg, !(class == "suv" & manufacturer == "chevrolet"))
+
+```
+
+
+
+
+## Arrange rows: arrange()
+
+```{r, out.width="50%"}
+arrange(mpg, hwy)
+
+```
+
+
+## Arrange rows: arrange()
+
+```{r, out.width="50%"}
+
+arrange(mpg, desc(hwy))
+```
+
+## arrange(): multiple columns
+
+```{r}
+arrange(mpg, desc(cyl), hwy)
+```
+
+
+## Select columns: select()
+
+```{r}
+select(mpg, model, drv, hwy)
+```
+
+## Select columns: select()
+```{r}
+select(mpg, year:cty)
+```
+
+## Select columns: select()
+
+Drop Columns
+```{r}
+select(mpg, -model, - cyl)
+```
+
+
+## select(): helper functions
+
+- reorder the columns
+```{r, eval = FALSE}
+select(mpg, hwy, cyl, everything())
+```
+
+- rename columns
+```{r, eval = FALSE}
+rename(mpg, efficiency = hwy)
+
+select(mpg, efficiency = hwy, everything())
+
+```
+
+- various other options: see `?select`
+
+## Add new variables: mutate()
+
+`mutate()` adds a new column at the end of your dataset. 
+
+Example: Calculate fuel consumption (L / 100km) = 1 / hwy /2.352 * 100
+
+```{r}
+mpg2 <- mutate(mpg, consump = 1 / hwy * 2.352 * 100)
+
+
+head(mpg2)
+```
+
+## Add new variables: mutate()
+
+Alternative: Stepwise
+
+```{r}
+mpg2 <- mutate(mpg, consump = 1 / hwy * 2.352 * 100)
+# alternative: stepwise
+mpg2 <- mutate(mpg, 
+              consump = 1 / hwy, # gallons per mile
+              consump = consump * 2.352 * 100) # L/100km
+
+head(mpg2)
+```
+
+
+## Add new variables: mutate()
+
+```{r}
+ggplot(data = mpg2, aes(x = displ, y = consump)) + 
+       geom_point() + 
+  labs(y = "Comsumption (l/100km)", x = "Displacement")
+```
+
+# The Pipe: %>%
+
+```{r echo = FALSE, out.width = "25%"}
+include_graphics("../figures/pipe.png")
+```
+
+
+R-Studio Shortcut: __Ctrl + Shift + M__
+
+
+## The Pipe: %>%
+
+Passes object on the lefthand side as first argument of function on righthand side. 
+
+- `x %>% f(y)` is similar to `f(x,y)`
+
+```{r, eval = FALSE}
+filter(mpg, class == "seater" | class == "compact")
+
+# is similar to
+
+mpg %>% 
+  filter(class == "seater" | class == "compact")
+
+```
+
+
+## Combine Multiple Operations: %>%
+
+
+- `x %>% f(y)` is similar to `f(x,y)`
+
+```{r}
+mpg_sub <- mpg %>% 
+  filter(class == "2seater" | class == "compact") %>% 
+  select(class, manufacturer, cyl, displ, hwy) %>% 
+  mutate(consump = 1/hwy) %>% 
+  arrange(hwy)
+head(mpg_sub)
+
+```
+
+
+
+## Combine Pipe with ggplot()
+
+```{r, out.width = "60%"}
+mpg %>% 
+  filter(class == "2seater" | class == "compact") %>%  
+  ggplot(aes(x = displ, y = hwy, color = class)) + 
+  geom_point()
+```
+
+
+## Hands on: Exercise Part 1
+
+
+
+
+# Part 2
+
+## Summarize data: summarise()
+
+Collapses data frame to a single row -->
+
+```{r}
+mpg %>% 
+  summarise(hwy = mean(hwy))
+```
+
+
+## summarise()
+
+Also possible for multiple functions and variables
+
+```{r}
+mpg %>% 
+  summarise(hwy_avg = mean(hwy), 
+          hwy_max = max(hwy), 
+          hwy_min = min(hwy),
+          hwy_sd = sd(hwy), 
+          displ_avg = mean(displ))
+          
+```
+
+
+## Summarize different groups: group_by() & summarise()
+
+Question: What is the average `hwy` for each car-class?
+
+```{r}
+
+by_class <- mpg %>% 
+  group_by(class) %>% 
+  summarise(hwy_avg = mean(hwy))
+by_class
+
+
+```
+
+>- we can summarise values for all kind of groups!
+
+## Group_by() with several grouping variables
+
+```{r}
+
+by_class_drv <- mpg %>% 
+  group_by(class, drv) %>% 
+  summarise(avg_hwy = mean(hwy))
+by_class_drv
+
+
+```
+
+
+>- __Important__: before we can group this dataset again we need to ungroup() first!
+
+
+## Advanced Example: Group_by() & summarise()
+
+```{r}
+
+by_class <- mpg %>% 
+  group_by(class) %>% 
+  summarise(hwy_avg = mean(hwy), 
+            hwy_sd = sd(hwy), 
+            displ_avg = mean(displ), 
+            displ_sd = sd(displ), 
+            count = n())
+by_class
+
+
+```
+
+## Advanced Example: Group_by() & summarise() & ggplot()
+
+```{r, out.width = "50%"}
+
+by_class %>% 
+  ggplot(aes(x = displ_avg, y = hwy_avg, color = class,
+             ymin = hwy_avg - hwy_sd, ymax = hwy_avg + hwy_sd, 
+             xmin = displ_avg - displ_sd, xmax = displ_avg + displ_sd)) + 
+  geom_point(aes(size = count)) + 
+  geom_errorbar(width = 0) +
+  geom_errorbarh(height = 0)
+
+```
+
+
+## Group_by() & mutate()
+
+Calculations on group level without collapsing the dataset. 
+
+```{r}
+mpg %>% 
+  group_by(class) %>% 
+  mutate(avg_hwy = mean(hwy, na.rm=TRUE)) %>% 
+  select(1:2, hwy, avg_hwy)
+```
+
+
+
+## Missing Values
+
+- Missing values are observations with no information. 
+- this is __not__ the same as zero!
+
+```{r}
+(df <- data.frame(x = c(1,3,NA,7), 
+                 y = c(2,4,2,9)))
+```
+
+
+## Missing Values
+
+We can check for missing values by `is.na`. 
+
+```{r out.width="80%"}
+is.na(df)
+summary(df)
+```
+
+
+## Missing Values
+
+What happens if we summarize columns with missing values?
+
+```{r}
+# summarise df
+df %>% 
+  summarise(x = mean(x), 
+            y = mean(y))
+
+# Often better:
+# summarise omitting NA's
+df %>% 
+  summarise(x = mean(x, na.rm=TRUE), 
+            y = mean(y, na.rm=TRUE))
+
+
+```
+
+## Removing NA's from dataset
+
+You can remove observations (rows) from your dataset that include NA's in a specific column using
+
+```{r}
+# remove all rows that contain NA's in the column hwy
+mpg %>% 
+  filter(!is.na(hwy))
+```
+
+
+
+## Data Wrangling Cheat Sheet
+
+https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("../figures/Cheatsheet_wrangling.png")
+```
+
+
+
+## Summing up
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("../figures/Data_wrangling.png")
+```
+
+```{r echo = FALSE, out.width = "35%"}
+include_graphics("../figures/tidyverse_0.png")
+```
+
+
+
+## Exercise Part 2
+
+
+Things are coming together...
+
+
+
+
+## Summing up
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("../figures/Data_wrangling.png")
+```
+
+```{r echo = FALSE, out.width = "35%"}
+include_graphics("../figures/tidyverse_0.png")
+```
+
+
+
+
+# Reading Data 
+
+```{r echo = FALSE, out.width = "25%"}
+include_graphics("../figures/readr_readxl.png")
+```
+
+
+
+## Reading text files
+
+- most general function is read.table() from base-R
+
+
+```{r echo = FALSE, out.width = "20%"}
+include_graphics("../figures/read_data_example.png")
+```
+
+
+```{r}
+
+data <- read.table("bigmess.csv", sep = ",", dec = ".",
+                   skip = 0, header = TRUE)
+
+head(data)
+
+```
+
+## Important variables
+
+For the import we need to define a number of variables
+
+```{r, eval = FALSE}
+data <- read.table("bigmess.csv", 
+                   sep = ",", 
+                   dec = ".",
+                   skip = 0,
+                   header = TRUE)
+```
+
+>- How are columns separated? `sep = ","` (",", ";",...)
+>- decimal points: `dec = "."` (",")
+>- skip: do not read the first n lines (often metadata)
+>- are column names included? header = TRUE/FALSE
+>- ?read.table for help
+
+
+## Package readr simplifies some steps
+
+
+```{r, eval = FALSE}
+
+read_delim() # any delimiter
+read_csv() # comma-separated
+read_csv2() # comma-separated, dec = ","
+read_tsv() # tab-delimited
+
+```
+
+>- __Additional arguments:__
+
+>- col_names
+>- skip
+>- na: how are NA' represented in the data 
+
+
+
+>- __Advantage:__
+
+>- faster than base-R
+>- they don't change column formats (e.g. character to factors)
+
+
+## Relative & Absolute paths
+
+Where is the data stored?
+
+Two Options: 
+
+Either: Define the full path
+
+```{r, eval = FALSE}
+path <- "C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology/Day_2/bigmess.csv"
+
+data <- read_csv(path, col_names = TRUE)
+
+```
+
+
+
+
+__Better__: relative path from working directory (project folder)
+
+Project folder: 
+
+`"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology`
+
+Express relative to the project folder, start in project folder using "./"
+
+```{r, eval = FALSE}
+
+data <- read_csv("./Day_2/bigmess.csv", col_names = TRUE)
+
+```
+
+
+## Reading excel-files
+
+Often we get data in Excel, or we enter data using Excel. 
+
+How to get in R?
+
+Option 1:
+
+>- export table as .csv or .txt from excel
+
+>- read as shown above
+
+Option 2: 
+
+>- package(readxl)
+
+
+## library(readxl)
+
+
+```{r, eval = FALSE}
+library(readxl) 
+
+data <- read_excel("bigmess.xlsx", 
+                   col_names = TRUE, 
+                   sheet = "data") # specify the worksheet, either by number or name, default is 1
+```
+
+
+## Summing up
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("../figures/Data_wrangling.png")
+```
+
+```{r echo = FALSE, out.width = "35%"}
+include_graphics("../figures/tidyverse_2.png")
+```
+
+

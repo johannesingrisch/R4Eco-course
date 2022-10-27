@@ -1,0 +1,4 @@
+# Data Wrangling
+
+
+{{< include 02_Wrangling/_wrangling_content.qmd >}}
