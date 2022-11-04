@@ -34,7 +34,7 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 
 > - Getting to know R & RStudio
 > - Data Visualization with ggplot2
-> - Exercise
+> - Hands-on exercise
 > - Assignment
 
 
@@ -56,9 +56,9 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 
 ## Course structure
 
-> - Weekly sessions: combined lecture & excercise: Interactive!
-> - A task will be set at the end of each session
-> - Due dates will be given, typically latest 2.5 weeks after each session
+> - Our sessions will combine lecture & exercise: Interactive!
+> - An assignment will be set at the end of each session
+> - Due dates for assignment submission will be given, typically latest 2.5 weeks after each session
 
 
 ## Assessment

@@ -1,7 +1,5 @@
-# Introduction
+# Getting started with R
 
-This is a book created from markdown and executable code.
-
-See @knuth84 for additional discussion of literate programming.
+This chapter aims to set the basics for starting with R. This includes installation of **R** and **RStudio** (the IDE we use for working with R), first steps in using R, setting up a project and installing additional R-packages. 
 
 {{< include 01_Intro/_intro_content.qmd >}}

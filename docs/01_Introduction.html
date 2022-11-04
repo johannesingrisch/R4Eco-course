@@ -189,22 +189,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#getting-started-with-r" id="toc-getting-started-with-r" class="nav-link active" data-scroll-target="#getting-started-with-r">Getting started with R</a>
   <ul class="collapse">
-  <li><a href="#what-is-this-course-about" id="toc-what-is-this-course-about" class="nav-link" data-scroll-target="#what-is-this-course-about">What is this course about?</a></li>
-  <li><a href="#a-typical-data-science-project" id="toc-a-typical-data-science-project" class="nav-link" data-scroll-target="#a-typical-data-science-project">A typical Data Science Project</a></li>
-  <li><a href="#course-content" id="toc-course-content" class="nav-link" data-scroll-target="#course-content">Course content</a></li>
-  <li><a href="#timetable" id="toc-timetable" class="nav-link" data-scroll-target="#timetable">Timetable</a></li>
-  <li><a href="#course-structure" id="toc-course-structure" class="nav-link" data-scroll-target="#course-structure">Course structure</a></li>
-  <li><a href="#assessment" id="toc-assessment" class="nav-link" data-scroll-target="#assessment">Assessment</a></li>
-  <li><a href="#round-of-introduction" id="toc-round-of-introduction" class="nav-link" data-scroll-target="#round-of-introduction">Round of Introduction</a></li>
-  <li><a href="#todays-outline" id="toc-todays-outline" class="nav-link" data-scroll-target="#todays-outline">Today’s outline</a></li>
-  <li><a href="#prerequisites-for-working-with-r" id="toc-prerequisites-for-working-with-r" class="nav-link" data-scroll-target="#prerequisites-for-working-with-r">Prerequisites for working with R</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#r-r-studio" id="toc-r-r-studio" class="nav-link" data-scroll-target="#r-r-studio">R &amp; R Studio</a></li>
+  <li><a href="#hands-on" id="toc-hands-on" class="nav-link" data-scroll-target="#hands-on">Hands-on</a></li>
   <li><a href="#getting-organised-r-projects-r-scripts" id="toc-getting-organised-r-projects-r-scripts" class="nav-link" data-scroll-target="#getting-organised-r-projects-r-scripts">Getting organised: R-projects &amp; R-scripts</a></li>
-  <li><a href="#exercise-workflow-basics" id="toc-exercise-workflow-basics" class="nav-link" data-scroll-target="#exercise-workflow-basics">Exercise: Workflow Basics</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#base-r-and-the-tidyverse" id="toc-base-r-and-the-tidyverse" class="nav-link" data-scroll-target="#base-r-and-the-tidyverse">Base-R and the tidyverse</a></li>
+  <li><a href="#hands-on-workflow-basics" id="toc-hands-on-workflow-basics" class="nav-link" data-scroll-target="#hands-on-workflow-basics">Hands-on: Workflow Basics</a></li>
+  <li><a href="#additional-functionality-r-packages" id="toc-additional-functionality-r-packages" class="nav-link" data-scroll-target="#additional-functionality-r-packages">Additional functionality: R-Packages</a></li>
+  <li><a href="#base-r-and-the-tidyverse-i" id="toc-base-r-and-the-tidyverse-i" class="nav-link" data-scroll-target="#base-r-and-the-tidyverse-i">Base-R and the tidyverse (I)</a></li>
+  <li><a href="#base-r-and-the-tidyverse-ii" id="toc-base-r-and-the-tidyverse-ii" class="nav-link" data-scroll-target="#base-r-and-the-tidyverse-ii">Base-R and the tidyverse (II)</a></li>
   <li><a href="#useful-ressources-getting-help" id="toc-useful-ressources-getting-help" class="nav-link" data-scroll-target="#useful-ressources-getting-help">Useful Ressources &amp; Getting help…</a></li>
   </ul></li>
   </ul>
@@ -215,177 +209,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">@knuth84</span> for additional discussion of literate programming.</p>
-<section id="what-is-this-course-about" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-this-course-about">What is this course about?</h2>
-<p>Learn the tools and skills to</p>
-<blockquote class="blockquote">
-<ul>
-<li><strong>organise</strong> your <strong>data &amp; code</strong> consistently</li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
-<li>win the everyday data <strong>wrangling</strong></li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
-<li>make quick (and cool) <strong>visualizations</strong></li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
-<li>keep your project <strong>reproducible</strong></li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
-<li>present and communicate your results</li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
-<li>be able to do your own troubleshooting</li>
-</ul>
-</blockquote>
-</section>
-<section id="a-typical-data-science-project" class="level2">
-<h2 class="anchored" data-anchor-id="a-typical-data-science-project">A typical Data Science Project</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./figures/Data_exploration.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Data Science Workflow</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="course-content" class="level2">
-<h2 class="anchored" data-anchor-id="course-content">Course content</h2>
-<blockquote class="blockquote">
-<ul>
-<li>Basic functionality of R &amp; RStudio</li>
-<li>Data Visualization using ggplot2</li>
-<li>Data Wrangling</li>
-<li>The concept of ‘tidy data’</li>
-<li>Reproducible Research: R markdown</li>
-<li>Advanced R: Loops</li>
-<li>Advanced R: Functions</li>
-<li>Data management, storage, and structure</li>
-<li>Useful stuff along the way, e.g.&nbsp;handling dates &amp; times</li>
-</ul>
-</blockquote>
-</section>
-<section id="timetable" class="level2">
-<h2 class="anchored" data-anchor-id="timetable">Timetable</h2>
-<div class="smaller">
-<table class="table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 22%">
-<col style="width: 55%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">Date</th>
-<th style="text-align: center;">Held by</th>
-<th style="text-align: right;">Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">2022-11-22</td>
-<td style="text-align: center;">Johnny</td>
-<td style="text-align: right;">Basics in R, R-projects, Visualization</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2022-11-25</td>
-<td style="text-align: center;">Johnny</td>
-<td style="text-align: right;">Data wrangling, Data formats</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2022-12-06</td>
-<td style="text-align: center;">Jesse</td>
-<td style="text-align: right;">Tidy data, dates &amp; times</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2022-12-13</td>
-<td style="text-align: center;">Jesse</td>
-<td style="text-align: right;">Advanced Visualization, R markdown, useful stuff along the way</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2022-01-10</td>
-<td style="text-align: center;">Jesse</td>
-<td style="text-align: right;">Loops, Base-R</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2023-01-17</td>
-<td style="text-align: center;">Jesse</td>
-<td style="text-align: right;">Functions</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2023-01-24</td>
-<td style="text-align: center;">Jesse</td>
-<td style="text-align: right;">Data management, storage and structure</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2023-01-31</td>
-<td style="text-align: center;">Jesse</td>
-<td style="text-align: right;">Open issues &amp; questions</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="course-structure" class="level2">
-<h2 class="anchored" data-anchor-id="course-structure">Course structure</h2>
-<blockquote class="blockquote">
-<ul>
-<li>Weekly sessions: combined lecture &amp; excercise: Interactive!</li>
-<li>A task will be set at the end of each session</li>
-<li>Due dates will be given, typically latest 2.5 weeks after each session</li>
-</ul>
-</blockquote>
-</section>
-<section id="assessment" class="level2">
-<h2 class="anchored" data-anchor-id="assessment">Assessment</h2>
-<blockquote class="blockquote">
-<ul>
-<li>All tasks must be completed and passed to pass the course</li>
-<li>Tasks will be submitted on OLAT</li>
-<li>No exam, no other reports</li>
-<li>Tasks are graded, overall grade will be averaged</li>
-<li><strong>The tasks are designed to help you learn the material</strong></li>
-<li>Material is developed progressively through the course, so whenever possible it is strongly recommended to complete tasks before the next lecture</li>
-</ul>
-</blockquote>
-</section>
-<section id="round-of-introduction" class="level2">
-<h2 class="anchored" data-anchor-id="round-of-introduction">Round of Introduction</h2>
-<blockquote class="blockquote">
-<ul>
-<li>Who are you?</li>
-<li>What is your PhD project about?</li>
-<li>Any experience with R so far?</li>
-</ul>
-</blockquote>
-</section>
-<section id="todays-outline" class="level2">
-<h2 class="anchored" data-anchor-id="todays-outline">Today’s outline</h2>
-<blockquote class="blockquote">
-<ul>
-<li>Getting to know R &amp; RStudio</li>
-<li>Data Visualization with ggplot2</li>
-<li>Exercise</li>
-<li>Assignment</li>
-</ul>
-</blockquote>
-</section>
-<section id="prerequisites-for-working-with-r" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites-for-working-with-r">Prerequisites for working with R</h2>
-<p>Updated versions of:</p>
+<section id="getting-started-with-r" class="level1">
+<h1>Getting started with R</h1>
+<p>This chapter aims to set the basics for starting with R. This includes installation of <strong>R</strong> and <strong>RStudio</strong> (the IDE we use for working with R), first steps in using R, setting up a project and installing additional R-packages.</p>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>Install R and Rstudio on your computer, if already installed, make sure they are up to date.</p>
+<p>Both programs are available for free:</p>
 <ul>
 <li>R: https://cloud.r-project.org</li>
 <li>RStudio: http://www.rstudio.com/download</li>
@@ -400,69 +230,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
+<section id="hands-on" class="level2">
+<h2 class="anchored" data-anchor-id="hands-on">Hands-on</h2>
+<ul>
+<li>use R as a calculator</li>
+<li>use a script and send code to the console</li>
+</ul>
+</section>
 <section id="getting-organised-r-projects-r-scripts" class="level2">
 <h2 class="anchored" data-anchor-id="getting-organised-r-projects-r-scripts">Getting organised: R-projects &amp; R-scripts</h2>
 <blockquote class="blockquote">
 <ul>
 <li>your whole data science project within one folder</li>
-<li>R-Studio project</li>
-<li>working directory</li>
+<li>this folder as working directory for R</li>
 <li>Rscripts: store with meaningful names</li>
 <li>use relative paths instead of absolute</li>
+<li>‘R-Studio projects’ help to organise this</li>
 </ul>
 </blockquote>
 <blockquote class="blockquote">
 <ul>
 <li><strong>Everything in one place</strong></li>
-<li><strong>Allows moving between computers</strong></li>
+<li><strong>Allows sharing &amp; moving between computers</strong></li>
 </ul>
 </blockquote>
 </section>
-<section id="exercise-workflow-basics" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-workflow-basics">Exercise: Workflow Basics</h2>
+<section id="hands-on-workflow-basics" class="level2">
+<h2 class="anchored" data-anchor-id="hands-on-workflow-basics">Hands-on: Workflow Basics</h2>
+<p>Together we</p>
 <ul>
 <li>create a project for this course</li>
 <li>create an R-script</li>
 <li>write code in script and send to console</li>
-<li>comment script using ‘#’</li>
+<li>comment the script using ‘#’</li>
 </ul>
 </section>
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<section id="additional-functionality-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="additional-functionality-r-packages">Additional functionality: R-Packages</h2>
 <ul>
 <li>add-ons</li>
 <li>increase functionality of R</li>
 </ul>
-<p>Important:</p>
+<p>Important in this course (and for life):</p>
 <ul>
-<li>tidyverse</li>
+<li><pre><code> tidyverse</code></pre></li>
 <li>readxl</li>
 </ul>
 <p>Can be installed via</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and loaded via</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Task: install tidyverse</p>
 </section>
-<section id="base-r-and-the-tidyverse" class="level2">
-<h2 class="anchored" data-anchor-id="base-r-and-the-tidyverse">Base-R and the tidyverse</h2>
-<p>Tidyverse is a suite of packages that use a consistent language of code.</p>
+<section id="base-r-and-the-tidyverse-i" class="level2">
+<h2 class="anchored" data-anchor-id="base-r-and-the-tidyverse-i">Base-R and the tidyverse (I)</h2>
+<p>Base-R means the ‘original’ language of R. Typically, this contains a lot of <code>$</code> square brackets <code>[]</code>. Certainly important to know, but sometimes a bit hard to follow, especially when getting started with R…</p>
+<p>Example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>time.as.string <span class="ot">=</span> <span class="fu">paste</span>(CO2_ML<span class="sc">$</span>year,CO2_ML<span class="sc">$</span>month,CO2_ML<span class="sc">$</span>day,<span class="at">sep=</span><span class="st">"-"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>CO2_ML<span class="sc">$</span>dt <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(time.as.string,<span class="st">"%Y-%m-%d"</span>), <span class="at">tz =</span> <span class="st">"GMT"</span>) <span class="co"># convert time to an R time stamp</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>CO2_ML[CO2_ML<span class="sc">==-</span><span class="fl">999.999</span>] <span class="ot">=</span> <span class="cn">NA</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>time.as.string <span class="ot">=</span> <span class="fu">paste</span>(CO2_ML<span class="sc">$</span>year,CO2_ML<span class="sc">$</span>month,CO2_ML<span class="sc">$</span>day,<span class="at">sep=</span><span class="st">"-"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>CO2_ML<span class="sc">$</span>dt <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(time.as.string,<span class="st">"%Y-%m-%d"</span>), <span class="at">tz =</span> <span class="st">"GMT"</span>) <span class="co"># convert time to an R time stamp</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>CO2_ML[CO2_ML<span class="sc">==-</span><span class="fl">999.999</span>] <span class="ot">=</span> <span class="cn">NA</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="base-r-and-the-tidyverse-ii" class="level2">
+<h2 class="anchored" data-anchor-id="base-r-and-the-tidyverse-ii">Base-R and the tidyverse (II)</h2>
+<p>In this course we will also learn a lot of ‘tidyverse’ style, which is simpler to read and write. Typical are functions with useful names and the so-called pipe <code>%&gt;%</code>. We will get to know all this in the course.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>CO2_ML <span class="sc">%&gt;%</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time.as.string =</span> <span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">"-"</span>), <span class="co"># create timestamp</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dt =</span> <span class="fu">ymd</span>(time.as.string, <span class="at">tz =</span> <span class="st">"GMT"</span>), <span class="co"># convert to time</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">CO2_ML =</span> <span class="fu">ifelse</span>(CO2_ML <span class="sc">==</span> <span class="sc">-</span><span class="fl">999.999</span>, <span class="cn">NA</span>, CO2_ML))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>CO2_ML <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time.as.string =</span> <span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">"-"</span>), <span class="co"># create timestamp</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dt =</span> <span class="fu">ymd</span>(time.as.string, <span class="at">tz =</span> <span class="st">"GMT"</span>), <span class="co"># convert to time</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">CO2_ML =</span> <span class="fu">ifelse</span>(CO2_ML <span class="sc">==</span> <span class="sc">-</span><span class="fl">999.999</span>, <span class="cn">NA</span>, CO2_ML))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <ul>
@@ -472,15 +315,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>tons of useful functions</li>
 </ul>
 </blockquote>
-<blockquote class="blockquote">
-<ul>
-<li>easier to write</li>
-<li>easier to read</li>
-</ul>
-</blockquote>
 </section>
 <section id="useful-ressources-getting-help" class="level2">
 <h2 class="anchored" data-anchor-id="useful-ressources-getting-help">Useful Ressources &amp; Getting help…</h2>
+<p>Getting started with any programming language can be a pain. But there is help!</p>
 <ul>
 <li>https://r4ds.had.co.nz/</li>
 <li>www.r-bloggers.com</li>

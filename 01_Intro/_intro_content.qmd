@@ -1,96 +1,9 @@
 
-## What is this course about?
+## Installation 
 
+Install R and Rstudio on your computer, if already installed, make sure they are up to date. 
 
-
-Learn the tools and skills to 
-
-> - __organise__ your __data & code__ consistently
-
-> - win the everyday data __wrangling__
-
-> - make quick (and cool) __visualizations__
-
-> - keep your project __reproducible__
-
-> - present and communicate your results
-
-> - be able to do your own troubleshooting
-
-
-
-
-## A typical Data Science Project
-
-![Data Science Workflow](./figures/Data_exploration.png)
-
-
-
-## Course content
-
-> - Basic functionality of R & RStudio
-> - Data Visualization using ggplot2
-> - Data Wrangling
-> - The concept of 'tidy data'
-> - Reproducible Research: R markdown
-> - Advanced R: Loops
-> - Advanced R: Functions
-> - Data management, storage, and structure
-> - Useful stuff along the way, e.g. handling dates & times
-
-
-
-
-## Timetable 
-
-:::{.smaller}
-| Date | Held by | Topic |
-|---:|:--:|---------:|
-| 2022-11-22 | Johnny | Basics in R, R-projects, Visualization | 
-| 2022-11-25 | Johnny | Data wrangling, Data formats| 
-| 2022-12-06 | Jesse | Tidy data, dates & times |
-| 2022-12-13 | Jesse | Advanced Visualization, R markdown, useful stuff along the way |
-| 2022-01-10 | Jesse | Loops, Base-R | 
-| 2023-01-17 | Jesse | Functions | 
-| 2023-01-24 | Jesse | Data management, storage and structure |
-| 2023-01-31 | Jesse | Open issues & questions |
-:::
-
-## Course structure
-
-> - Weekly sessions: combined lecture & excercise: Interactive!
-> - A task will be set at the end of each session
-> - Due dates will be given, typically latest 2.5 weeks after each session
-
-
-## Assessment
-> - All tasks must be completed and passed to pass the course
-> - Tasks will be submitted on OLAT
-> - No exam, no other reports
-> - Tasks are graded, overall grade will be averaged
-> - __The tasks are designed to help you learn the material__ 
-> - Material is developed progressively through the course, so whenever possible it is strongly recommended to complete tasks before the next lecture
-
-
-
-## Round of Introduction
-
->- Who are you?
->- What is your PhD project about?
->- Any experience with R so far?
-
-## Today's outline
-
-> - Getting to know R & RStudio
-> - Data Visualization with ggplot2
-> - Exercise
-> - Assignment
-
-
-
-## Prerequisites for working with R
-
-Updated versions of: 
+Both programs are available for free: 
 
 - R: https://cloud.r-project.org
 - RStudio: http://www.rstudio.com/download
@@ -100,41 +13,42 @@ Updated versions of:
 
 ![R Studio working environment](./figures/RStudio_Basic.PNG)
 
+## Hands-on
 
-
-
+- use R as a calculator
+- use a script and send code to the console
 
 ## Getting organised: R-projects & R-scripts 
 
 >- your whole data science project within one folder
->- R-Studio project
->- working directory
+>- this folder as working directory for R
 >- Rscripts: store with meaningful names
 >- use relative paths instead of absolute
+>- 'R-Studio projects' help to organise this
 
 >- __Everything in one place__
->- __Allows moving between computers__
+>- __Allows sharing & moving between computers__
 
 
 
+## Hands-on: Workflow Basics
 
-
-## Exercise: Workflow Basics
+Together we 
 
 - create a project for this course
 - create an R-script
 - write code in script and send to console
-- comment script using '#'
+- comment the script using '#'
 
 
-## Packages
+## Additional functionality: R-Packages
 
 - add-ons
 - increase functionality of R
 
-Important:
+Important in this course (and for life):
 
-- tidyverse
+-      tidyverse
 - readxl
 
 Can be installed via 
@@ -152,9 +66,11 @@ library(tidyverse)
 Task: install tidyverse
 
 
-## Base-R and the tidyverse
+## Base-R and the tidyverse (I)
 
-Tidyverse is a suite of packages that use a consistent language of code.
+Base-R means the 'original' language of R. Typically, this contains a lot of `$` square brackets `[]`. Certainly important to know, but sometimes a bit hard to follow, especially when getting started with R...
+
+Example: 
 
 ```{r, eval = FALSE}
 # Base R
@@ -163,6 +79,11 @@ CO2_ML$dt = as.POSIXct(strptime(time.as.string,"%Y-%m-%d"), tz = "GMT") # conver
 CO2_ML[CO2_ML==-999.999] = NA 
 
 ```
+
+## Base-R and the tidyverse (II)
+
+In this course we will also learn a lot of 'tidyverse' style, which is simpler to read and write. 
+Typical are functions with useful names and the so-called pipe `%>%`. We will get to know all this in the course. 
 
 ```{r, eval = FALSE}
 # tidyverse
@@ -173,15 +94,10 @@ CO2_ML %>%
   
 ```
 
-
 >- complements and supplements base-R code
 >- does not replace base-R
 >- increases efficiency
 >- tons of useful functions
-
->- easier to write
->- easier to read
-
 
 
 
@@ -189,6 +105,8 @@ CO2_ML %>%
 
 
 ## Useful Ressources & Getting help...
+
+Getting started with any programming language can be a pain. But there is help!
 
 - https://r4ds.had.co.nz/
 - www.r-bloggers.com
