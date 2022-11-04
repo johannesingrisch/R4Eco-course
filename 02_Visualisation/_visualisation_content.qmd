@@ -169,23 +169,25 @@ ggsave("displ_vs_hwy.png", plot = p)
 
 ## Time to try it yourself
 
-Exercise Part 1. 
+--> check out Exercise Part 1. 
 
 
 ## ggplot: General template
+
+The general template for a ggplot call is the following:
 
 ```{r, eval = FALSE}
 ggplot(data = <DATA>) + 
   <GEOM_FUNCTION>(aes(<MAPPINGS>))
 ```
 
-to make a graph, we replace the bracketed sections with 
+To make a graph, we replace the bracketed sections with 
 
 - a dataset
 - a geom function
 - a collection of mappings/aestethics
 
-## mappings/aestethics
+## mappings/aestethics: colors & shapes & linetypes
 
 - color
 - fill
@@ -202,12 +204,11 @@ include_graphics("./figures/ggplot_aes.png")
 
 
 
-## mappings/aestethics
+## Colors & shape: Example
 
-Example: color and shape
-
-<div class="columns-2">
-```{r out.width="100%"}
+```{r out.width="50%"}
+#| layout-ncol: 2
+#| 
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy, 
                            color = drv))
@@ -216,15 +217,11 @@ ggplot(data = mpg) +
   geom_point(aes(x = displ, y = hwy, 
              shape = drv))
 ```
-</div>
 
+## Automatic vs. manual setting of mappings
 
-## mappings/aestethics
-
-automatic vs. manual setting of mappings
-
-<div class="columns-2">
-```{r out.width="100%"}
+```{r out.width="50%"}
+#| layout-ncol: 2
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy, 
                            color = drv))
@@ -233,16 +230,14 @@ ggplot(data = mpg) +
   geom_point(aes(x = displ, y = hwy), 
              color = "red")
 ```
-</div>
-
-
 
 ## geoms
 
 geom_point(), geom_line(), geom_smooth(), ... and tons of others!
 
-<div class="columns-2">
-```{r, out.width="80%", message = FALSE}
+```{r, out.width="50%", message = FALSE}
+#| layout-ncol: 2
+
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy))
 
@@ -250,8 +245,6 @@ ggplot(data = mpg) +
   geom_smooth(aes(x = displ, y = hwy))
 
 ```
-</div>
-
 
 ## Combine it!
 
@@ -283,55 +276,57 @@ ggplot(data = mpg,
 
 ## Note the difference!
 
-<div class="columns-2">
-```{r, out.width="80%", message = FALSE}
+```{r, out.width="50%", message = FALSE}
+#| layout-ncol: 2
+# V1
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy, 
                  color = drv)) +
   geom_smooth(aes(x = displ, y = hwy))
 
+# V2 
 ggplot(data = mpg, 
        aes(x = displ, y = hwy, color = drv)) + 
   geom_point() + 
   geom_smooth()
 
 ```
-</div>
 
 >__How can we fix it?__
 
 
 ## Solution: Individual aes() for different geoms
 
-<div class="columns-2">
-```{r, out.width="80%", message = FALSE}
+```{r, out.width="50%", message = FALSE}
+#| layout-ncol: 2
+# V1
 ggplot(data = mpg, 
        aes(x = displ, y = hwy, color = drv)) + 
   geom_point() + 
   geom_smooth()
 
+# V2
 ggplot(data = mpg, 
        aes(x = displ, y = hwy)) + 
   geom_point(aes(color = drv)) + 
   geom_smooth()
 
 ```
-</div>
 
 
 ## Individual aes() for different geoms
 
 Different ways to achieve the same.
 
-
-<div class="columns-2">
-
 ```{r, out.width="80%", message = FALSE}
+#| layout-ncol: 2
+# V1
 ggplot(data = mpg, 
        aes(x = displ, y = hwy)) + 
   geom_point(aes(color = drv)) + 
   geom_smooth()
 
+# V2
 ggplot(data = mpg, 
        aes(x = displ, y = hwy, color = drv)) + 
   geom_point() + 
@@ -339,38 +334,29 @@ ggplot(data = mpg,
 
 ```
 
-</div>
-
 
 ## Discrete vs. continuous variables
 
 
 ```{r}
-
 head(mpg)
-
 ```
 
 
 ## Discrete vs. continuous variables
 
-
-
-<div class="columns-2">
-
-```{r, out.width="80%", message = FALSE}
+```{r, out.width="50%", message = FALSE}
+#| layout-ncol: 2
+# V1
 ggplot(data = mpg, 
        aes(x = displ, y = hwy)) + 
   geom_point(aes(color = drv)) 
 
+# V2
 ggplot(data = mpg, 
        aes(x = displ, y = hwy, color = cty)) + 
   geom_point() 
 ```
-
-</div>
-
-
 
 ## Geoms with statistical transformation
 
@@ -404,6 +390,7 @@ Different __geom__ have different default __stat__.
 
 check __?geom_bar__ for details to each geom.
 
+Source: (R4DS)[https://r4ds.had.co.nz/]
 
 
 
@@ -421,31 +408,36 @@ ggplot(data = mpg) +
 
 ## Boxplots & Violin-Plots
 
-<div class="columns-2">
 ```{r out.width="80%"}
+#| layout-ncol: 2
+
+# V1
 ggplot(data = mpg) + 
   geom_boxplot(aes(x = class, y = hwy, 
                    fill = class))
 
+# V2
 ggplot(data = mpg) + 
   geom_violin(aes(x = class, y = hwy, 
                   fill = class))
 ```
-</div>
 
 
 ## Visualize distributions
+
 ```{r, out.width = "70%"}
 ggplot(data = mpg) + 
   geom_density(aes(x = hwy, fill = drv), alpha = 0.5)
 ```
 
 
-## facets
+## Facets
 
-facet_wrap
+Facets are a convenient way to split a figure into multiple subpanels. 
 
-```{r, out.width = "50%"}
+**facet_wrap**
+
+```{r, out.width = "80%"}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_wrap(~ class, nrow = 2)
@@ -455,9 +447,9 @@ ggplot(data = mpg) +
 
 ## facets
 
-facet_grid
+**facet_grid**: Split into columns and rows.
 
-```{r, out.width = "50%"}
+```{r, out.width = "80%"}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_grid(drv ~ cyl)
@@ -475,13 +467,13 @@ Many ways to customize your figures
 >- adjust axis labels, ...
 >- ...
 
-
+**Get inspired** in the (R-graph gallery)[https://r-graph-gallery.com/]
 
 
 
 ## Urgent Help: The ggplot cheatsheet
 
-https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf
+(ggplot cheatsheet)[https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf]
 
 ```{r echo = FALSE, out.width = "75%"}
 include_graphics("./figures/ggplot_cheatsheet.png")
@@ -514,26 +506,7 @@ https://clauswilke.com/dataviz/
 
 ## Exercise Part 2
 
-
-
-## Assignment
-
-```{r echo = FALSE, out.width = "65%"}
-include_graphics("./figures/iris.png")
-
-iris
-
-```
-
-
-
-## Wrap-up
-
-```{r echo = FALSE, out.width = "100%"}
-include_graphics("./figures/Data_exploration.png")
-
-```
-
+Check out the second part of the exercise to get some more practice. 
 
 
 
