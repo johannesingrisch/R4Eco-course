@@ -12,19 +12,11 @@ kable_pretty <- function(data) {
 ```
 
 
-## Data Exploration & Visualization
-
-```{r echo = FALSE, out.width = "100%"}
-include_graphics("./figures/Data_exploration.png")
-
-```
-
-
 ## Data Exploration
 
 - Example Dataset 'mpg': fuel economy data of cars
 
-- how does the data look like?
+- how does the data look like? We could open it in Excel..
 
 ```{r echo = FALSE, out.width = "70%"}
 include_graphics("./figures/mpg_excel.png")
@@ -33,7 +25,16 @@ include_graphics("./figures/mpg_excel.png")
 
 
 
-## mpg dataset
+## The mpg dataset (I)
+
+For provided datasets we can use the R help to get more info
+
+```{r, eval = FALSE}
+?(mpg)
+```
+
+
+Look at the first 6 lines of the dataset
 
 ```{r}
 head(mpg)
@@ -43,9 +44,18 @@ displ: engine displacement in litres
 
 hwy: highway efficiency (miles per gallon)
 
-## mpg dataset
+## The mpg dataset (II)
 
-Also useful
+More info about the structure of the datset
+
+```{r}
+str(mpg)
+```
+
+
+## The mpg dataset (III)
+
+Additional functions, check it out by yourself!
 
 ```{r, eval = FALSE}
 summary(mpg)
@@ -77,26 +87,30 @@ Different options to create plots in R
 
 
 
-## Data Visualization in ggplot2
-
-The grammar of graphics. 
-
+## Data Visualization in ggplot2: Examples
 
 ```{r echo = FALSE, out.width = "90%"}
 include_graphics("./figures/ggplot_examples.png")
 
 ```
 
+## ggplot2
 
+From the ggplot2 [manual](https://ggplot2.tidyverse.org/)
 
-## Visualization: Canvas
+*ggplot2 is a system for declaratively creating graphics, based on [**The Grammar of Graphics**](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl). You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.*
+
+Lets go step-by-step through creating a figure. 
+
+## (1) The canvas
 
 ```{r, out.width = "50%"}
 mpg %>% 
   ggplot()
 ```
 
-## Visualization: Axes
+## (2) Add Axes
+We want to plot `hwy ~ displ`
 
 displ: engine volume
 hwy: fuel efficiency (miles per gallon)
@@ -107,7 +121,7 @@ mpg %>%
 ```
 
 
-## Visualization: Data
+## (3) Add Data
 
 -> adding layers
 
@@ -118,7 +132,7 @@ mpg %>%
 ```
 
 
-## Visualization: Color Coding
+## (4) Use Colors
 
 ```{r, out.width = "50%"}
 mpg %>% 
@@ -126,7 +140,7 @@ mpg %>%
   geom_point()
 ```
 
-## Visualization: Labels
+## (5) Add Labels
 
 ```{r, out.width = "50%"}
 mpg %>% 
@@ -138,7 +152,7 @@ mpg %>%
 ```
 
 
-## Visualization: save plot
+## (6) Save output
 
 ```{r, eval = FALSE}
 p <- mpg %>% 
@@ -153,11 +167,10 @@ ggsave("displ_vs_hwy.png", plot = p)
 >- saves directly into working directory, unless specified differently (e.g. in subfolder)
 
 
-## Time to check it out..
+## Time to try it yourself
 
 Exercise Part 1. 
 
-pdf sheet on OLAT
 
 ## ggplot: General template
 
