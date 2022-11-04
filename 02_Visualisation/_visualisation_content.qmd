@@ -19,7 +19,7 @@ kable_pretty <- function(data) {
 - how does the data look like? We could open it in Excel..
 
 ```{r echo = FALSE, out.width = "70%"}
-include_graphics("./figures/mpg_excel.png")
+include_graphics("./figures/mpg_excel.PNG")
 
 ```
 
@@ -467,16 +467,16 @@ Many ways to customize your figures
 >- adjust axis labels, ...
 >- ...
 
-**Get inspired** in the (R-graph gallery)[https://r-graph-gallery.com/]
+**Get inspired** in the [R-graph gallery](https://r-graph-gallery.com/)
 
 
 
 ## Urgent Help: The ggplot cheatsheet
 
-(ggplot cheatsheet)[https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf]
+[ggplot cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 
 ```{r echo = FALSE, out.width = "75%"}
-include_graphics("./figures/ggplot_cheatsheet.png")
+include_graphics("./figures/ggplot_cheatsheet.PNG")
 ```
 
 
@@ -507,10 +507,3 @@ https://clauswilke.com/dataviz/
 ## Exercise Part 2
 
 Check out the second part of the exercise to get some more practice. 
-
-
-
-
-
-
-

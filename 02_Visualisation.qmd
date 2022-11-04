@@ -1,4 +1,13 @@
-# Visualisation
+# The art of looking at data: Data Exploration & Visualization
 
+Efficient data visualization is key in data science. Not only will it help you to understand your own data, but also is it a primary mean to communicate results to others and make complex results easiert to understand. 
+
+Last but not least, litte is more satisfying then to come up with really cool visualisations of your research. 
+
+In this course we will focus on visualizing data with a R-package called 'ggplot2'. It is part of the tidyverse and once you overcome the initial barrier it is very easy to handle and incredible versatile. 
+
+Before creating the first plots, we need a first idea of the struture and content of the dataset we are interested in. For this, R provides some nice functions. 
+
+To get started we use a dataset that is already included in R called `mpg`. 
 
 {{< include 02_Visualisation/_visualisation_content.qmd >}}

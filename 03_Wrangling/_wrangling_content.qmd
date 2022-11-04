@@ -13,16 +13,10 @@ kable_pretty <- function(data) {
 ```
 
 
-## On Today's Plate
 
-```{r echo = FALSE, out.width = "75%"}
-include_graphics("./figures/Data_wrangling.png")
-```
+## Transforming data using `dplyr`
 
-The art of getting data into a useful form for visualisation and modelling.
-
-
-## Transform Data
+A lot of useful functions are provided by the package `dplyr`. 
 
 ```{r echo = FALSE, out.width = "15%"}
 include_graphics("./figures/dplyr.png")

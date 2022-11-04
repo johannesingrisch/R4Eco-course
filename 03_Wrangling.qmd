@@ -1,4 +1,14 @@
 # Data Wrangling
 
 
+> The art of getting data into a useful form for visualisation and modelling.
+
+![Data wrangling](./figures/Data_wrangling.png)
+
+Most of the time the data will just not be in the format that we need or we will have to do additional manipulations and calculations and getting the data into the form that is needed can be very challenging. R and the tidyverse provide a bunch of very useful functions. 
+
+Mastering data wrangling is key for efficient processing of data. 
+
+
+
 {{< include 03_Wrangling/_wrangling_content.qmd >}}

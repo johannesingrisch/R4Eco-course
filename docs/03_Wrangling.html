@@ -201,8 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link active" data-scroll-target="#data-wrangling">Data Wrangling</a>
   <ul class="collapse">
-  <li><a href="#on-todays-plate" id="toc-on-todays-plate" class="nav-link" data-scroll-target="#on-todays-plate">On Today’s Plate</a></li>
-  <li><a href="#transform-data" id="toc-transform-data" class="nav-link" data-scroll-target="#transform-data">Transform Data</a></li>
+  <li><a href="#transforming-data-using-dplyr" id="toc-transforming-data-using-dplyr" class="nav-link" data-scroll-target="#transforming-data-using-dplyr">Transforming data using <code>dplyr</code></a></li>
   <li><a href="#filter-rows-with-filter" id="toc-filter-rows-with-filter" class="nav-link" data-scroll-target="#filter-rows-with-filter">Filter rows with filter()</a></li>
   <li><a href="#filter-rows-with-filter-1" id="toc-filter-rows-with-filter-1" class="nav-link" data-scroll-target="#filter-rows-with-filter-1">Filter rows with filter()</a></li>
   <li><a href="#comparisons" id="toc-comparisons" class="nav-link" data-scroll-target="#comparisons">Comparisons</a></li>
@@ -265,17 +264,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="data-wrangling" class="level1">
 <h1>Data Wrangling</h1>
-<section id="on-todays-plate" class="level2">
-<h2 class="anchored" data-anchor-id="on-todays-plate">On Today’s Plate</h2>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="./figures/Data_wrangling.png" class="img-fluid" style="width:75.0%"></p>
-</div>
-</div>
+<blockquote class="blockquote">
 <p>The art of getting data into a useful form for visualisation and modelling.</p>
-</section>
-<section id="transform-data" class="level2">
-<h2 class="anchored" data-anchor-id="transform-data">Transform Data</h2>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/Data_wrangling.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Data wrangling</figcaption><p></p>
+</figure>
+</div>
+<p>Most of the time the data will just not be in the format that we need or we will have to do additional manipulations and calculations and getting the data into the form that is needed can be very challenging. R and the tidyverse provide a bunch of very useful functions.</p>
+<p>Mastering data wrangling is key for efficient processing of data.</p>
+<section id="transforming-data-using-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="transforming-data-using-dplyr">Transforming data using <code>dplyr</code></h2>
+<p>A lot of useful functions are provided by the package <code>dplyr</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="./figures/dplyr.png" class="img-fluid" style="width:15.0%"></p>
@@ -584,7 +586,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Comsumption (l/100km)"</span>, <span class="at">x =</span> <span class="st">"Displacement"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -645,7 +647,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span> </span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" style="width:60.0%"></p>
+<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" style="width:60.0%"></p>
 </div>
 </div>
 </section>
@@ -786,7 +788,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="at">width =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="at">height =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" style="width:50.0%"></p>
+<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" style="width:50.0%"></p>
 </div>
 </div>
 </section>
