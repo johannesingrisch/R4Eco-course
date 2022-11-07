@@ -22,19 +22,26 @@ A lot of useful functions are provided by the package `dplyr`.
 include_graphics("./figures/dplyr.png")
 ```
 
->- create subsets of data
->- create new variables
->- rename variables
->- reorder observations
->- ...
+- create subsets of data
+- create new variables
+- rename variables
+- reorder observations
+- ...
 
+# Subsetting 
 
+Often we want to narrow down a large datset to a subset, either by filtering observations (i.e. reduce the number of rows) or by selecting specific variables only (i.e. reduce the number of columns). 
+
+`Dplyr`provides two handy functions for this
+
+- filter()
+- select()
 
 ## Filter rows with filter()
 
-Create a subset of observations based on values. 
+Create a subset of observations based on values of certain variables.  
 
-Use logical operators. 
+For this we use **logical operators**. 
 
 ```{r}
 filter(mpg, class == "2seater")
@@ -42,7 +49,7 @@ filter(mpg, class == "2seater")
 
 ## Filter rows with filter()
 
-Use multiple conditions. 
+We can also use multiple conditions
 
 ```{r}
 filter(mpg, class == "2seater", trans == "auto(l4)")
@@ -51,12 +58,12 @@ filter(mpg, class == "2seater", trans == "auto(l4)")
 
 ## Comparisons
 
+Using comparisons: 
+
 `>`, `>=`, `<`, `<=`, `==`, `!=` 
 
 ```{r}
-
 filter(mpg, hwy >= 30, cyl <= 4)
-
 ```
 
 
@@ -81,15 +88,12 @@ filter(mpg, cyl == 4,  drv != "f")
 
 ## Logical operators
 
-%in% can simplify life.
+`%in%` can simplify life:
 
 ```{r, eval = FALSE}
-
 filter(mpg, cyl == 4 | cyl == 5)
 
-
 filter(mpg, cyl %in% c(4,5))
-
 ```
 
 Combining multiple conditions can quickly become confusing. Consider doing it stepwise.
@@ -108,17 +112,20 @@ filter(mpg, !(class == "suv" & manufacturer == "chevrolet"))
 ```
 
 
+## Arrange rows in ascending order: arrange()
 
+We can order the observations by values of one (or more) variable. 
 
-## Arrange rows: arrange()
+Example: order the dataset `mpg`in ascending order according to the variable `hwy`.
 
 ```{r, out.width="50%"}
 arrange(mpg, hwy)
-
 ```
 
 
-## Arrange rows: arrange()
+## Arrange rows in descending order: arrange()
+
+By using `desc()`we can change the order to descending. 
 
 ```{r, out.width="50%"}
 
@@ -127,6 +134,10 @@ arrange(mpg, desc(hwy))
 
 ## arrange(): multiple columns
 
+We can use multiple variables to define the order of the arranged dataset.
+
+Note: order of the variables matters:
+
 ```{r}
 arrange(mpg, desc(cyl), hwy)
 ```
@@ -134,18 +145,26 @@ arrange(mpg, desc(cyl), hwy)
 
 ## Select columns: select()
 
+We can also choose specific columns of dataset (and remove the rest). 
+
+Example: From the dataset `mpg`we only want to keep the columns `model`, `drv`, andn `hwy`. 
+
 ```{r}
 select(mpg, model, drv, hwy)
 ```
 
 ## Select columns: select()
+
+Keep all columns from `year` to `cty`. 
+
 ```{r}
 select(mpg, year:cty)
 ```
 
 ## Select columns: select()
 
-Drop Columns
+Instead of actively selecting the columns we want, we can also remove those which we don't want: 
+
 ```{r}
 select(mpg, -model, - cyl)
 ```
@@ -154,11 +173,13 @@ select(mpg, -model, - cyl)
 ## select(): helper functions
 
 - reorder the columns
+
 ```{r, eval = FALSE}
 select(mpg, hwy, cyl, everything())
 ```
 
 - rename columns
+
 ```{r, eval = FALSE}
 rename(mpg, efficiency = hwy)
 
@@ -166,24 +187,26 @@ select(mpg, efficiency = hwy, everything())
 
 ```
 
-- various other options: see `?select`
+- various other options: see the help by calling `?select`
 
-## Add new variables: mutate()
+# Create new variables: mutate()
 
-`mutate()` adds a new column at the end of your dataset. 
+With `mutate()` we can create a new variable which is added at the end of our dataset. 
+
+
+## Calculate a new variable
 
 Example: Calculate fuel consumption (L / 100km) = 1 / hwy /2.352 * 100
 
 ```{r}
 mpg2 <- mutate(mpg, consump = 1 / hwy * 2.352 * 100)
 
-
 head(mpg2)
 ```
 
-## Add new variables: mutate()
+## Calculate a new variable in multiple steps
 
-Alternative: Stepwise
+In case of long formulas it can increase clarity to do the calculation stepwise
 
 ```{r}
 mpg2 <- mutate(mpg, consump = 1 / hwy * 2.352 * 100)
@@ -195,14 +218,7 @@ mpg2 <- mutate(mpg,
 head(mpg2)
 ```
 
-
-## Add new variables: mutate()
-
-```{r}
-ggplot(data = mpg2, aes(x = displ, y = consump)) + 
-       geom_point() + 
-  labs(y = "Comsumption (l/100km)", x = "Displacement")
-```
+Note: mutate() can immediatly re-use any newly created variables within the same call of `mutate()`.
 
 # The Pipe: %>%
 
@@ -210,11 +226,12 @@ ggplot(data = mpg2, aes(x = displ, y = consump)) +
 include_graphics("./figures/pipe.png")
 ```
 
+The pipe is a really useful operator to string together multiple operations in R. 
 
 R-Studio Shortcut: __Ctrl + Shift + M__
 
 
-## The Pipe: %>%
+## How to use the pipe %>%
 
 Passes object on the lefthand side as first argument of function on righthand side. 
 
@@ -233,8 +250,7 @@ mpg %>%
 
 ## Combine Multiple Operations: %>%
 
-
-- `x %>% f(y)` is similar to `f(x,y)`
+It becomes to really useful when doing multiple operations at once: 
 
 ```{r}
 mpg_sub <- mpg %>% 
@@ -247,9 +263,11 @@ head(mpg_sub)
 ```
 
 
-
 ## Combine Pipe with ggplot()
 
+We can even combine it with ggplot!
+
+Note: within ggplot you have to use `+`, before the ggplot-call you have to use `%>%`. Confusing, I know... 
 ```{r, out.width = "60%"}
 mpg %>% 
   filter(class == "2seater" | class == "compact") %>%  
@@ -258,7 +276,10 @@ mpg %>%
 ```
 
 
-## Hands on: Exercise Part 1
+
+## Time to try it yourself: 
+
+--> check out Exercise Part 1.
 
 
 

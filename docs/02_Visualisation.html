@@ -172,7 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./02_Visualisation.html" class="sidebar-item-text sidebar-link active">Data exploration and visualisation</a>
+            <a href="./02_Visualisation.html" class="sidebar-item-text sidebar-link active">Data visualisation</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -185,9 +185,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./03_Wrangling.html" class="sidebar-item-text sidebar-link">Data Wrangling</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Exercise.html" class="sidebar-item-text sidebar-link">Exercise</a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Wrangling.html" class="sidebar-item-text sidebar-link">Data Wrangling</a>
+  <a href="./04_Reading.html" class="sidebar-item-text sidebar-link">Reading data</a>
   </div>
 </li>
     </ul>
@@ -199,7 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-art-of-looking-at-data-data-exploration-visualization" id="toc-the-art-of-looking-at-data-data-exploration-visualization" class="nav-link active" data-scroll-target="#the-art-of-looking-at-data-data-exploration-visualization">The art of looking at data: Data Exploration &amp; Visualization</a>
+  <li><a href="#data-exploration-visualization" id="toc-data-exploration-visualization" class="nav-link active" data-scroll-target="#data-exploration-visualization">Data Exploration &amp; Visualization</a>
   <ul class="collapse">
   <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a></li>
   <li><a href="#the-mpg-dataset-i" id="toc-the-mpg-dataset-i" class="nav-link" data-scroll-target="#the-mpg-dataset-i">The mpg dataset (I)</a></li>
@@ -248,8 +263,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="the-art-of-looking-at-data-data-exploration-visualization" class="level1">
-<h1>The art of looking at data: Data Exploration &amp; Visualization</h1>
+<section id="data-exploration-visualization" class="level1">
+<h1>Data Exploration &amp; Visualization</h1>
+<blockquote class="blockquote">
+<p>The art of looking at data</p>
+</blockquote>
 <p>Efficient data visualization is key in data science. Not only will it help you to understand your own data, but also is it a primary mean to communicate results to others and make complex results easiert to understand.</p>
 <p>Last but not least, litte is more satisfying then to come up with really cool visualisations of your research.</p>
 <p>In this course we will focus on visualizing data with a R-package called ‘ggplot2’. It is part of the tidyverse and once you overcome the initial barrier it is very easy to handle and incredible versatile.</p>

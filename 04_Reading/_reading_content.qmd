@@ -1,0 +1,162 @@
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+library(tidyverse)
+library(datasauRus)
+library(knitr)
+options("kableExtra.html.bsTable" = T)
+kable_pretty <- function(data) {
+  kable(data, "html") %>%
+    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
+}
+```
+
+
+
+# Reading Data 
+
+```{r echo = FALSE, out.width = "25%"}
+include_graphics("./figures/readr_readxl.png")
+```
+
+
+
+## Reading text files
+
+- most general function is read.table() from base-R
+
+
+```{r echo = FALSE, out.width = "20%"}
+include_graphics("./figures/read_data_example.png")
+```
+
+
+```{r}
+
+data <- read.table("./datasets/bigmess.csv", sep = ",", dec = ".",
+                   skip = 0, header = TRUE)
+
+head(data)
+
+```
+
+## Important variables
+
+For the import we need to define a number of variables
+
+```{r, eval = FALSE}
+data <- read.table("./datasets/bigmess.csv", 
+                   sep = ",", 
+                   dec = ".",
+                   skip = 0,
+                   header = TRUE)
+```
+
+>- How are columns separated? `sep = ","` (",", ";",...)
+>- decimal points: `dec = "."` (",")
+>- skip: do not read the first n lines (often metadata)
+>- are column names included? header = TRUE/FALSE
+>- ?read.table for help
+
+
+## Package readr simplifies some steps
+
+
+```{r, eval = FALSE}
+
+read_delim() # any delimiter
+read_csv() # comma-separated
+read_csv2() # comma-separated, dec = ","
+read_tsv() # tab-delimited
+
+```
+
+>- __Additional arguments:__
+
+>- col_names
+>- skip
+>- na: how are NA' represented in the data 
+
+
+
+>- __Advantage:__
+
+>- faster than base-R
+>- they don't change column formats (e.g. character to factors)
+
+
+## Relative & Absolute paths
+
+Where is the data stored?
+
+Two Options: 
+
+Either: Define the full path
+
+```{r, eval = FALSE}
+path <- "C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology/Day_2/bigmess.csv"
+
+data <- read_csv(path, col_names = TRUE)
+
+```
+
+
+
+
+__Better__: relative path from working directory (project folder)
+
+Project folder: 
+
+`"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology`
+
+Express relative to the project folder, start in project folder using "./"
+
+```{r, eval = FALSE}
+
+data <- read_csv("./Day_2/bigmess.csv", col_names = TRUE)
+
+```
+
+
+## Reading excel-files
+
+Often we get data in Excel, or we enter data using Excel. 
+
+How to get in R?
+
+Option 1:
+
+>- export table as .csv or .txt from excel
+
+>- read as shown above
+
+Option 2: 
+
+>- package(readxl)
+
+
+## library(readxl)
+
+
+```{r, eval = FALSE}
+library(readxl) 
+
+data <- read_excel("./datasets/bigmess.xlsx", 
+                   col_names = TRUE, 
+                   sheet = "data") # specify the worksheet, either by number or name, default is 1
+```
+
+
+## Summing up
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("./figures/Data_wrangling.png")
+```
+
+```{r echo = FALSE, out.width = "35%"}
+include_graphics("./figures/tidyverse_2.png")
+```
+
+

@@ -1,0 +1,8 @@
+# Reading data into R
+
+![Data wrangling](./figures/Data_wrangling.png)
+
+Reading data is the first step of data wrangling and of course essential prior to any data analysis. 
+R provides multiple ways to read data of various formats. In this course, we focus on 2-dimensional, rectangluar data, i.e. simple tables, which is stored as text files or as excel-files. 
+
+{{< include 04_Reading/_reading_content.qmd >}}
