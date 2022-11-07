@@ -6,10 +6,17 @@ website:
   title: "Data management and analysis in R"
   repo-url: https://github.com/johannesingrisch/R4Eco-course
   repo-actions: [issue]
+  search: 
+    location: sidebar
+    type: textbox
   navbar:
     background: "#4C9FB5"
-    search: true
     logo: discdown_logo.png
+    right: 
+      - text: "Home"
+        file: index.qmd
+      - text: "Resources"
+        file: 00_Resources.qmd
 
   sidebar:
     style: "docked"

@@ -252,6 +252,20 @@
     "text": "Data can be stored in differet types: factors, characters, integer etc.\nIn tibbles we get the information directly printed\n\nhead(mpg)\n\n# A tibble: 6 × 11\n  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class \n  <chr>        <chr> <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr> \n1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…\n2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…\n3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…\n4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…\n5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…\n6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…\n\n\nWe can also access it for each column\n\nclass(mpg$hwy)\n\n[1] \"integer\"\n\n\n\n\n\nIn particular useful when data is in wrong format after read-in.\nas.numeric()\nas.character()\nas.factor()\n\nmpg2$manufacturer <- factor(mpg2$manufacturer)\nmpg2\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <fct>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
   },
   {
+    "objectID": "00_Resources.html",
+    "href": "00_Resources.html",
+    "title": "Data management and analysis in R",
+    "section": "",
+    "text": "This course would not have been possible without all the fantastic content that is made available by the R community.\nFind below some highly recommended websites and books for further reading."
+  },
+  {
+    "objectID": "00_Resources.html#resources",
+    "href": "00_Resources.html#resources",
+    "title": "Data management and analysis in R",
+    "section": "Resources",
+    "text": "Resources\nR for data science by Hadley Wickham and Garrett Grolemund. Fantastic introduction into R and the tidyverse, from the first steps to elegant visualization, modelling, and communication tools.\nggplot2: Elegant graphics for Data Analysis by Hadley Wickham. Great introduction into data visualization with ggplot2\nFundamentals of Data Visualization by Claus Wilke. The title says it all.\nQuarto This website and the lecture slides were created using Quarto, the website is a perfect place to get started."
+  },
+  {
     "objectID": "02_Visualisation.html",
     "href": "02_Visualisation.html",
     "title": "Data management and analysis in R",
