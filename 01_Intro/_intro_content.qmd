@@ -11,7 +11,7 @@ Both programs are available for free:
 
 ## R & R Studio
 
-![R Studio working environment](./figures/RStudio_Basic.png)
+![R Studio working environment](./figures/RStudio_Basic.PNG)
 
 ## Hands-on
 

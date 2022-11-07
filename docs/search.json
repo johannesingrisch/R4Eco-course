@@ -2,79 +2,79 @@
   {
     "objectID": "Organisation.html",
     "href": "Organisation.html",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "",
     "text": "Learn the tools and skills to\n\n\norganise your data & code consistently\nwin the everyday data wrangling\nmake quick (and cool) visualizations\nkeep your project reproducible\npresent and communicate your results\nbe able to do your own troubleshooting"
   },
   {
     "objectID": "Organisation.html#a-typical-data-science-project",
     "href": "Organisation.html#a-typical-data-science-project",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "A typical Data Science Project",
     "text": "A typical Data Science Project\n\n\n\nData Science Workflow\n\n\nSource: R for Data Science"
   },
   {
     "objectID": "Organisation.html#course-content",
     "href": "Organisation.html#course-content",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Course content",
     "text": "Course content\n\n\nBasic functionality of R & RStudio\nData Visualization using ggplot2\nData Wrangling\nThe concept of ‘tidy data’\nReproducible Research: R markdown\nAdvanced R: Loops\nAdvanced R: Functions\nData management, storage, and structure\nUseful stuff along the way, e.g. handling dates & times"
   },
   {
     "objectID": "Organisation.html#todays-outline",
     "href": "Organisation.html#todays-outline",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Today’s outline",
     "text": "Today’s outline\n\n\nGetting to know R & RStudio\nData Visualization with ggplot2\nHands-on exercise\nAssignment"
   },
   {
     "objectID": "Organisation.html#timetable",
     "href": "Organisation.html#timetable",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Timetable",
     "text": "Timetable\n\n\n\n\n\n\n\n\n\nDate\nHeld by\nTopic\n\n\n\n\n2022-11-22\nJohnny\nBasics in R, R-projects, Visualization\n\n\n2022-11-25\nJohnny\nData wrangling, Data formats\n\n\n2022-12-06\nJesse\nTidy data, dates & times\n\n\n2022-12-13\nJesse\nAdvanced Visualization, R markdown, useful stuff along the way\n\n\n2022-01-10\nJesse\nLoops, Base-R\n\n\n2023-01-17\nJesse\nFunctions\n\n\n2023-01-24\nJesse\nData management, storage and structure\n\n\n2023-01-31\nJesse\nOpen issues & questions"
   },
   {
     "objectID": "Organisation.html#course-structure",
     "href": "Organisation.html#course-structure",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Course structure",
     "text": "Course structure\n\n\nOur sessions will combine lecture & exercise: Interactive!\nAn assignment will be set at the end of each session\nDue dates for assignment submission will be given, typically latest 2.5 weeks after each session"
   },
   {
     "objectID": "Organisation.html#assessment",
     "href": "Organisation.html#assessment",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Assessment",
     "text": "Assessment\n\n\nAll tasks must be completed and passed to pass the course\nTasks will be submitted on OLAT\nNo exam, no other reports\nTasks are graded, overall grade will be averaged\nThe tasks are designed to help you learn the material\nMaterial is developed progressively through the course, so whenever possible it is strongly recommended to complete tasks before the next lecture"
   },
   {
     "objectID": "Organisation.html#round-of-introduction",
     "href": "Organisation.html#round-of-introduction",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Round of Introduction",
     "text": "Round of Introduction\n\n\nWho are you?\nWhat is your PhD project about?\nAny experience with R so far?"
   },
   {
     "objectID": "02_Visualisation.html",
     "href": "02_Visualisation.html",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "",
     "text": "The art of looking at data\n\nEfficient data visualization is key in data science. Not only will it help you to understand your own data, but also is it a primary mean to communicate results to others and make complex results easiert to understand.\nLast but not least, litte is more satisfying then to come up with really cool visualisations of your research.\nIn this course we will focus on visualizing data with a R-package called ‘ggplot2’. It is part of the tidyverse and once you overcome the initial barrier it is very easy to handle and incredible versatile.\nBefore creating the first plots, we need a first idea of the struture and content of the dataset we are interested in. For this, R provides some nice functions.\nTo get started we use a dataset that is already included in R called mpg.\n\n\n\nExample Dataset ‘mpg’: fuel economy data of cars\nhow does the data look like? We could open it in Excel..\n\n\n\n\n\n\n\n\n\nFor provided datasets we can use the R help to get more info\n\n?(mpg)\n\nLook at the first 6 lines of the dataset\n\nhead(mpg)\n\n# A tibble: 6 × 11\n  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class \n  <chr>        <chr> <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr> \n1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…\n2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…\n3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…\n4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…\n5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…\n6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…\n\n\ndispl: engine displacement in litres\nhwy: highway efficiency (miles per gallon)\n\n\n\nMore info about the structure of the datset\n\nstr(mpg)\n\ntibble [234 × 11] (S3: tbl_df/tbl/data.frame)\n $ manufacturer: chr [1:234] \"audi\" \"audi\" \"audi\" \"audi\" ...\n $ model       : chr [1:234] \"a4\" \"a4\" \"a4\" \"a4\" ...\n $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...\n $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...\n $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...\n $ trans       : chr [1:234] \"auto(l5)\" \"manual(m5)\" \"manual(m6)\" \"auto(av)\" ...\n $ drv         : chr [1:234] \"f\" \"f\" \"f\" \"f\" ...\n $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...\n $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...\n $ fl          : chr [1:234] \"p\" \"p\" \"p\" \"p\" ...\n $ class       : chr [1:234] \"compact\" \"compact\" \"compact\" \"compact\" ...\n\n\n\n\n\nAdditional functions, check it out by yourself!\n\nsummary(mpg)\n\n\nglimpse(mpg)\n\n\nview(mpg)\n\n\ndim(mpg)\n\n\n\n\nDifferent options to create plots in R\n\nbase R: ok, but sometimes well annoying\nplotly\nggplot2: versatile. elegant. consistent. fun. wohooo!\n\n\n\n\n\n\n\n\n\n\n\n\nFrom the ggplot2 manual\nggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.\nLets go step-by-step through creating a figure.\n\n\n\n\nmpg %>% \n  ggplot()\n\n\n\n\n\n\n\nWe want to plot hwy ~ displ\ndispl: engine volume hwy: fuel efficiency (miles per gallon)\n\nmpg %>% \n  ggplot(aes(x = displ, y = hwy))\n\n\n\n\n\n\n\n-> adding layers\n\nmpg %>% \n  ggplot(aes(x = displ, y = hwy)) + \n  geom_point()\n\n\n\n\n\n\n\n\nmpg %>% \n  ggplot(aes(x = displ, y = hwy, color = manufacturer)) + \n  geom_point()\n\n\n\n\n\n\n\n\nmpg %>% \n  ggplot(aes(x = displ, y = hwy, color = manufacturer)) + \n  geom_point() + \n  labs(title = \"Large displacement lowers fuel efficiency\", \n       x = \"Displacement\", y = \"Efficiency\", \n       caption = \"mgp data\")\n\n\n\n\n\n\n\n\np <- mpg %>% \n  ggplot(aes(x = displ, y = hwy, color = manufacturer)) + \n  geom_point() \nggsave(\"displ_vs_hwy.png\", plot = p)\n\n\n\nfree choice of data format (.pdf, .png)\nnumerous options to change size, scaling etc., see ?ggsave\nsaves directly into working directory, unless specified differently (e.g. in subfolder)\n\n\n\n\n\n–> check out Exercise Part 1.\n\n\n\nThe general template for a ggplot call is the following:\n\nggplot(data = <DATA>) + \n  <GEOM_FUNCTION>(aes(<MAPPINGS>))\n\nTo make a graph, we replace the bracketed sections with\n\na dataset\na geom function\na collection of mappings/aestethics\n\n\n\n\n\ncolor\nfill\nshape\nlinetype\nsize\nalpha\n\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, \n                           color = drv))\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, \n             shape = drv))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, \n                           color = drv))\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy), \n             color = \"red\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngeom_point(), geom_line(), geom_smooth(), … and tons of others!\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy))\nggplot(data = mpg) + \n  geom_smooth(aes(x = displ, y = hwy))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, color = drv)) +\n  geom_smooth(aes(x = displ, y = hwy))\n\n`geom_smooth()` using method = 'loess' and formula 'y ~ x'\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy)) +\n  geom_smooth(aes(x = displ, y = hwy))\n\n\nggplot(data = mpg, \n       aes(x = displ, y = hwy)) + \n  geom_point() + \n  geom_smooth()\n\n\n\n\n\n# V1\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, \n                 color = drv)) +\n  geom_smooth(aes(x = displ, y = hwy))\n# V2 \nggplot(data = mpg, \n       aes(x = displ, y = hwy, color = drv)) + \n  geom_point() + \n  geom_smooth()\n\n\n\n\n\n\n\n\n\n\n\n\nHow can we fix it?\n\n\n\n\n\n# V1\nggplot(data = mpg, \n       aes(x = displ, y = hwy, color = drv)) + \n  geom_point() + \n  geom_smooth()\n# V2\nggplot(data = mpg, \n       aes(x = displ, y = hwy)) + \n  geom_point(aes(color = drv)) + \n  geom_smooth()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDifferent ways to achieve the same.\n\n# V1\nggplot(data = mpg, \n       aes(x = displ, y = hwy)) + \n  geom_point(aes(color = drv)) + \n  geom_smooth()\n# V2\nggplot(data = mpg, \n       aes(x = displ, y = hwy, color = drv)) + \n  geom_point() + \n  geom_smooth(aes(group = 1))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhead(mpg)\n\n# A tibble: 6 × 11\n  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class \n  <chr>        <chr> <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr> \n1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…\n2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…\n3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…\n4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…\n5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…\n6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…\n\n\n\n\n\n\n# V1\nggplot(data = mpg, \n       aes(x = displ, y = hwy)) + \n  geom_point(aes(color = drv)) \n# V2\nggplot(data = mpg, \n       aes(x = displ, y = hwy, color = cty)) + \n  geom_point() \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngeom_smooth\ngeom_bar\ngeom_boxplot\ngeom_density\ngeom_violine\n\n\n\n\n\nggplot(data = mpg) + \n  geom_bar(aes(x = class))\n\n\n\n\nCount does not show up in the original data!\n-> calculated by algorithm, the so-called stat\n\n\n\n\n\n\n\n\nDifferent geom have different default stat.\ncheck ?geom_bar for details to each geom.\nSource: (R4DS)[https://r4ds.had.co.nz/]\n\n\n\n\nWe can override the default stat.\nExample: proportion instead of absolute count\nlook up the ‘computed variables’ in the help section\n\n\nggplot(data = mpg) + \n  geom_bar(aes(x = class, y = ..prop.., group = 1))\n\n\n\n\n\n\n\n\n# V1\nggplot(data = mpg) + \n  geom_boxplot(aes(x = class, y = hwy, \n                   fill = class))\n# V2\nggplot(data = mpg) + \n  geom_violin(aes(x = class, y = hwy, \n                  fill = class))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_density(aes(x = hwy, fill = drv), alpha = 0.5)\n\n\n\n\n\n\n\nFacets are a convenient way to split a figure into multiple subpanels.\nfacet_wrap\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy)) + \n  facet_wrap(~ class, nrow = 2)\n\n\n\n\n\n\n\nfacet_grid: Split into columns and rows.\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy)) + \n  facet_grid(drv ~ cyl)\n\n\n\n\nVariables for facet_wrap and facet_grid should be discrete!\n\n\n\nMany ways to customize your figures\n\n\nchange general appearance: themes\nchange color, linetypes, shapes, etc.: scales\nadjust axis labels, …\n…\n\n\nGet inspired in the R-graph gallery\n\n\n\nggplot cheatsheet\n\n\n\n\n\n\n\n\nHands on\n\nhttp://www.cookbook-r.com/Graphs/\nhttps://ggplot2.tidyverse.org/\nStackoverflow\nTwitter: #rstats\nhttps://www.springer.com/de/book/9783319242750: great book, but not for free :(\n\nTheory\nH. Wickham (2010): A layered grammar of graphics. Journal of Computational and Graphical Statistics, 19(1), pp 3-28.\nhttps://vita.had.co.nz/papers/layered-grammar.html\nClaus Wilke: Fundamentals of Data Visualization\nhttps://clauswilke.com/dataviz/\n\n\n\nCheck out the second part of the exercise to get some more practice."
   },
   {
     "objectID": "01_Introduction.html",
     "href": "01_Introduction.html",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "",
     "text": "This chapter aims to set the basics for starting with R. This includes installation of R and RStudio (the IDE we use for working with R), first steps in using R, setting up a project and installing additional R-packages.\n\n\nInstall R and Rstudio on your computer, if already installed, make sure they are up to date.\nBoth programs are available for free:\n\nR: https://cloud.r-project.org\nRStudio: http://www.rstudio.com/download\n\n\n\n\n\n\n\nR Studio working environment\n\n\n\n\n\n\nuse R as a calculator\nuse a script and send code to the console\n\n\n\n\n\n\nyour whole data science project within one folder\nthis folder as working directory for R\nRscripts: store with meaningful names\nuse relative paths instead of absolute\n‘R-Studio projects’ help to organise this\n\n\n\n\nEverything in one place\nAllows sharing & moving between computers\n\n\n\n\n\nTogether we\n\ncreate a project for this course\ncreate an R-script\nwrite code in script and send to console\ncomment the script using ‘#’\n\n\n\n\n\nadd-ons\nincrease functionality of R\n\nImportant in this course (and for life):\n\n tidyverse\nreadxl\n\nCan be installed via\n\ninstall.packages(\"tidyverse\")\n\nand loaded via\n\nlibrary(tidyverse)\n\nTask: install tidyverse\n\n\n\nBase-R means the ‘original’ language of R. Typically, this contains a lot of $ square brackets []. Certainly important to know, but sometimes a bit hard to follow, especially when getting started with R…\nExample:\n\n# Base R\ntime.as.string = paste(CO2_ML$year,CO2_ML$month,CO2_ML$day,sep=\"-\")\nCO2_ML$dt = as.POSIXct(strptime(time.as.string,\"%Y-%m-%d\"), tz = \"GMT\") # convert time to an R time stamp\nCO2_ML[CO2_ML==-999.999] = NA \n\n\n\n\nIn this course we will also learn a lot of ‘tidyverse’ style, which is simpler to read and write. Typical are functions with useful names and the so-called pipe %>%. We will get to know all this in the course.\n\n# tidyverse\nCO2_ML %>% \n  mutate(time.as.string = paste(year, month, day, sep = \"-\"), # create timestamp\n         dt = ymd(time.as.string, tz = \"GMT\"), # convert to time\n         CO2_ML = ifelse(CO2_ML == -999.999, NA, CO2_ML))  \n\n\n\ncomplements and supplements base-R code\ndoes not replace base-R\nincreases efficiency\ntons of useful functions\n\n\n\n\n\nGetting started with any programming language can be a pain. But there is help!\n\nhttps://r4ds.had.co.nz/\nwww.r-bloggers.com\nGoogle (or alternatives): “R”\nstackoverflow"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "",
-    "text": "Preface\nWelcome to the course website of “Data management and analysis in environmental sciences”.\nThis site contain slides and additional study material provided by Johannes Ingrisch, University of Innsbruck."
+    "text": "Data management and analysis in environmental sciences\nWelcome to the course website of “Data management and analysis in environmental sciences”.\nThe aim of tihs course is to provide a basic introduction to analysing and visualizing data with R. The focus is hereby set towards the ‘tidyverse’\nThis site contain slides and additional study material provided by Johannes Ingrisch, University of Innsbruck."
   },
   {
     "objectID": "figures/02_Visualisation.html#data-exploration",
@@ -345,371 +345,371 @@
   {
     "objectID": "02_Exercise.html",
     "href": "02_Exercise.html",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "",
     "text": "Start a new R-script within your R-project, and load the library ‘tidyverse’.\n\n# load packages\nlibrary(tidyverse)\n\nLook at the data:\n\nmpg\n\nExplore the mpg dataset, using functions like summary(), dim(), head() to answer the following questions:\n\nHow many rows and columns does it have?\nWhat do the different variables describe? Inspect using the R-help: ?mpg\nWhat is the difference between variables like e.g. ‘model’, ‘trans’ and ‘displ’, ‘hwy’?\n\n\n\n\n\nCreate a scatterplot of ‘hwy’ vs. ‘cyl’.\nSave the plot as pdf and find it in your working directory\nMake a plot of ‘manufacturer’ vs. ‘class’. Why is this plot not useful? Could you think of more useful ways to display such a relation?\n\n\n\n\nFuel efficiency (hwy) declines with enginge size (displ). However, there is a few cars that have a higher efficiency than expected from this general trend (highlighted in red). Can you explain these cars?\nUse your knowledge of the mpg-dataset and your ggplot skills to identify this group of cars.\n\n\n\n\n\n\n\n\n\n\n\nRecreate the scatterplot of displ vs. hwy. Include further variables making use of additional mappings, e.g. color, size or shape.\n\nTry to include information on the number of cyclinder (cyl), the type of car (class). What pattern can you identify?\nCan you use the different aesthetics for all types of variables? What type of aesthetics are useful for which type of variables?\nCreate the two figures below and check out the color scales. What is the difference and what is the reason for it? What happens if you substitute color = year by color = as.factor(year)?\n\n\nmpg %>%\n  ggplot(aes(x = displ, y = hwy, color = year)) +\n  geom_point()\n\nmpg %>%\n  ggplot(aes(x = displ, y = hwy, color = drv)) +\n  geom_point()\n\n\n\n\n\nSummarize the number of cars of each manufacturer in a figure and try to take the different classes into account. Hint: geom_bar() might be your friend.\nBoxplots are really useful since they contain a lot of information. Use boxplots to investigate whether different different fuel types (‘fl’) have different efficiency (hwy).\nUse facets to go into more detail."
   },
   {
     "objectID": "03_Wrangling.html",
     "href": "03_Wrangling.html",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "",
     "text": "The art of getting data into a useful form for visualisation and modelling.\n\n\n\n\nData wrangling\n\n\nMost of the time the data will just not be in the format that we need or we will have to do additional manipulations and calculations and getting the data into the form that is needed can be very challenging. R and the tidyverse provide a bunch of very useful functions.\nMastering data wrangling is key for efficient processing of data.\n\n\nA lot of useful functions are provided by the package dplyr.\n\n\n\n\n\n\ncreate subsets of data\ncreate new variables\nrename variables\nreorder observations\n…"
   },
   {
     "objectID": "03_Wrangling.html#filter-rows-with-filter",
     "href": "03_Wrangling.html#filter-rows-with-filter",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Filter rows with filter()",
     "text": "Filter rows with filter()\nCreate a subset of observations based on values of certain variables.\nFor this we use logical operators.\n\nfilter(mpg, class == \"2seater\")\n\n# A tibble: 5 × 11\n  manufacturer model    displ  year   cyl trans    drv     cty   hwy fl    class\n  <chr>        <chr>    <dbl> <int> <int> <chr>    <chr> <int> <int> <chr> <chr>\n1 chevrolet    corvette   5.7  1999     8 manual(… r        16    26 p     2sea…\n2 chevrolet    corvette   5.7  1999     8 auto(l4) r        15    23 p     2sea…\n3 chevrolet    corvette   6.2  2008     8 manual(… r        16    26 p     2sea…\n4 chevrolet    corvette   6.2  2008     8 auto(s6) r        15    25 p     2sea…\n5 chevrolet    corvette   7    2008     8 manual(… r        15    24 p     2sea…"
   },
   {
     "objectID": "03_Wrangling.html#filter-rows-with-filter-1",
     "href": "03_Wrangling.html#filter-rows-with-filter-1",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Filter rows with filter()",
     "text": "Filter rows with filter()\nWe can also use multiple conditions\n\nfilter(mpg, class == \"2seater\", trans == \"auto(l4)\")\n\n# A tibble: 1 × 11\n  manufacturer model    displ  year   cyl trans    drv     cty   hwy fl    class\n  <chr>        <chr>    <dbl> <int> <int> <chr>    <chr> <int> <int> <chr> <chr>\n1 chevrolet    corvette   5.7  1999     8 auto(l4) r        15    23 p     2sea…"
   },
   {
     "objectID": "03_Wrangling.html#comparisons",
     "href": "03_Wrangling.html#comparisons",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Comparisons",
     "text": "Comparisons\nUsing comparisons:\n>, >=, <, <=, ==, !=\n\nfilter(mpg, hwy >= 30, cyl <= 4)\n\n# A tibble: 26 × 11\n   manufacturer model  displ  year   cyl trans     drv     cty   hwy fl    class\n   <chr>        <chr>  <dbl> <int> <int> <chr>     <chr> <int> <int> <chr> <chr>\n 1 audi         a4       2    2008     4 manual(m… f        20    31 p     comp…\n 2 audi         a4       2    2008     4 auto(av)  f        21    30 p     comp…\n 3 chevrolet    malibu   2.4  2008     4 auto(l4)  f        22    30 r     mids…\n 4 honda        civic    1.6  1999     4 manual(m… f        28    33 r     subc…\n 5 honda        civic    1.6  1999     4 auto(l4)  f        24    32 r     subc…\n 6 honda        civic    1.6  1999     4 manual(m… f        25    32 r     subc…\n 7 honda        civic    1.6  1999     4 auto(l4)  f        24    32 r     subc…\n 8 honda        civic    1.8  2008     4 manual(m… f        26    34 r     subc…\n 9 honda        civic    1.8  2008     4 auto(l5)  f        25    36 r     subc…\n10 honda        civic    1.8  2008     4 auto(l5)  f        24    36 c     subc…\n# … with 16 more rows\n\n\nTake care:\n= instead of == produces error. Happens to me all the time…"
   },
   {
     "objectID": "03_Wrangling.html#logical-operators",
     "href": "03_Wrangling.html#logical-operators",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Logical operators",
     "text": "Logical operators\n\n\n\n\n\n\nfilter(mpg, cyl == 4 | cyl == 5)\n\nfilter(mpg, cyl == 4,  drv != \"f\")"
   },
   {
     "objectID": "03_Wrangling.html#logical-operators-1",
     "href": "03_Wrangling.html#logical-operators-1",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Logical operators",
     "text": "Logical operators\n%in% can simplify life:\n\nfilter(mpg, cyl == 4 | cyl == 5)\n\nfilter(mpg, cyl %in% c(4,5))\n\nCombining multiple conditions can quickly become confusing. Consider doing it stepwise."
   },
   {
     "objectID": "03_Wrangling.html#logical-operators-2",
     "href": "03_Wrangling.html#logical-operators-2",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Logical operators",
     "text": "Logical operators\nSometimes it is easier to define what should stay out, instead of what should stay in.\nExample: exclude all SUVs from manufacturer Chevrolet\n\nfilter(mpg, !(class == \"suv\" & manufacturer == \"chevrolet\"))"
   },
   {
     "objectID": "03_Wrangling.html#arrange-rows-in-ascending-order-arrange",
     "href": "03_Wrangling.html#arrange-rows-in-ascending-order-arrange",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Arrange rows in ascending order: arrange()",
     "text": "Arrange rows in ascending order: arrange()\nWe can order the observations by values of one (or more) variable.\nExample: order the dataset mpgin ascending order according to the variable hwy.\n\narrange(mpg, hwy)\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 dodge        dakota pi…   4.7  2008     8 auto… 4         9    12 e     pick…\n 2 dodge        durango 4…   4.7  2008     8 auto… 4         9    12 e     suv  \n 3 dodge        ram 1500 …   4.7  2008     8 auto… 4         9    12 e     pick…\n 4 dodge        ram 1500 …   4.7  2008     8 manu… 4         9    12 e     pick…\n 5 jeep         grand che…   4.7  2008     8 auto… 4         9    12 e     suv  \n 6 chevrolet    k1500 tah…   5.3  2008     8 auto… 4        11    14 e     suv  \n 7 jeep         grand che…   6.1  2008     8 auto… 4        11    14 p     suv  \n 8 chevrolet    c1500 sub…   5.3  2008     8 auto… r        11    15 e     suv  \n 9 chevrolet    k1500 tah…   5.7  1999     8 auto… 4        11    15 r     suv  \n10 dodge        dakota pi…   5.2  1999     8 auto… 4        11    15 r     pick…\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#arrange-rows-in-descending-order-arrange",
     "href": "03_Wrangling.html#arrange-rows-in-descending-order-arrange",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Arrange rows in descending order: arrange()",
     "text": "Arrange rows in descending order: arrange()\nBy using desc()we can change the order to descending.\n\narrange(mpg, desc(hwy))\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 volkswagen   jetta        1.9  1999     4 manu… f        33    44 d     comp…\n 2 volkswagen   new beetle   1.9  1999     4 manu… f        35    44 d     subc…\n 3 volkswagen   new beetle   1.9  1999     4 auto… f        29    41 d     subc…\n 4 toyota       corolla      1.8  2008     4 manu… f        28    37 r     comp…\n 5 honda        civic        1.8  2008     4 auto… f        25    36 r     subc…\n 6 honda        civic        1.8  2008     4 auto… f        24    36 c     subc…\n 7 toyota       corolla      1.8  1999     4 manu… f        26    35 r     comp…\n 8 toyota       corolla      1.8  2008     4 auto… f        26    35 r     comp…\n 9 honda        civic        1.8  2008     4 manu… f        26    34 r     subc…\n10 honda        civic        1.6  1999     4 manu… f        28    33 r     subc…\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#arrange-multiple-columns",
     "href": "03_Wrangling.html#arrange-multiple-columns",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "arrange(): multiple columns",
     "text": "arrange(): multiple columns\nWe can use multiple variables to define the order of the arranged dataset.\nNote: order of the variables matters:\n\narrange(mpg, desc(cyl), hwy)\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 dodge        dakota pi…   4.7  2008     8 auto… 4         9    12 e     pick…\n 2 dodge        durango 4…   4.7  2008     8 auto… 4         9    12 e     suv  \n 3 dodge        ram 1500 …   4.7  2008     8 auto… 4         9    12 e     pick…\n 4 dodge        ram 1500 …   4.7  2008     8 manu… 4         9    12 e     pick…\n 5 jeep         grand che…   4.7  2008     8 auto… 4         9    12 e     suv  \n 6 chevrolet    k1500 tah…   5.3  2008     8 auto… 4        11    14 e     suv  \n 7 jeep         grand che…   6.1  2008     8 auto… 4        11    14 p     suv  \n 8 chevrolet    c1500 sub…   5.3  2008     8 auto… r        11    15 e     suv  \n 9 chevrolet    k1500 tah…   5.7  1999     8 auto… 4        11    15 r     suv  \n10 dodge        dakota pi…   5.2  1999     8 auto… 4        11    15 r     pick…\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#select-columns-select",
     "href": "03_Wrangling.html#select-columns-select",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Select columns: select()",
     "text": "Select columns: select()\nWe can also choose specific columns of dataset (and remove the rest).\nExample: From the dataset mpgwe only want to keep the columns model, drv, andn hwy.\n\nselect(mpg, model, drv, hwy)\n\n# A tibble: 234 × 3\n   model      drv     hwy\n   <chr>      <chr> <int>\n 1 a4         f        29\n 2 a4         f        29\n 3 a4         f        31\n 4 a4         f        30\n 5 a4         f        26\n 6 a4         f        26\n 7 a4         f        27\n 8 a4 quattro 4        26\n 9 a4 quattro 4        25\n10 a4 quattro 4        28\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#select-columns-select-1",
     "href": "03_Wrangling.html#select-columns-select-1",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Select columns: select()",
     "text": "Select columns: select()\nKeep all columns from year to cty.\n\nselect(mpg, year:cty)\n\n# A tibble: 234 × 5\n    year   cyl trans      drv     cty\n   <int> <int> <chr>      <chr> <int>\n 1  1999     4 auto(l5)   f        18\n 2  1999     4 manual(m5) f        21\n 3  2008     4 manual(m6) f        20\n 4  2008     4 auto(av)   f        21\n 5  1999     6 auto(l5)   f        16\n 6  1999     6 manual(m5) f        18\n 7  2008     6 auto(av)   f        18\n 8  1999     4 manual(m5) 4        18\n 9  1999     4 auto(l5)   4        16\n10  2008     4 manual(m6) 4        20\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#select-columns-select-2",
     "href": "03_Wrangling.html#select-columns-select-2",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Select columns: select()",
     "text": "Select columns: select()\nInstead of actively selecting the columns we want, we can also remove those which we don’t want:\n\nselect(mpg, -model, - cyl)\n\n# A tibble: 234 × 9\n   manufacturer displ  year trans      drv     cty   hwy fl    class  \n   <chr>        <dbl> <int> <chr>      <chr> <int> <int> <chr> <chr>  \n 1 audi           1.8  1999 auto(l5)   f        18    29 p     compact\n 2 audi           1.8  1999 manual(m5) f        21    29 p     compact\n 3 audi           2    2008 manual(m6) f        20    31 p     compact\n 4 audi           2    2008 auto(av)   f        21    30 p     compact\n 5 audi           2.8  1999 auto(l5)   f        16    26 p     compact\n 6 audi           2.8  1999 manual(m5) f        18    26 p     compact\n 7 audi           3.1  2008 auto(av)   f        18    27 p     compact\n 8 audi           1.8  1999 manual(m5) 4        18    26 p     compact\n 9 audi           1.8  1999 auto(l5)   4        16    25 p     compact\n10 audi           2    2008 manual(m6) 4        20    28 p     compact\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#select-helper-functions",
     "href": "03_Wrangling.html#select-helper-functions",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "select(): helper functions",
     "text": "select(): helper functions\n\nreorder the columns\n\n\nselect(mpg, hwy, cyl, everything())\n\n\nrename columns\n\n\nrename(mpg, efficiency = hwy)\n\nselect(mpg, efficiency = hwy, everything())\n\n\nvarious other options: see the help by calling ?select"
   },
   {
     "objectID": "03_Wrangling.html#calculate-a-new-variable",
     "href": "03_Wrangling.html#calculate-a-new-variable",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Calculate a new variable",
     "text": "Calculate a new variable\nExample: Calculate fuel consumption (L / 100km) = 1 / hwy /2.352 * 100\n\nmpg2 <- mutate(mpg, consump = 1 / hwy * 2.352 * 100)\n\nhead(mpg2)\n\n# A tibble: 6 × 12\n  manufact…¹ model displ  year   cyl trans drv     cty   hwy fl    class consump\n  <chr>      <chr> <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>   <dbl>\n1 audi       a4      1.8  1999     4 auto… f        18    29 p     comp…    8.11\n2 audi       a4      1.8  1999     4 manu… f        21    29 p     comp…    8.11\n3 audi       a4      2    2008     4 manu… f        20    31 p     comp…    7.59\n4 audi       a4      2    2008     4 auto… f        21    30 p     comp…    7.84\n5 audi       a4      2.8  1999     6 auto… f        16    26 p     comp…    9.05\n6 audi       a4      2.8  1999     6 manu… f        18    26 p     comp…    9.05\n# … with abbreviated variable name ¹​manufacturer"
   },
   {
     "objectID": "03_Wrangling.html#calculate-a-new-variable-in-multiple-steps",
     "href": "03_Wrangling.html#calculate-a-new-variable-in-multiple-steps",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Calculate a new variable in multiple steps",
     "text": "Calculate a new variable in multiple steps\nIn case of long formulas it can increase clarity to do the calculation stepwise\n\nmpg2 <- mutate(mpg, consump = 1 / hwy * 2.352 * 100)\n# alternative: stepwise\nmpg2 <- mutate(mpg, \n              consump = 1 / hwy, # gallons per mile\n              consump = consump * 2.352 * 100) # L/100km\n\nhead(mpg2)\n\n# A tibble: 6 × 12\n  manufact…¹ model displ  year   cyl trans drv     cty   hwy fl    class consump\n  <chr>      <chr> <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>   <dbl>\n1 audi       a4      1.8  1999     4 auto… f        18    29 p     comp…    8.11\n2 audi       a4      1.8  1999     4 manu… f        21    29 p     comp…    8.11\n3 audi       a4      2    2008     4 manu… f        20    31 p     comp…    7.59\n4 audi       a4      2    2008     4 auto… f        21    30 p     comp…    7.84\n5 audi       a4      2.8  1999     6 auto… f        16    26 p     comp…    9.05\n6 audi       a4      2.8  1999     6 manu… f        18    26 p     comp…    9.05\n# … with abbreviated variable name ¹​manufacturer\n\n\nNote: mutate() can immediatly re-use any newly created variables within the same call of mutate()."
   },
   {
     "objectID": "03_Wrangling.html#how-to-use-the-pipe",
     "href": "03_Wrangling.html#how-to-use-the-pipe",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "How to use the pipe %>%",
     "text": "How to use the pipe %>%\nPasses object on the lefthand side as first argument of function on righthand side.\n\nx %>% f(y) is similar to f(x,y)\n\n\nfilter(mpg, class == \"seater\" | class == \"compact\")\n\n# is similar to\n\nmpg %>% \n  filter(class == \"seater\" | class == \"compact\")"
   },
   {
     "objectID": "03_Wrangling.html#combine-multiple-operations",
     "href": "03_Wrangling.html#combine-multiple-operations",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Combine Multiple Operations: %>%",
     "text": "Combine Multiple Operations: %>%\nIt becomes to really useful when doing multiple operations at once:\n\nmpg_sub <- mpg %>% \n  filter(class == \"2seater\" | class == \"compact\") %>% \n  select(class, manufacturer, cyl, displ, hwy) %>% \n  mutate(consump = 1/hwy) %>% \n  arrange(hwy)\nhead(mpg_sub)\n\n# A tibble: 6 × 6\n  class   manufacturer   cyl displ   hwy consump\n  <chr>   <chr>        <int> <dbl> <int>   <dbl>\n1 2seater chevrolet        8   5.7    23  0.0435\n2 compact volkswagen       6   2.8    23  0.0435\n3 2seater chevrolet        8   7      24  0.0417\n4 compact volkswagen       6   2.8    24  0.0417\n5 compact volkswagen       6   2.8    24  0.0417\n6 compact audi             4   1.8    25  0.04"
   },
   {
     "objectID": "03_Wrangling.html#combine-pipe-with-ggplot",
     "href": "03_Wrangling.html#combine-pipe-with-ggplot",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Combine Pipe with ggplot()",
     "text": "Combine Pipe with ggplot()\nWe can even combine it with ggplot!\nNote: within ggplot you have to use +, before the ggplot-call you have to use %>%. Confusing, I know… ::: {.cell}\nmpg %>% \n  filter(class == \"2seater\" | class == \"compact\") %>%  \n  ggplot(aes(x = displ, y = hwy, color = class)) + \n  geom_point()\n\n\n\n:::"
   },
   {
     "objectID": "03_Wrangling.html#time-to-try-it-yourself",
     "href": "03_Wrangling.html#time-to-try-it-yourself",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Time to try it yourself:",
     "text": "Time to try it yourself:\n–> check out Exercise Part 1."
   },
   {
     "objectID": "03_Wrangling.html#summarize-data-summarise",
     "href": "03_Wrangling.html#summarize-data-summarise",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Summarize data: summarise()",
     "text": "Summarize data: summarise()\nCollapses data frame to a single row –>\n\nmpg %>% \n  summarise(hwy = mean(hwy))\n\n# A tibble: 1 × 1\n    hwy\n  <dbl>\n1  23.4"
   },
   {
     "objectID": "03_Wrangling.html#summarise",
     "href": "03_Wrangling.html#summarise",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "summarise()",
     "text": "summarise()\nAlso possible for multiple functions and variables\n\nmpg %>% \n  summarise(hwy_avg = mean(hwy), \n          hwy_max = max(hwy), \n          hwy_min = min(hwy),\n          hwy_sd = sd(hwy), \n          displ_avg = mean(displ))\n\n# A tibble: 1 × 5\n  hwy_avg hwy_max hwy_min hwy_sd displ_avg\n    <dbl>   <int>   <int>  <dbl>     <dbl>\n1    23.4      44      12   5.95      3.47"
   },
   {
     "objectID": "03_Wrangling.html#summarize-different-groups-group_by-summarise",
     "href": "03_Wrangling.html#summarize-different-groups-group_by-summarise",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Summarize different groups: group_by() & summarise()",
     "text": "Summarize different groups: group_by() & summarise()\nQuestion: What is the average hwy for each car-class?\n\nby_class <- mpg %>% \n  group_by(class) %>% \n  summarise(hwy_avg = mean(hwy))\nby_class\n\n# A tibble: 7 × 2\n  class      hwy_avg\n  <chr>        <dbl>\n1 2seater       24.8\n2 compact       28.3\n3 midsize       27.3\n4 minivan       22.4\n5 pickup        16.9\n6 subcompact    28.1\n7 suv           18.1\n\n\n\n\nwe can summarise values for all kind of groups!"
   },
   {
     "objectID": "03_Wrangling.html#group_by-with-several-grouping-variables",
     "href": "03_Wrangling.html#group_by-with-several-grouping-variables",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Group_by() with several grouping variables",
     "text": "Group_by() with several grouping variables\n\nby_class_drv <- mpg %>% \n  group_by(class, drv) %>% \n  summarise(avg_hwy = mean(hwy))\n\n`summarise()` has grouped output by 'class'. You can override using the\n`.groups` argument.\n\nby_class_drv\n\n# A tibble: 12 × 3\n# Groups:   class [7]\n   class      drv   avg_hwy\n   <chr>      <chr>   <dbl>\n 1 2seater    r        24.8\n 2 compact    4        25.8\n 3 compact    f        29.1\n 4 midsize    4        24  \n 5 midsize    f        27.6\n 6 minivan    f        22.4\n 7 pickup     4        16.9\n 8 subcompact 4        26  \n 9 subcompact f        30.5\n10 subcompact r        23.2\n11 suv        4        18.3\n12 suv        r        17.5\n\n\n\n\nImportant: before we can group this dataset again we need to ungroup() first!"
   },
   {
     "objectID": "03_Wrangling.html#advanced-example-group_by-summarise",
     "href": "03_Wrangling.html#advanced-example-group_by-summarise",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Advanced Example: Group_by() & summarise()",
     "text": "Advanced Example: Group_by() & summarise()\n\nby_class <- mpg %>% \n  group_by(class) %>% \n  summarise(hwy_avg = mean(hwy), \n            hwy_sd = sd(hwy), \n            displ_avg = mean(displ), \n            displ_sd = sd(displ), \n            count = n())\nby_class\n\n# A tibble: 7 × 6\n  class      hwy_avg hwy_sd displ_avg displ_sd count\n  <chr>        <dbl>  <dbl>     <dbl>    <dbl> <int>\n1 2seater       24.8   1.30      6.16    0.532     5\n2 compact       28.3   3.78      2.33    0.452    47\n3 midsize       27.3   2.14      2.92    0.719    41\n4 minivan       22.4   2.06      3.39    0.453    11\n5 pickup        16.9   2.27      4.42    0.829    33\n6 subcompact    28.1   5.38      2.66    1.10     35\n7 suv           18.1   2.98      4.46    1.07     62"
   },
   {
     "objectID": "03_Wrangling.html#advanced-example-group_by-summarise-ggplot",
     "href": "03_Wrangling.html#advanced-example-group_by-summarise-ggplot",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Advanced Example: Group_by() & summarise() & ggplot()",
     "text": "Advanced Example: Group_by() & summarise() & ggplot()\n\nby_class %>% \n  ggplot(aes(x = displ_avg, y = hwy_avg, color = class,\n             ymin = hwy_avg - hwy_sd, ymax = hwy_avg + hwy_sd, \n             xmin = displ_avg - displ_sd, xmax = displ_avg + displ_sd)) + \n  geom_point(aes(size = count)) + \n  geom_errorbar(width = 0) +\n  geom_errorbarh(height = 0)"
   },
   {
     "objectID": "03_Wrangling.html#group_by-mutate",
     "href": "03_Wrangling.html#group_by-mutate",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Group_by() & mutate()",
     "text": "Group_by() & mutate()\nCalculations on group level without collapsing the dataset.\n\nmpg %>% \n  group_by(class) %>% \n  mutate(avg_hwy = mean(hwy, na.rm=TRUE)) %>% \n  select(1:2, hwy, avg_hwy)\n\nAdding missing grouping variables: `class`\n\n\n# A tibble: 234 × 5\n# Groups:   class [7]\n   class   manufacturer model        hwy avg_hwy\n   <chr>   <chr>        <chr>      <int>   <dbl>\n 1 compact audi         a4            29    28.3\n 2 compact audi         a4            29    28.3\n 3 compact audi         a4            31    28.3\n 4 compact audi         a4            30    28.3\n 5 compact audi         a4            26    28.3\n 6 compact audi         a4            26    28.3\n 7 compact audi         a4            27    28.3\n 8 compact audi         a4 quattro    26    28.3\n 9 compact audi         a4 quattro    25    28.3\n10 compact audi         a4 quattro    28    28.3\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#missing-values",
     "href": "03_Wrangling.html#missing-values",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Missing Values",
     "text": "Missing Values\n\nMissing values are observations with no information.\nthis is not the same as zero!\n\n\n(df <- data.frame(x = c(1,3,NA,7), \n                 y = c(2,4,2,9)))\n\n   x y\n1  1 2\n2  3 4\n3 NA 2\n4  7 9"
   },
   {
     "objectID": "03_Wrangling.html#missing-values-1",
     "href": "03_Wrangling.html#missing-values-1",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Missing Values",
     "text": "Missing Values\nWe can check for missing values by is.na.\n\nis.na(df)\n\n         x     y\n[1,] FALSE FALSE\n[2,] FALSE FALSE\n[3,]  TRUE FALSE\n[4,] FALSE FALSE\n\nsummary(df)\n\n       x               y       \n Min.   :1.000   Min.   :2.00  \n 1st Qu.:2.000   1st Qu.:2.00  \n Median :3.000   Median :3.00  \n Mean   :3.667   Mean   :4.25  \n 3rd Qu.:5.000   3rd Qu.:5.25  \n Max.   :7.000   Max.   :9.00  \n NA's   :1"
   },
   {
     "objectID": "03_Wrangling.html#missing-values-2",
     "href": "03_Wrangling.html#missing-values-2",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Missing Values",
     "text": "Missing Values\nWhat happens if we summarize columns with missing values?\n\n# summarise df\ndf %>% \n  summarise(x = mean(x), \n            y = mean(y))\n\n   x    y\n1 NA 4.25\n\n# Often better:\n# summarise omitting NA's\ndf %>% \n  summarise(x = mean(x, na.rm=TRUE), \n            y = mean(y, na.rm=TRUE))\n\n         x    y\n1 3.666667 4.25"
   },
   {
     "objectID": "03_Wrangling.html#removing-nas-from-dataset",
     "href": "03_Wrangling.html#removing-nas-from-dataset",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Removing NA’s from dataset",
     "text": "Removing NA’s from dataset\nYou can remove observations (rows) from your dataset that include NA’s in a specific column using\n\n# remove all rows that contain NA's in the column hwy\nmpg %>% \n  filter(!is.na(hwy))\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#data-wrangling-cheat-sheet",
     "href": "03_Wrangling.html#data-wrangling-cheat-sheet",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Data Wrangling Cheat Sheet",
     "text": "Data Wrangling Cheat Sheet\nhttps://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf"
   },
   {
     "objectID": "03_Wrangling.html#summing-up",
     "href": "03_Wrangling.html#summing-up",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Summing up",
     "text": "Summing up"
   },
   {
     "objectID": "03_Wrangling.html#exercise-part-2",
     "href": "03_Wrangling.html#exercise-part-2",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Exercise Part 2",
     "text": "Exercise Part 2\nThings are coming together…"
   },
   {
     "objectID": "03_Wrangling.html#summing-up-1",
     "href": "03_Wrangling.html#summing-up-1",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Summing up",
     "text": "Summing up"
   },
   {
     "objectID": "03_Wrangling.html#reading-text-files",
     "href": "03_Wrangling.html#reading-text-files",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Reading text files",
     "text": "Reading text files\n\nmost general function is read.table() from base-R\n\n\n\n\n\n\n\ndata <- read.table(\"./datasets/bigmess.csv\", sep = \",\", dec = \".\",\n                   skip = 0, header = TRUE)\n\nhead(data)\n\n  dataset       x       y\n1    dino 55.3846 97.1795\n2    dino 51.5385 96.0256\n3    dino 46.1538 94.4872\n4    dino 42.8205 91.4103\n5    dino 40.7692 88.3333\n6    dino 38.7179 84.8718"
   },
   {
     "objectID": "03_Wrangling.html#important-variables",
     "href": "03_Wrangling.html#important-variables",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Important variables",
     "text": "Important variables\nFor the import we need to define a number of variables\n\ndata <- read.table(\"./datasets/bigmess.csv\", \n                   sep = \",\", \n                   dec = \".\",\n                   skip = 0,\n                   header = TRUE)\n\n\n\nHow are columns separated? sep = \",\" (“,”, “;”,…)\ndecimal points: dec = \".\" (“,”)\nskip: do not read the first n lines (often metadata)\nare column names included? header = TRUE/FALSE\n?read.table for help"
   },
   {
     "objectID": "03_Wrangling.html#package-readr-simplifies-some-steps",
     "href": "03_Wrangling.html#package-readr-simplifies-some-steps",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Package readr simplifies some steps",
     "text": "Package readr simplifies some steps\n\nread_delim() # any delimiter\nread_csv() # comma-separated\nread_csv2() # comma-separated, dec = \",\"\nread_tsv() # tab-delimited\n\n\n\nAdditional arguments:\n\n\n\n\ncol_names\nskip\nna: how are NA’ represented in the data\n\n\n\n\nAdvantage:\n\n\n\n\nfaster than base-R\nthey don’t change column formats (e.g. character to factors)"
   },
   {
     "objectID": "03_Wrangling.html#relative-absolute-paths",
     "href": "03_Wrangling.html#relative-absolute-paths",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Relative & Absolute paths",
     "text": "Relative & Absolute paths\nWhere is the data stored?\nTwo Options:\nEither: Define the full path\n\npath <- \"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology/Day_2/bigmess.csv\"\n\ndata <- read_csv(path, col_names = TRUE)\n\nBetter: relative path from working directory (project folder)\nProject folder:\n\"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology\nExpress relative to the project folder, start in project folder using “./”\n\ndata <- read_csv(\"./Day_2/bigmess.csv\", col_names = TRUE)"
   },
   {
     "objectID": "03_Wrangling.html#reading-excel-files",
     "href": "03_Wrangling.html#reading-excel-files",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Reading excel-files",
     "text": "Reading excel-files\nOften we get data in Excel, or we enter data using Excel.\nHow to get in R?\nOption 1:\n\n\nexport table as .csv or .txt from excel\n\n\n\n\nread as shown above\n\n\nOption 2:\n\n\npackage(readxl)"
   },
   {
     "objectID": "03_Wrangling.html#libraryreadxl",
     "href": "03_Wrangling.html#libraryreadxl",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "library(readxl)",
     "text": "library(readxl)\n\nlibrary(readxl) \n\ndata <- read_excel(\"./datasets/bigmess.xlsx\", \n                   col_names = TRUE, \n                   sheet = \"data\") # specify the worksheet, either by number or name, default is 1"
   },
   {
     "objectID": "03_Wrangling.html#summing-up-2",
     "href": "03_Wrangling.html#summing-up-2",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Summing up",
     "text": "Summing up"
   },
   {
     "objectID": "04_Reading.html",
     "href": "04_Reading.html",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "",
     "text": "Data wrangling\n\n\nReading data is the first step of data wrangling and of course essential prior to any data analysis. R provides multiple ways to read data of various formats. In this course, we focus on 2-dimensional, rectangluar data, i.e. simple tables, which is stored as text files or as excel-files."
   },
   {
     "objectID": "04_Reading.html#reading-text-files",
     "href": "04_Reading.html#reading-text-files",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Reading text files",
     "text": "Reading text files\n\nmost general function is read.table() from base-R\n\n\n\n\n\n\n\ndata <- read.table(\"./datasets/bigmess.csv\", sep = \",\", dec = \".\",\n                   skip = 0, header = TRUE)\n\nhead(data)\n\n  dataset       x       y\n1    dino 55.3846 97.1795\n2    dino 51.5385 96.0256\n3    dino 46.1538 94.4872\n4    dino 42.8205 91.4103\n5    dino 40.7692 88.3333\n6    dino 38.7179 84.8718"
   },
   {
     "objectID": "04_Reading.html#important-variables",
     "href": "04_Reading.html#important-variables",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Important variables",
     "text": "Important variables\nFor the import we need to define a number of variables\n\ndata <- read.table(\"./datasets/bigmess.csv\", \n                   sep = \",\", \n                   dec = \".\",\n                   skip = 0,\n                   header = TRUE)\n\n\n\nHow are columns separated? sep = \",\" (“,”, “;”,…)\ndecimal points: dec = \".\" (“,”)\nskip: do not read the first n lines (often metadata)\nare column names included? header = TRUE/FALSE\n?read.table for help"
   },
   {
     "objectID": "04_Reading.html#package-readr-simplifies-some-steps",
     "href": "04_Reading.html#package-readr-simplifies-some-steps",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Package readr simplifies some steps",
     "text": "Package readr simplifies some steps\n\nread_delim() # any delimiter\nread_csv() # comma-separated\nread_csv2() # comma-separated, dec = \",\"\nread_tsv() # tab-delimited\n\n\n\nAdditional arguments:\n\n\n\n\ncol_names\nskip\nna: how are NA’ represented in the data\n\n\n\n\nAdvantage:\n\n\n\n\nfaster than base-R\nthey don’t change column formats (e.g. character to factors)"
   },
   {
     "objectID": "04_Reading.html#relative-absolute-paths",
     "href": "04_Reading.html#relative-absolute-paths",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Relative & Absolute paths",
     "text": "Relative & Absolute paths\nWhere is the data stored?\nTwo Options:\nEither: Define the full path\n\npath <- \"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology/Day_2/bigmess.csv\"\n\ndata <- read_csv(path, col_names = TRUE)\n\nBetter: relative path from working directory (project folder)\nProject folder:\n\"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology\nExpress relative to the project folder, start in project folder using “./”\n\ndata <- read_csv(\"./Day_2/bigmess.csv\", col_names = TRUE)"
   },
   {
     "objectID": "04_Reading.html#reading-excel-files",
     "href": "04_Reading.html#reading-excel-files",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Reading excel-files",
     "text": "Reading excel-files\nOften we get data in Excel, or we enter data using Excel.\nHow to get in R?\nOption 1:\n\n\nexport table as .csv or .txt from excel\n\n\n\n\nread as shown above\n\n\nOption 2:\n\n\npackage(readxl)"
   },
   {
     "objectID": "04_Reading.html#libraryreadxl",
     "href": "04_Reading.html#libraryreadxl",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "library(readxl)",
     "text": "library(readxl)\n\nlibrary(readxl) \n\ndata <- read_excel(\"./datasets/bigmess.xlsx\", \n                   col_names = TRUE, \n                   sheet = \"data\") # specify the worksheet, either by number or name, default is 1"
   },
   {
     "objectID": "04_Reading.html#summing-up",
     "href": "04_Reading.html#summing-up",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "Summing up",
     "text": "Summing up"
   },
   {
     "objectID": "03_Exercise.html",
     "href": "03_Exercise.html",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "",
     "text": "Install the package ‘nycflights13’. This contains the dataset flights for this exercise. This data frame contains data on all flights that departed from New York city in the year 2013. It is a big dataset, and something where our new tools come in very handy.\n\ninstall.packages(\"nycflights13\")\nlibrary(nycflights13)\n\nflights\n\nlibrary(tidyverse) # don't forget to load this library\n\n\n\nStart off by familiarizing yourself with the dataset using R-help.\n\n\n\nFind all flights that\n\ndeparted in November and December\narrived with a delay of more than 2 hours\nwere operated by United Airlines (UA) or American Airlines (AA)\ndeparted with a delay, but arrived earlier than scheduled.\n\n\n\n\n\nNarrow down the dataset to the first nine columns. There is a quick way and a tedious way.\nRepeat the above and include air_time and exclude sched_dep_time.\nThere is various helper functions for select(). Two examples are shown below. Check out what they do, and also consult the help to understand them in more detail.\n\n\nflights %>% \n  select(starts_with(\"dep\"))\n\nflights %>% \n  select(year:day, contains(\"dep\"))\n\n\nBrainstorm a few ways to select dep_time, dep_delay, arr_time, arr_delay.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights %>% \n  select(starts_with(\"dep\"), starts_with(\"arr\"))\n\nflights %>% \n  select(contains(\"dep_\"), contains(\"arr_\"), -contains(\"sched\"))\n\n\nvars <- c(\"dep_time\", \"dep_delay\", \"arr_time\", \"arr_delay\")\n\nflights %>% \n  select(vars)\n\n\n\n\n\n\n\n\n\nCalculate a new variable gain that describes how many minutes delay are compensated during each flight (dep_delay - arr_delay).\nCalculate a new variable of gain per hour of flight.\n\n\n\n\n\nWhich airline had the maximum gain per hour on the 24th of december? You could try using arrange() and/or using a graphic visualisation.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights %>% \n  mutate(gain = dep_delay - arr_delay, \n         hours = air_time / 60, \n         gain_per_hour = gain / hours) %>% \n   filter(month == 12, day == 24) %>% \n   ggplot(aes(x = carrier, y = gain_per_hour, fill = carrier)) + \n  geom_boxplot() +\n  geom_jitter(alpha = 0.3, width = 0.2)\n  \n\nflights %>% \n  mutate(gain = dep_delay - arr_delay, \n         hours = air_time / 60, \n         gain_per_hour = gain / hours) %>% \n   filter(month == 12, day == 24) %>% \n  arrange(desc(gain_per_hour)) %>% \n  select(carrier, gain_per_hour)"
   },
   {
     "objectID": "03_Exercise.html#grouping-summarising",
     "href": "03_Exercise.html#grouping-summarising",
-    "title": "R4Eco: Data management and analysis in environmental sciences",
+    "title": "Data management and analysis in R",
     "section": "5. Grouping & Summarising",
     "text": "5. Grouping & Summarising\n\nWhich day had on average the largest delay (dep_delay)? What happens if you don’t take care of NA's?\nWhich day has the shortest delay? What do negative delays mean? what is the day with shortest positive delay?\nWhich airline did carry out the most number of flights?\nWhich destination had on average the largest arrival delay?\nHow does the average delay at arrival relate to the distance of the destination? Combine your data wrangling and visualisation skills. Exclude Honolulu (“HNL”) from this analysis and only take destinations into account which had at least 20 flights during the year.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nWhich day had on average the largest delay (dep_delay)? What happens if you don’t take care of NA's?\n\n\nby_day <- flights %>% \n  group_by(year, month, day) %>% \n  summarise(delay = mean(dep_delay, na.rm=TRUE)) %>% \n  arrange(desc(delay))\n\nby_day\n\n\nWhich day has the shortest delay? What do negative delays mean? what is the day with shortest positive delay?\n\n\nby_day %>% \n  arrange(delay)\n\nby_day %>% \n  filter(delay > 0) %>% \n  arrange(delay)\n\n\nWhich airline did carry out the most number of flights?\n\n\nflights %>% \n  group_by(carrier) %>% \n  summarize(count = n()) %>% \n  arrange(desc(count))\n\n\nWhich destination had on average the largest arrival delay?\n\n\nflights %>% \n  group_by(dest) %>% \n  summarize(avg_delay = mean(arr_delay, na.rm=TRUE)) %>% \n  arrange(desc(avg_delay))\n\n\nHow does the average delay at arrival relate to the distance of the destination? Combine your data wrangling and visualisation skills. Exclude Honolulu (“HNL”) from this analysis and only take destinations into account which had at least 20 flights during the year.\n\n\nby_dest <- flights %>% \n  group_by(dest) %>% \n  summarise(delay = mean(arr_delay, na.rm = TRUE), \n            distance = mean(distance, na.rm=TRUE), \n            count = n())\n\nby_dest %>% \n  arrange(desc(delay))\n\nby_dest %>% \n  filter(dest != \"HNL\", count > 20) %>% \n  ggplot(aes(x = distance, y = delay)) +\n  geom_point(alpha = 1/3, aes(size = count)) +\n  geom_smooth()"
   }

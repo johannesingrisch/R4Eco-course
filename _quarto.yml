@@ -3,16 +3,17 @@ project:
   output-dir: docs
 
 website:
-  title: "R4Eco: Data management and analysis in environmental sciences"
+  title: "Data management and analysis in R"
   repo-url: https://github.com/johannesingrisch/R4Eco-course
   repo-actions: [issue]
   navbar:
-    background: primary
+    background: "#4C9FB5"
     search: true
+    logo: discdown_logo.png
 
   sidebar:
     style: "docked"
-    type: "dark"
+    background: "light"
     contents:
       - text: "Home"
         file: index.qmd
@@ -45,13 +46,15 @@ website:
 #            text: Dates & Times
 
 
-  page-footer: "Copyright 2022, Johannes Ingrisch" 
-
+  page-footer: 
+    center: "Copyright 2022, Johannes Ingrisch" 
+    background: "light"
 
 format:
   html:
-    theme: flatly
-    css: styles.css
+    theme: cosmo
+    #css: styles.css
     toc: true
     code-copy: true
+    linkcolor: "#4C9FB5"
 

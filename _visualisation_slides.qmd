@@ -5,14 +5,13 @@ author: "Johannes Ingrisch"
 institute: "Department of Ecology, University of Innsbruck"
 format:
   revealjs: 
-    theme: moon
     slide-number: true
     logo: "./figures/logo_uibk.jpg"
     smaller: true
 ---
 
 
-```{r setup, include=FALSE}
+```{r include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(kableExtra)
 library(tidyverse)
@@ -33,7 +32,7 @@ include_graphics("./figures/Data_exploration.png")
 ```
 
 
-{{< include _visualisation_content.qmd >}}
+{{< include 02_Visualisation/_visualisation_content.qmd >}}
 
 
 ## Assignment
