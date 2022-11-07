@@ -2,7 +2,8 @@
 
 Welcome to the course website of "Data management and analysis in environmental sciences". 
 
-The aim of tihs course is to provide a basic introduction to analysing and visualizing data with R. 
-The focus is hereby set towards the 'tidyverse'
+The aim of this course is to provide a basic introduction to analysing and visualizing data with R. 
+In this course, we focus on tools provided by the so-called tidyverse, a collection of R-packages that allows for 
+quick, efficient and readable data analysis. 
 
 This site contain slides and additional study material provided by Johannes Ingrisch, University of Innsbruck. 
