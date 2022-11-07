@@ -1,0 +1,56 @@
+# Data types
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+library(tidyverse)
+library(datasauRus)
+library(knitr)
+library(nycflights13)
+options("kableExtra.html.bsTable" = T)
+kable_pretty <- function(data) {
+  kable(data, "html") %>%
+    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
+}
+```
+
+
+## Data types
+
+Data can be stored in differet types: factors, characters, integer etc. 
+
+In `tibbles` we get the information directly printed
+
+```{r}
+head(mpg)
+```
+
+We can also access it for each column
+
+```{r}
+class(mpg$hwy)
+```
+
+## Convert data types
+
+In particular useful when data is in wrong format after read-in. 
+
+`as.numeric()`
+
+`as.character()`
+
+`as.factor()`
+
+```{r, include = FALSE}
+mpg2 <- mpg
+```
+
+
+```{r}
+
+mpg2$manufacturer <- factor(mpg2$manufacturer)
+mpg2
+
+```
+

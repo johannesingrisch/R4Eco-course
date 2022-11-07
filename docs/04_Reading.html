@@ -207,6 +207,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./04_Reading.html" class="sidebar-item-text sidebar-link active">Reading data</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_TidyData.html" class="sidebar-item-text sidebar-link">Tidy data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_MergeData.html" class="sidebar-item-text sidebar-link">Joining data</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Data types</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_DataTypes.html" class="sidebar-item-text sidebar-link">Data types and classes</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_Factors.html" class="sidebar-item-text sidebar-link">Factors</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_DatesTimes.html" class="sidebar-item-text sidebar-link">Dates &amp; Times</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_BaseR.html" class="sidebar-item-text sidebar-link">Base-R</a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -216,16 +256,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reading-data-into-r" id="toc-reading-data-into-r" class="nav-link active" data-scroll-target="#reading-data-into-r">Reading data into R</a></li>
-  <li><a href="#reading-data" id="toc-reading-data" class="nav-link" data-scroll-target="#reading-data">Reading Data</a>
+  <li><a href="#reading-data-into-r" id="toc-reading-data-into-r" class="nav-link active" data-scroll-target="#reading-data-into-r">Reading data into R</a>
   <ul class="collapse">
   <li><a href="#reading-text-files" id="toc-reading-text-files" class="nav-link" data-scroll-target="#reading-text-files">Reading text files</a></li>
   <li><a href="#important-variables" id="toc-important-variables" class="nav-link" data-scroll-target="#important-variables">Important variables</a></li>
+  <li><a href="#tidyverse-packages-for-reading-data" id="toc-tidyverse-packages-for-reading-data" class="nav-link" data-scroll-target="#tidyverse-packages-for-reading-data"><code>tidyverse</code> packages for reading data</a></li>
   <li><a href="#package-readr-simplifies-some-steps" id="toc-package-readr-simplifies-some-steps" class="nav-link" data-scroll-target="#package-readr-simplifies-some-steps">Package readr simplifies some steps</a></li>
-  <li><a href="#relative-absolute-paths" id="toc-relative-absolute-paths" class="nav-link" data-scroll-target="#relative-absolute-paths">Relative &amp; Absolute paths</a></li>
+  <li><a href="#define-the-file-location" id="toc-define-the-file-location" class="nav-link" data-scroll-target="#define-the-file-location">Define the file location</a></li>
   <li><a href="#reading-excel-files" id="toc-reading-excel-files" class="nav-link" data-scroll-target="#reading-excel-files">Reading excel-files</a></li>
-  <li><a href="#libraryreadxl" id="toc-libraryreadxl" class="nav-link" data-scroll-target="#libraryreadxl">library(readxl)</a></li>
-  <li><a href="#summing-up" id="toc-summing-up" class="nav-link" data-scroll-target="#summing-up">Summing up</a></li>
+  <li><a href="#the-packagereadxl" id="toc-the-packagereadxl" class="nav-link" data-scroll-target="#the-packagereadxl">The package<code>readxl</code></a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/johannesingrisch/R4Eco-course/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -237,29 +276,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="reading-data-into-r" class="level1">
 <h1>Reading data into R</h1>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 85.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./figures/Data_wrangling.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Data wrangling</figcaption><p></p>
+<p></p><figcaption class="figure-caption">DS workflow</figcaption><p></p>
 </figure>
 </div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 15.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/readr_readxl.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">packages</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p>Reading data is the first step of data wrangling and of course essential prior to any data analysis. R provides multiple ways to read data of various formats. In this course, we focus on 2-dimensional, rectangluar data, i.e.&nbsp;simple tables, which is stored as text files or as excel-files.</p>
-</section>
-<section id="reading-data" class="level1">
-<h1>Reading Data</h1>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="./figures/readr_readxl.png" class="img-fluid" style="width:25.0%"></p>
-</div>
-</div>
 <section id="reading-text-files" class="level2">
 <h2 class="anchored" data-anchor-id="reading-text-files">Reading text files</h2>
-<ul>
-<li>most general function is read.table() from base-R</li>
-</ul>
+<p>The most general function to read rectangular data into R is <code>read.table()</code>included in base-R.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="./figures/read_data_example.png" class="img-fluid" style="width:20.0%"></p>
+<p><img src="./figures/read_data_example.PNG" class="img-fluid" style="width:20.0%"></p>
 </div>
 </div>
 <div class="cell">
@@ -286,112 +329,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sep =</span> <span class="st">","</span>, </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dec =</span> <span class="st">"."</span>,</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">skip =</span> <span class="dv">0</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">comment.char =</span> <span class="st">"#"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<blockquote class="blockquote">
 <ul>
 <li>How are columns separated? <code>sep = ","</code> (“,”, “;”,…)</li>
 <li>decimal points: <code>dec = "."</code> (“,”)</li>
 <li>skip: do not read the first n lines (often metadata)</li>
 <li>are column names included? header = TRUE/FALSE</li>
+<li><code>comment.char</code>: character that defines comments in the (ignored for reading)</li>
 <li>?read.table for help</li>
 </ul>
-</blockquote>
+</section>
+<section id="tidyverse-packages-for-reading-data" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse-packages-for-reading-data"><code>tidyverse</code> packages for reading data</h2>
+<p>Even though base R provides all the essential functionality for reading text files, the tidyverse offers two interesting alternatives. <code>Readr</code>is a package for reading text files, is fast, and provides some interesting extras for working within the tidyverse. <code>Readxl</code>is great to read excel files.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/readr_readxl.png" class="img-fluid figure-img" style="width:20.0%"></p>
+<p></p><figcaption class="figure-caption">Hex stickers of <code>readr</code> and <code>readxl</code></figcaption><p></p>
+</figure>
+</div>
 </section>
 <section id="package-readr-simplifies-some-steps" class="level2">
 <h2 class="anchored" data-anchor-id="package-readr-simplifies-some-steps">Package readr simplifies some steps</h2>
+<p>This package is part of the core suite of the <code>tidyverse</code>, that means in order to use it is not necessary to specifically load the package if you have loaded <code>library(tidyverse)</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_delim</span>() <span class="co"># any delimiter</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>() <span class="co"># comma-separated</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv2</span>() <span class="co"># comma-separated, dec = ","</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>() <span class="co"># tab-delimited</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure, tidyverse is installed and loaded</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_delim</span>() <span class="co"># any delimiter</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>() <span class="co"># comma-separated</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv2</span>() <span class="co"># comma-separated, dec = ","</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>() <span class="co"># tab-delimited</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<blockquote class="blockquote">
-<ul>
-<li><strong>Additional arguments:</strong></li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
-<li>col_names</li>
-<li>skip</li>
-<li>na: how are NA’ represented in the data</li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
-<li><strong>Advantage:</strong></li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
-<li>faster than base-R</li>
-<li>they don’t change column formats (e.g.&nbsp;character to factors)</li>
-</ul>
-</blockquote>
+<p><strong>Additional arguments:</strong> - col_names - skip - na: how are NA’ represented in the data</p>
+<p><strong>Advantage:</strong> - faster than base-R - they don’t change column formats (e.g.&nbsp;character to factors) - recognizes date-time columns</p>
 </section>
-<section id="relative-absolute-paths" class="level2">
-<h2 class="anchored" data-anchor-id="relative-absolute-paths">Relative &amp; Absolute paths</h2>
+<section id="define-the-file-location" class="level2">
+<h2 class="anchored" data-anchor-id="define-the-file-location">Define the file location</h2>
 <p>Where is the data stored?</p>
 <p>Two Options:</p>
-<p>Either: Define the full path</p>
+<ol type="A">
+<li>Define the <strong>absolute path</strong></li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology/Day_2/bigmess.csv"</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"C:/Users/Johnny/Teaching/R4Eco-course/datasets/bigmess.csv"</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(path, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Better</strong>: relative path from working directory (project folder)</p>
+<ol start="2" type="A">
+<li><strong>RECOMMENDED</strong>: relative path from working directory (project folder)</li>
+</ol>
 <p>Project folder:</p>
-<p><code>"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology</code></p>
+<p><code>"C:/Users/Johnny/Teaching/R4Eco-course/"</code></p>
 <p>Express relative to the project folder, start in project folder using “./”</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./Day_2/bigmess.csv"</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>You can check your working directory using the function <code>getwd()</code>. If you work consistently with an R-project, you should not have any trouble. In case things are off, you can also change your working directory using <code>setwd()</code>.</p>
 </section>
 <section id="reading-excel-files" class="level2">
 <h2 class="anchored" data-anchor-id="reading-excel-files">Reading excel-files</h2>
-<p>Often we get data in Excel, or we enter data using Excel.</p>
-<p>How to get in R?</p>
-<p>Option 1:</p>
-<blockquote class="blockquote">
+<p>Often we get data in Excel, or we enter data using Excel. The latter is the only thing that you should ever consider using Excel for… Anyway, how can we get that data into R?</p>
+<ol type="A">
+<li>Option 1:</li>
+</ol>
 <ul>
 <li>export table as .csv or .txt from excel</li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
 <li>read as shown above</li>
 </ul>
-</blockquote>
-<p>Option 2:</p>
-<blockquote class="blockquote">
+<ol start="2" type="A">
+<li>Option 2:</li>
+</ol>
 <ul>
-<li>package(readxl)</li>
+<li><code>package(readxl)</code></li>
 </ul>
-</blockquote>
 </section>
-<section id="libraryreadxl" class="level2">
-<h2 class="anchored" data-anchor-id="libraryreadxl">library(readxl)</h2>
+<section id="the-packagereadxl" class="level2">
+<h2 class="anchored" data-anchor-id="the-packagereadxl">The package<code>readxl</code></h2>
+<p>The R-package to read xls files is called <code>readxl</code>. It is not part of the core-tidyverse, therefore, you need to install and load it manually. You can install it by executing <code>install.packages("readxl")</code> in your console.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"./datasets/bigmess.xlsx"</span>, </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">col_names =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="st">"data"</span>) <span class="co"># specify the worksheet, either by number or name, default is 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># load package</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"./datasets/bigmess.xlsx"</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">col_names =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="st">"data"</span>) <span class="co"># specify the worksheet, either by number or name, default is 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="summing-up" class="level2">
-<h2 class="anchored" data-anchor-id="summing-up">Summing up</h2>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="./figures/Data_wrangling.png" class="img-fluid" style="width:60.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="./figures/tidyverse_2.png" class="img-fluid" style="width:35.0%"></p>
-</div>
-</div>
+<p>The help (<code>?read_excel</code>) and the <a href="https://readxl.tidyverse.org/">online documentation</a> are of great help for all the details.</p>
 
 
 </section>

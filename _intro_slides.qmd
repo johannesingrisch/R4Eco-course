@@ -1,0 +1,15 @@
+---
+project:
+  output-dir: _slides
+title: "Data management and analysis in environmental sciences"
+author: "Jesse Radolinski, Johannes Ingrisch"
+institute: "Department of Ecology, University of Innsbruck"
+format:
+  revealjs: 
+    theme: moon
+    slide-number: true
+    logo: "./figures/logo_uibk.jpg"
+    smaller: true
+---
+
+{{< include 01_Intro/_intro_content.qmd >}}

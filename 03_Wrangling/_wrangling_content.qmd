@@ -277,18 +277,20 @@ mpg %>%
 
 
 
-## Time to try it yourself: 
+# Time to try it yourself: 
 
 --> check out Exercise Part 1.
 
 
 
 
-# Part 2
+# Summarising and grouping data
 
 ## Summarize data: summarise()
 
-Collapses data frame to a single row -->
+Collapses data frame to a single row by using a supplied function. 
+
+Example: What is the average `hwy` of all cars in the dataset?
 
 ```{r}
 mpg %>% 
@@ -313,7 +315,9 @@ mpg %>%
 
 ## Summarize different groups: group_by() & summarise()
 
-Question: What is the average `hwy` for each car-class?
+We can define groups in the dataset for which we calculate summary values. 
+
+Example: What is the average `hwy` for each car-class?
 
 ```{r}
 
@@ -325,9 +329,11 @@ by_class
 
 ```
 
->- we can summarise values for all kind of groups!
+--> we can summarise values for all kind of groups!
 
 ## Group_by() with several grouping variables
+
+We can also use several variables for the grouping. 
 
 ```{r}
 
@@ -387,7 +393,7 @@ mpg %>%
 
 
 
-## Missing Values
+# Missing Values
 
 - Missing values are observations with no information. 
 - this is __not__ the same as zero!
@@ -398,7 +404,7 @@ mpg %>%
 ```
 
 
-## Missing Values
+## How to check for missing values
 
 We can check for missing values by `is.na`. 
 
@@ -408,7 +414,7 @@ summary(df)
 ```
 
 
-## Missing Values
+## Calculations with missing values
 
 What happens if we summarize columns with missing values?
 
@@ -439,7 +445,7 @@ mpg %>%
 
 
 
-## Data Wrangling Cheat Sheet
+# Data Wrangling Cheat Sheet
 
 https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
 
@@ -449,7 +455,7 @@ include_graphics("./figures/Cheatsheet_wrangling.png")
 
 
 
-## Summing up
+# Summing up
 
 ```{r echo = FALSE, out.width = "60%"}
 include_graphics("./figures/Data_wrangling.png")
@@ -461,7 +467,7 @@ include_graphics("./figures/tidyverse_0.png")
 
 
 
-## Exercise Part 2
+# Exercise Part 2
 
 
 Things are coming together...
@@ -478,152 +484,4 @@ include_graphics("./figures/Data_wrangling.png")
 ```{r echo = FALSE, out.width = "35%"}
 include_graphics("./figures/tidyverse_0.png")
 ```
-
-
-
-
-# Reading Data 
-
-```{r echo = FALSE, out.width = "25%"}
-include_graphics("./figures/readr_readxl.png")
-```
-
-
-
-## Reading text files
-
-- most general function is read.table() from base-R
-
-
-```{r echo = FALSE, out.width = "20%"}
-include_graphics("./figures/read_data_example.png")
-```
-
-
-```{r}
-
-data <- read.table("./datasets/bigmess.csv", sep = ",", dec = ".",
-                   skip = 0, header = TRUE)
-
-head(data)
-
-```
-
-## Important variables
-
-For the import we need to define a number of variables
-
-```{r, eval = FALSE}
-data <- read.table("./datasets/bigmess.csv", 
-                   sep = ",", 
-                   dec = ".",
-                   skip = 0,
-                   header = TRUE)
-```
-
->- How are columns separated? `sep = ","` (",", ";",...)
->- decimal points: `dec = "."` (",")
->- skip: do not read the first n lines (often metadata)
->- are column names included? header = TRUE/FALSE
->- ?read.table for help
-
-
-## Package readr simplifies some steps
-
-
-```{r, eval = FALSE}
-
-read_delim() # any delimiter
-read_csv() # comma-separated
-read_csv2() # comma-separated, dec = ","
-read_tsv() # tab-delimited
-
-```
-
->- __Additional arguments:__
-
->- col_names
->- skip
->- na: how are NA' represented in the data 
-
-
-
->- __Advantage:__
-
->- faster than base-R
->- they don't change column formats (e.g. character to factors)
-
-
-## Relative & Absolute paths
-
-Where is the data stored?
-
-Two Options: 
-
-Either: Define the full path
-
-```{r, eval = FALSE}
-path <- "C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology/Day_2/bigmess.csv"
-
-data <- read_csv(path, col_names = TRUE)
-
-```
-
-
-
-
-__Better__: relative path from working directory (project folder)
-
-Project folder: 
-
-`"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology`
-
-Express relative to the project folder, start in project folder using "./"
-
-```{r, eval = FALSE}
-
-data <- read_csv("./Day_2/bigmess.csv", col_names = TRUE)
-
-```
-
-
-## Reading excel-files
-
-Often we get data in Excel, or we enter data using Excel. 
-
-How to get in R?
-
-Option 1:
-
->- export table as .csv or .txt from excel
-
->- read as shown above
-
-Option 2: 
-
->- package(readxl)
-
-
-## library(readxl)
-
-
-```{r, eval = FALSE}
-library(readxl) 
-
-data <- read_excel("./datasets/bigmess.xlsx", 
-                   col_names = TRUE, 
-                   sheet = "data") # specify the worksheet, either by number or name, default is 1
-```
-
-
-## Summing up
-
-```{r echo = FALSE, out.width = "60%"}
-include_graphics("./figures/Data_wrangling.png")
-```
-
-```{r echo = FALSE, out.width = "35%"}
-include_graphics("./figures/tidyverse_2.png")
-```
-
 

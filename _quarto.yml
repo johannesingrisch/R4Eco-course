@@ -34,6 +34,20 @@ website:
             text: "Exercise"
       - text: "Reading data"
         file: 04_Reading.qmd
+      - text: "Tidy data"
+        file: 05_TidyData.qmd
+      - text: "Joining data"
+        file: 06_MergeData.qmd
+      - section: "Data types"
+        contents: 
+          - href: 09_DataTypes.qmd
+            text: "Data types and classes"
+          - href: 10_Factors.qmd
+            text: "Factors"
+          - href: 07_DatesTimes.qmd
+            text: "Dates & Times"
+      - text: "Base-R"
+        file: "08_BaseR.qmd"
 #      - section: "Data Manipulation"
 #        contents: 
 #          - href: 03_xxxx.qmd

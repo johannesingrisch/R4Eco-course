@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "06_MergeData.html",
+    "href": "06_MergeData.html",
+    "title": "Data management and analysis in R",
+    "section": "",
+    "text": "Reality: Data is spread out over multiple tables.\nSolution: Join tables via relations.\nMutating joins: add new variables to one data frame from matching observations in another.\nExample: We want to combine data on infection cases and population size for each year and country.\n\n\n\n\n# A tibble: 6 × 3\n  country     year   cases\n  <chr>       <chr>  <int>\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\n\n# A tibble: 6 × 3\n  country     year  population\n  <chr>       <chr>      <int>\n1 Afghanistan 1999    19987071\n2 Afghanistan 2000    20595360\n3 Brazil      1999   172006362\n4 Brazil      2000   174504898\n5 China       1999  1272915272\n6 China       2000  1280428583\n\n\n\n\n\n\n\n\nThe variables that connect each pair of tables are called keys.\nA key is a variable (or set of variables) that uniquely identifies an observation.\nWhat is a key in this dataset?\n\n\n# A tibble: 6 × 3\n  country     year   cases\n  <chr>       <chr>  <int>\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\n\n\n\n\nIs there a unique key in mpg?\n\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows\n\n\n\n\n\n\n\n\n\n\n\ntable6a\n\n# A tibble: 6 × 3\n  country     year   cases\n  <chr>       <chr>  <int>\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\ntable6b\n\n# A tibble: 6 × 3\n  country     year  population\n  <chr>       <chr>      <int>\n1 Afghanistan 1999    19987071\n2 Afghanistan 2000    20595360\n3 Brazil      1999   172006362\n4 Brazil      2000   174504898\n5 China       1999  1272915272\n6 China       2000  1280428583\n\n\n\n\n\n\n\n\ntable6a %>% \n  left_join(table6b, by = c(\"country\", \"year\"))\n\n# A tibble: 6 × 4\n  country     year   cases population\n  <chr>       <chr>  <int>      <int>\n1 Afghanistan 1999     745   19987071\n2 Afghanistan 2000    2666   20595360\n3 Brazil      1999   37737  172006362\n4 Brazil      2000   80488  174504898\n5 China       1999  212258 1272915272\n6 China       2000  213766 1280428583\n\n\n\n\n\nTwo tables, colored column represents the key, grey represents the value.\n\n\n\n\n\n\n\n\n\n\n\n\n\nMatch pairs of observations whenever keys are equal.\n\n\n\n\n\n\nx %>% \n  inner_join(y, by = \"key\")\n\n\n\n\nAn outer join keeps observations that appear in at least one of the tables. There are three types:\n\n\n\n\n\n\n\n\nDefault: use all variables that appear in both tables.\n\nleft_join(x, y, by = NULL, copy = FALSE, suffix = c(\".x\", \".y\"), ...)\n\nAlternative:\n\ndefine which columns using by =\n\n\nflights %>% \n  left_join(planes, by = \"tailnum\")\n\n\njoin by columns with different names\n\n\n# match \"dest\" in table 'flights' with \"faa\" in table airports\nflights %>% \n  left_join(airports, c(\"dest\" = \"faa\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReproduce the following figure using table4a and table4b\n\n\nJoining, by = c(\"country\", \"year\")\n\n\n\n\n\n\n\n\nWe can bind rows of multiple tables with identical columns\n\na <- tibble(name = c(\"Hans\", \"Sepp\"), weight = c(65,75))\nb <- tibble(name = c(\"Magda\", \"Klaus\"), weight = c(65,60))\n\n\n\n\n# rbase\nrbind(a, b)\n\n# A tibble: 4 × 2\n  name  weight\n  <chr>  <dbl>\n1 Hans      65\n2 Sepp      75\n3 Magda     65\n4 Klaus     60\n\n# tidyverse: pipe compatible\na %>% \n  bind_rows(b)\n\n# A tibble: 4 × 2\n  name  weight\n  <chr>  <dbl>\n1 Hans      65\n2 Sepp      75\n3 Magda     65\n4 Klaus     60"
+  },
+  {
     "objectID": "Organisation.html",
     "href": "Organisation.html",
     "title": "Data management and analysis in R",
@@ -56,11 +63,235 @@
     "text": "Round of Introduction\n\n\nWho are you?\nWhat is your PhD project about?\nAny experience with R so far?"
   },
   {
+    "objectID": "05_TidyData.html#what-is-tidy-data",
+    "href": "05_TidyData.html#what-is-tidy-data",
+    "title": "Data management and analysis in R",
+    "section": "What is ‘tidy data’?",
+    "text": "What is ‘tidy data’?\n\n\n\n\n\nLink: http://www.jstatsoft.org/v59/i10/paper"
+  },
+  {
+    "objectID": "05_TidyData.html#same-data-can-be-stored-in-multiple-ways",
+    "href": "05_TidyData.html#same-data-can-be-stored-in-multiple-ways",
+    "title": "Data management and analysis in R",
+    "section": "Same data can be stored in multiple ways",
+    "text": "Same data can be stored in multiple ways\n\n# wide representation \ntable1\n\n# A tibble: 6 × 4\n  country      year  cases population\n  <chr>       <int>  <int>      <int>\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n# long representation\ntable2\n\n# A tibble: 12 × 4\n   country      year type            count\n   <chr>       <int> <chr>           <int>\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583"
+  },
+  {
+    "objectID": "05_TidyData.html#same-data-can-be-stored-in-multiple-ways-1",
+    "href": "05_TidyData.html#same-data-can-be-stored-in-multiple-ways-1",
+    "title": "Data management and analysis in R",
+    "section": "Same data can be stored in multiple ways",
+    "text": "Same data can be stored in multiple ways\n\ntable1\n\n# A tibble: 6 × 4\n  country      year  cases population\n  <chr>       <int>  <int>      <int>\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\ntable3\n\n# A tibble: 6 × 3\n  country      year rate             \n* <chr>       <int> <chr>            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583"
+  },
+  {
+    "objectID": "05_TidyData.html#same-data-can-be-stored-in-multiple-ways-2",
+    "href": "05_TidyData.html#same-data-can-be-stored-in-multiple-ways-2",
+    "title": "Data management and analysis in R",
+    "section": "Same data can be stored in multiple ways",
+    "text": "Same data can be stored in multiple ways\nSpread into multiple tables\n\n# cases\ntable4a\n\n# A tibble: 3 × 3\n  country     `1999` `2000`\n* <chr>        <int>  <int>\n1 Afghanistan    745   2666\n2 Brazil       37737  80488\n3 China       212258 213766\n\n# population\ntable4b\n\n# A tibble: 3 × 3\n  country         `1999`     `2000`\n* <chr>            <int>      <int>\n1 Afghanistan   19987071   20595360\n2 Brazil       172006362  174504898\n3 China       1272915272 1280428583"
+  },
+  {
+    "objectID": "05_TidyData.html#not-of-all-representations-are-easy-to-work-with",
+    "href": "05_TidyData.html#not-of-all-representations-are-easy-to-work-with",
+    "title": "Data management and analysis in R",
+    "section": "Not of all representations are easy to work with",
+    "text": "Not of all representations are easy to work with\nA tidy dataset follows 3 Rules:\n\nEach variable must have its own column\nEach observation must have its own row\nEach value must have its own cell"
+  },
+  {
+    "objectID": "05_TidyData.html#why-ensure-that-your-data-is-tidy",
+    "href": "05_TidyData.html#why-ensure-that-your-data-is-tidy",
+    "title": "Data management and analysis in R",
+    "section": "Why ensure that your data is tidy?",
+    "text": "Why ensure that your data is tidy?\n\nConsistent data structure makes it easier to apply tools that work with it\nMost R-functions work vectorised.\nWorks neatly with all types of tidyverse packages"
+  },
+  {
+    "objectID": "05_TidyData.html#which-data-structure-is-tidy",
+    "href": "05_TidyData.html#which-data-structure-is-tidy",
+    "title": "Data management and analysis in R",
+    "section": "Which data structure is tidy?",
+    "text": "Which data structure is tidy?\nCheck out these datasets\n\nlibrary(tidyverse)\ntable1\ntable2\ntable3\ntable4a\ntable4b\n\n\n\nhow are they organised?\nwhich fulfills the criteria of tidy data? why? or why not?\nyou want to calculate the infection rate = cases / population * 1000. Describe in prose how you would do it based on the different tables?\n\n\n\n\nWhich is easiest to work with?"
+  },
+  {
+    "objectID": "05_TidyData.html#so-why-is-not-all-data-always-tidy",
+    "href": "05_TidyData.html#so-why-is-not-all-data-always-tidy",
+    "title": "Data management and analysis in R",
+    "section": "So why is not all data always tidy?",
+    "text": "So why is not all data always tidy?\n\n\nMost data is not tidy.\n\n\n\n\nMost of the time we will need to tidy up before analysis"
+  },
+  {
+    "objectID": "05_TidyData.html#so-why-is-not-all-data-always-tidy-1",
+    "href": "05_TidyData.html#so-why-is-not-all-data-always-tidy-1",
+    "title": "Data management and analysis in R",
+    "section": "So why is not all data always tidy?",
+    "text": "So why is not all data always tidy?\n\nMost data is not tidy.\nMost of the time we will need to tidy up before analysis\nThe tidyverse comes for rescue"
+  },
+  {
+    "objectID": "05_TidyData.html#tidyr",
+    "href": "05_TidyData.html#tidyr",
+    "title": "Data management and analysis in R",
+    "section": "Tidyr",
+    "text": "Tidyr\n\n\n\n\n\nTwo major functions to transform tables\n\n\npivot_wider(): make long tables wide\n\n\n\n\npivot_longer(): make wide tables long"
+  },
+  {
+    "objectID": "05_TidyData.html#pivot_wider",
+    "href": "05_TidyData.html#pivot_wider",
+    "title": "Data management and analysis in R",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\npreviously: spread()\nmake sure to have tidyr 1.0\nMakes a long table wider.\n\ntable2 %>% \n  pivot_wider(names_from = type, \n              values_from = count)"
+  },
+  {
+    "objectID": "05_TidyData.html#pivot_wider-1",
+    "href": "05_TidyData.html#pivot_wider-1",
+    "title": "Data management and analysis in R",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\ntable2 %>% \n  pivot_wider(names_from = type, \n              values_from = count)\n\nWe need to specify:\n\n\nnames_from: which column contains the new column names?\nvalues_from: which column contains the values?\n\n\n\n\nAdditional options:\n?pivot_wider\nvignette(\"pivot\")"
+  },
+  {
+    "objectID": "05_TidyData.html#pivot_longer",
+    "href": "05_TidyData.html#pivot_longer",
+    "title": "Data management and analysis in R",
+    "section": "pivot_longer",
+    "text": "pivot_longer\npreviously: gather()\nmake sure to have tidyr 1.0\nMakes a wide table longer.\n\ntable4a %>% \n  pivot_longer(cols = c('1999', '2000'), \n               names_to = \"year\", \n               values_to = \"cases\")"
+  },
+  {
+    "objectID": "05_TidyData.html#pivot_longer-1",
+    "href": "05_TidyData.html#pivot_longer-1",
+    "title": "Data management and analysis in R",
+    "section": "pivot_longer",
+    "text": "pivot_longer\n\ntable4a %>% \n  pivot_longer(cols = c('1999', '2000'), \n               names_to = \"year\", \n               values_to = \"cases\")\n\nWe need to specify:\n\n\ncols: choose columns to be transformed\nnames_to: column-name for the key, in quotes\nvalues_to: column-name for the values, in quotes\n\n\n\n\nAdditional options:\n?pivot_longer\nvignette(\"pivot\")"
+  },
+  {
+    "objectID": "05_TidyData.html#pivot_longer-2",
+    "href": "05_TidyData.html#pivot_longer-2",
+    "title": "Data management and analysis in R",
+    "section": "pivot_longer",
+    "text": "pivot_longer\nSelection of columns in cols argument can be forward or backward\n\n# forward: define which columns to use\ntable4a %>% \n  pivot_longer(cols = c('1999', '2000'), \n               names_to = \"year\", \n               values_to = \"cases\")\n\n# backward: define which columns NOT to use\ntable4a %>% \n  pivot_longer(cols = c(-country), \n               names_to = \"year\", \n               values_to = \"cases\")"
+  },
+  {
+    "objectID": "05_TidyData.html#separating",
+    "href": "05_TidyData.html#separating",
+    "title": "Data management and analysis in R",
+    "section": "Separating",
+    "text": "Separating\nProblem: column table3$rate contains multiple values in one cell.\n\ntable3\n\n# A tibble: 6 × 3\n  country      year rate             \n* <chr>       <int> <chr>            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583"
+  },
+  {
+    "objectID": "05_TidyData.html#separating-1",
+    "href": "05_TidyData.html#separating-1",
+    "title": "Data management and analysis in R",
+    "section": "Separating",
+    "text": "Separating\n\ntable3 %>% \n  separate(rate, into = c(\"cases\", \"population\"))"
+  },
+  {
+    "objectID": "05_TidyData.html#separating-2",
+    "href": "05_TidyData.html#separating-2",
+    "title": "Data management and analysis in R",
+    "section": "Separating",
+    "text": "Separating\nWhere does it separate?\nBy default: Whereever it sees as non-alphanumeric character.\nWe can also specify it\n\n# separate at \"/\"\ntable3 %>% \n  separate(rate, into = c(\"cases\", \"population\"), sep = \"/\") \n\n# separate at defined position\ntable3 %>% \n  separate(year, into = c(\"century\", \"year\"), sep = 2)"
+  },
+  {
+    "objectID": "05_TidyData.html#separate",
+    "href": "05_TidyData.html#separate",
+    "title": "Data management and analysis in R",
+    "section": "Separate",
+    "text": "Separate\nLook careful at column types of output. New columns are stored as ‘character’. That doesn’t allow us to do calculations.\n\ntable3 %>% \n  separate(rate, into = c(\"cases\", \"population\"))\n\n# A tibble: 6 × 4\n  country      year cases  population\n  <chr>       <int> <chr>  <chr>     \n1 Afghanistan  1999 745    19987071  \n2 Afghanistan  2000 2666   20595360  \n3 Brazil       1999 37737  172006362 \n4 Brazil       2000 80488  174504898 \n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\nSolution: convert = TRUE tries to change the column-types to better types\n\ntable3 %>% \n  separate(rate, into = c(\"cases\", \"population\"), convert = TRUE) \n\n# A tibble: 6 × 4\n  country      year  cases population\n  <chr>       <int>  <int>      <int>\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583"
+  },
+  {
+    "objectID": "05_TidyData.html#unite",
+    "href": "05_TidyData.html#unite",
+    "title": "Data management and analysis in R",
+    "section": "Unite",
+    "text": "Unite\nThe inverse of separate()\n\ntable5 %>% \n  unite(new, century, year)"
+  },
+  {
+    "objectID": "05_TidyData.html#exercise-transform-tables",
+    "href": "05_TidyData.html#exercise-transform-tables",
+    "title": "Data management and analysis in R",
+    "section": "Exercise: transform tables",
+    "text": "Exercise: transform tables\nReproduce the following figure starting with table1,table2, and table3.\nCalculate rate = cases/population * 1000"
+  },
+  {
+    "objectID": "05_TidyData.html#missing-values",
+    "href": "05_TidyData.html#missing-values",
+    "title": "Data management and analysis in R",
+    "section": "Missing values",
+    "text": "Missing values\nExplicit and implicit missing values.\nAn explicit missing value is the presence of an absence.\nAn implicit missing value is the absence of a presence.\n\nstocks <- tibble(\n  year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016),\n  quarter    = c(   1,    2,    3,    4,    2,    3,    4),\n  return = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66)\n)\n\nstocks\n\n# A tibble: 7 × 3\n   year quarter return\n  <dbl>   <dbl>  <dbl>\n1  2015       1   1.88\n2  2015       2   0.59\n3  2015       3   0.35\n4  2015       4  NA   \n5  2016       2   0.92\n6  2016       3   0.17\n7  2016       4   2.66"
+  },
+  {
+    "objectID": "05_TidyData.html#make-nas-explicit",
+    "href": "05_TidyData.html#make-nas-explicit",
+    "title": "Data management and analysis in R",
+    "section": "Make NA’s explicit",
+    "text": "Make NA’s explicit\nWe can make implicit NA’s explicit.\n\n# take set of columns and finds all uniqe combinations, fill with NA in case combination is missing\nstocks %>% \n  complete(year, quarter)\n\n# A tibble: 8 × 3\n   year quarter return\n  <dbl>   <dbl>  <dbl>\n1  2015       1   1.88\n2  2015       2   0.59\n3  2015       3   0.35\n4  2015       4  NA   \n5  2016       1  NA   \n6  2016       2   0.92\n7  2016       3   0.17\n8  2016       4   2.66"
+  },
+  {
+    "objectID": "05_TidyData.html#make-nas-implicit",
+    "href": "05_TidyData.html#make-nas-implicit",
+    "title": "Data management and analysis in R",
+    "section": "Make NA’s implicit",
+    "text": "Make NA’s implicit\n\n\nstocks %>% \n  pivot_wider(names_from=year, \n              values_from = return) %>% \n  pivot_longer(cols = - quarter, \n               names_to = \"year\",\n               values_to = \"return\")\n\n# A tibble: 8 × 3\n  quarter year  return\n    <dbl> <chr>  <dbl>\n1       1 2015    1.88\n2       1 2016   NA   \n3       2 2015    0.59\n4       2 2016    0.92\n5       3 2015    0.35\n6       3 2016    0.17\n7       4 2015   NA   \n8       4 2016    2.66\n\nstocks %>% \n  pivot_wider(names_from=year, \n              values_from = return) %>% \n  pivot_longer(cols = - quarter, \n               names_to = \"year\",\n               values_to = \"return\", \n               values_drop_na = TRUE)\n\n# A tibble: 6 × 3\n  quarter year  return\n    <dbl> <chr>  <dbl>\n1       1 2015    1.88\n2       2 2015    0.59\n3       2 2016    0.92\n4       3 2015    0.35\n5       3 2016    0.17\n6       4 2016    2.66"
+  },
+  {
+    "objectID": "05_TidyData.html#missing-values-fill",
+    "href": "05_TidyData.html#missing-values-fill",
+    "title": "Data management and analysis in R",
+    "section": "Missing values: fill()",
+    "text": "Missing values: fill()\nQuite often columns are incomplete. fill()allows to fill a column. Example:\n\n\n# original file\ntreatment\n\n# A tibble: 4 × 3\n  person           treatment response\n  <chr>                <dbl>    <dbl>\n1 Derrick Whitmore         1        7\n2 <NA>                     2       10\n3 <NA>                     3        9\n4 Katherine Burke          1        4\n\ntreatment %>% \n  fill(person)\n\n# A tibble: 4 × 3\n  person           treatment response\n  <chr>                <dbl>    <dbl>\n1 Derrick Whitmore         1        7\n2 Derrick Whitmore         2       10\n3 Derrick Whitmore         3        9\n4 Katherine Burke          1        4"
+  },
+  {
+    "objectID": "05_TidyData.html#summary-tidyr",
+    "href": "05_TidyData.html#summary-tidyr",
+    "title": "Data management and analysis in R",
+    "section": "Summary: TidyR",
+    "text": "Summary: TidyR\nA tidy dataset follows three rules:\n\nEach variable must have its own column\nEach observation must have its own row\nEach value must have its own cell\n\n\n\n\n\n\nThe functions pivot_longer, pivot_widerand separate allow us to tidy up messy tables."
+  },
+  {
+    "objectID": "09_DataTypes.html",
+    "href": "09_DataTypes.html",
+    "title": "Data management and analysis in R",
+    "section": "",
+    "text": "Data can be stored in differet types: factors, characters, integer etc.\nIn tibbles we get the information directly printed\n\nhead(mpg)\n\n# A tibble: 6 × 11\n  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class \n  <chr>        <chr> <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr> \n1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…\n2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…\n3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…\n4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…\n5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…\n6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…\n\n\nWe can also access it for each column\n\nclass(mpg$hwy)\n\n[1] \"integer\"\n\n\n\n\n\nIn particular useful when data is in wrong format after read-in.\nas.numeric()\nas.character()\nas.factor()\n\nmpg2$manufacturer <- factor(mpg2$manufacturer)\nmpg2\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <fct>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
+  },
+  {
     "objectID": "02_Visualisation.html",
     "href": "02_Visualisation.html",
     "title": "Data management and analysis in R",
     "section": "",
     "text": "The art of looking at data\n\nEfficient data visualization is key in data science. Not only will it help you to understand your own data, but also is it a primary mean to communicate results to others and make complex results easiert to understand.\nLast but not least, litte is more satisfying then to come up with really cool visualisations of your research.\nIn this course we will focus on visualizing data with a R-package called ‘ggplot2’. It is part of the tidyverse and once you overcome the initial barrier it is very easy to handle and incredible versatile.\nBefore creating the first plots, we need a first idea of the struture and content of the dataset we are interested in. For this, R provides some nice functions.\nTo get started we use a dataset that is already included in R called mpg.\n\n\n\nExample Dataset ‘mpg’: fuel economy data of cars\nhow does the data look like? We could open it in Excel..\n\n\n\n\n\n\n\n\n\nFor provided datasets we can use the R help to get more info\n\n?(mpg)\n\nLook at the first 6 lines of the dataset\n\nhead(mpg)\n\n# A tibble: 6 × 11\n  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class \n  <chr>        <chr> <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr> \n1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…\n2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…\n3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…\n4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…\n5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…\n6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…\n\n\ndispl: engine displacement in litres\nhwy: highway efficiency (miles per gallon)\n\n\n\nMore info about the structure of the datset\n\nstr(mpg)\n\ntibble [234 × 11] (S3: tbl_df/tbl/data.frame)\n $ manufacturer: chr [1:234] \"audi\" \"audi\" \"audi\" \"audi\" ...\n $ model       : chr [1:234] \"a4\" \"a4\" \"a4\" \"a4\" ...\n $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...\n $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...\n $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...\n $ trans       : chr [1:234] \"auto(l5)\" \"manual(m5)\" \"manual(m6)\" \"auto(av)\" ...\n $ drv         : chr [1:234] \"f\" \"f\" \"f\" \"f\" ...\n $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...\n $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...\n $ fl          : chr [1:234] \"p\" \"p\" \"p\" \"p\" ...\n $ class       : chr [1:234] \"compact\" \"compact\" \"compact\" \"compact\" ...\n\n\n\n\n\nAdditional functions, check it out by yourself!\n\nsummary(mpg)\n\n\nglimpse(mpg)\n\n\nview(mpg)\n\n\ndim(mpg)\n\n\n\n\nDifferent options to create plots in R\n\nbase R: ok, but sometimes well annoying\nplotly\nggplot2: versatile. elegant. consistent. fun. wohooo!\n\n\n\n\n\n\n\n\n\n\n\n\nFrom the ggplot2 manual\nggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.\nLets go step-by-step through creating a figure.\n\n\n\n\nmpg %>% \n  ggplot()\n\n\n\n\n\n\n\nWe want to plot hwy ~ displ\ndispl: engine volume hwy: fuel efficiency (miles per gallon)\n\nmpg %>% \n  ggplot(aes(x = displ, y = hwy))\n\n\n\n\n\n\n\n-> adding layers\n\nmpg %>% \n  ggplot(aes(x = displ, y = hwy)) + \n  geom_point()\n\n\n\n\n\n\n\n\nmpg %>% \n  ggplot(aes(x = displ, y = hwy, color = manufacturer)) + \n  geom_point()\n\n\n\n\n\n\n\n\nmpg %>% \n  ggplot(aes(x = displ, y = hwy, color = manufacturer)) + \n  geom_point() + \n  labs(title = \"Large displacement lowers fuel efficiency\", \n       x = \"Displacement\", y = \"Efficiency\", \n       caption = \"mgp data\")\n\n\n\n\n\n\n\n\np <- mpg %>% \n  ggplot(aes(x = displ, y = hwy, color = manufacturer)) + \n  geom_point() \nggsave(\"displ_vs_hwy.png\", plot = p)\n\n\n\nfree choice of data format (.pdf, .png)\nnumerous options to change size, scaling etc., see ?ggsave\nsaves directly into working directory, unless specified differently (e.g. in subfolder)\n\n\n\n\n\n–> check out Exercise Part 1.\n\n\n\nThe general template for a ggplot call is the following:\n\nggplot(data = <DATA>) + \n  <GEOM_FUNCTION>(aes(<MAPPINGS>))\n\nTo make a graph, we replace the bracketed sections with\n\na dataset\na geom function\na collection of mappings/aestethics\n\n\n\n\n\ncolor\nfill\nshape\nlinetype\nsize\nalpha\n\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, \n                           color = drv))\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, \n             shape = drv))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, \n                           color = drv))\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy), \n             color = \"red\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngeom_point(), geom_line(), geom_smooth(), … and tons of others!\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy))\nggplot(data = mpg) + \n  geom_smooth(aes(x = displ, y = hwy))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, color = drv)) +\n  geom_smooth(aes(x = displ, y = hwy))\n\n`geom_smooth()` using method = 'loess' and formula 'y ~ x'\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy)) +\n  geom_smooth(aes(x = displ, y = hwy))\n\n\nggplot(data = mpg, \n       aes(x = displ, y = hwy)) + \n  geom_point() + \n  geom_smooth()\n\n\n\n\n\n# V1\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, \n                 color = drv)) +\n  geom_smooth(aes(x = displ, y = hwy))\n# V2 \nggplot(data = mpg, \n       aes(x = displ, y = hwy, color = drv)) + \n  geom_point() + \n  geom_smooth()\n\n\n\n\n\n\n\n\n\n\n\n\nHow can we fix it?\n\n\n\n\n\n# V1\nggplot(data = mpg, \n       aes(x = displ, y = hwy, color = drv)) + \n  geom_point() + \n  geom_smooth()\n# V2\nggplot(data = mpg, \n       aes(x = displ, y = hwy)) + \n  geom_point(aes(color = drv)) + \n  geom_smooth()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDifferent ways to achieve the same.\n\n# V1\nggplot(data = mpg, \n       aes(x = displ, y = hwy)) + \n  geom_point(aes(color = drv)) + \n  geom_smooth()\n# V2\nggplot(data = mpg, \n       aes(x = displ, y = hwy, color = drv)) + \n  geom_point() + \n  geom_smooth(aes(group = 1))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhead(mpg)\n\n# A tibble: 6 × 11\n  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class \n  <chr>        <chr> <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr> \n1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…\n2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…\n3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…\n4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…\n5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…\n6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…\n\n\n\n\n\n\n# V1\nggplot(data = mpg, \n       aes(x = displ, y = hwy)) + \n  geom_point(aes(color = drv)) \n# V2\nggplot(data = mpg, \n       aes(x = displ, y = hwy, color = cty)) + \n  geom_point() \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngeom_smooth\ngeom_bar\ngeom_boxplot\ngeom_density\ngeom_violine\n\n\n\n\n\nggplot(data = mpg) + \n  geom_bar(aes(x = class))\n\n\n\n\nCount does not show up in the original data!\n-> calculated by algorithm, the so-called stat\n\n\n\n\n\n\n\n\nDifferent geom have different default stat.\ncheck ?geom_bar for details to each geom.\nSource: (R4DS)[https://r4ds.had.co.nz/]\n\n\n\n\nWe can override the default stat.\nExample: proportion instead of absolute count\nlook up the ‘computed variables’ in the help section\n\n\nggplot(data = mpg) + \n  geom_bar(aes(x = class, y = ..prop.., group = 1))\n\n\n\n\n\n\n\n\n# V1\nggplot(data = mpg) + \n  geom_boxplot(aes(x = class, y = hwy, \n                   fill = class))\n# V2\nggplot(data = mpg) + \n  geom_violin(aes(x = class, y = hwy, \n                  fill = class))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = mpg) + \n  geom_density(aes(x = hwy, fill = drv), alpha = 0.5)\n\n\n\n\n\n\n\nFacets are a convenient way to split a figure into multiple subpanels.\nfacet_wrap\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy)) + \n  facet_wrap(~ class, nrow = 2)\n\n\n\n\n\n\n\nfacet_grid: Split into columns and rows.\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy)) + \n  facet_grid(drv ~ cyl)\n\n\n\n\nVariables for facet_wrap and facet_grid should be discrete!\n\n\n\nMany ways to customize your figures\n\n\nchange general appearance: themes\nchange color, linetypes, shapes, etc.: scales\nadjust axis labels, …\n…\n\n\nGet inspired in the R-graph gallery\n\n\n\nggplot cheatsheet\n\n\n\n\n\n\n\n\nHands on\n\nhttp://www.cookbook-r.com/Graphs/\nhttps://ggplot2.tidyverse.org/\nStackoverflow\nTwitter: #rstats\nhttps://www.springer.com/de/book/9783319242750: great book, but not for free :(\n\nTheory\nH. Wickham (2010): A layered grammar of graphics. Journal of Computational and Graphical Statistics, 19(1), pp 3-28.\nhttps://vita.had.co.nz/papers/layered-grammar.html\nClaus Wilke: Fundamentals of Data Visualization\nhttps://clauswilke.com/dataviz/\n\n\n\nCheck out the second part of the exercise to get some more practice."
+  },
+  {
+    "objectID": "08_BaseR.html",
+    "href": "08_BaseR.html",
+    "title": "Data management and analysis in R",
+    "section": "",
+    "text": "Little excursion into some essential base-r functions…\n\n\nDefine a vector\n\na <- c(1,3,6,3)\nb <- c(\"e-scoot\", \"bike\", \"walk\", \"bounce\")\n\nAccess element from vector\n\na[3]\n\n[1] 6\n\nb[2]\n\n[1] \"bike\"\n\n\n\n\n\nAccess a column by name using $\n\nhead(mpg$hwy)\n\n[1] 29 29 31 30 26 26\n\n\nAccess a column by column number\n\n\n\n# note the difference\nhead(mpg[[9]]) \n\n[1] 29 29 31 30 26 26\n\nhead(mpg[,9])\n\n# A tibble: 6 × 1\n    hwy\n  <int>\n1    29\n2    29\n3    31\n4    30\n5    26\n6    26\n\n\n\n\n\n\n\n.. a row by number\n\nmpg[2,]\n\n# A tibble: 1 × 11\n  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class \n  <chr>        <chr> <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr> \n1 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…\n\n\n.. an element\nFirst element in brackets: row Second element in brackets: column\n\nmpg[2,9]\n\n# A tibble: 1 × 1\n    hwy\n  <int>\n1    29\n\n\n\n\n\n\ncolnames(mpg)\n\n [1] \"manufacturer\" \"model\"        \"displ\"        \"year\"         \"cyl\"         \n [6] \"trans\"        \"drv\"          \"cty\"          \"hwy\"          \"fl\"          \n[11] \"class\"       \n\n\nrename 3rd column (but you also know how to do this in tidyverse)\n\nmpg2 <- mpg\ncolnames(mpg2)[3] <- \"test\"\nhead(mpg2)\n\n# A tibble: 6 × 11\n  manufacturer model  test  year   cyl trans      drv     cty   hwy fl    class \n  <chr>        <chr> <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr> \n1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…\n2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…\n3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…\n4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…\n5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…\n6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…"
+  },
+  {
+    "objectID": "10_Factors.html",
+    "href": "10_Factors.html",
+    "title": "Data management and analysis in R",
+    "section": "",
+    "text": "What are factors?\n\nCategorical variables that have a fixed and known set of possible values.\nFactors have an order.\nBase-R functionality or library(forcats)"
+  },
+  {
+    "objectID": "10_Factors.html#factors-example",
+    "href": "10_Factors.html#factors-example",
+    "title": "Data management and analysis in R",
+    "section": "Factors Example",
+    "text": "Factors Example\n\nsummary(iris)\n\n  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   \n Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  \n 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  \n Median :5.800   Median :3.000   Median :4.350   Median :1.300  \n Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  \n 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  \n Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  \n       Species  \n setosa    :50  \n versicolor:50  \n virginica :50  \n                \n                \n                \n\nclass(iris$Species)\n\n[1] \"factor\""
+  },
+  {
+    "objectID": "10_Factors.html#factors-are-ordered",
+    "href": "10_Factors.html#factors-are-ordered",
+    "title": "Data management and analysis in R",
+    "section": "Factors are ordered",
+    "text": "Factors are ordered\n\nlevels(iris$Species)\n\n[1] \"setosa\"     \"versicolor\" \"virginica\" \n\niris %>% \n  ggplot(aes(x = Species, y = Sepal.Length)) + geom_jitter()"
+  },
+  {
+    "objectID": "10_Factors.html#factors-are-ordered-1",
+    "href": "10_Factors.html#factors-are-ordered-1",
+    "title": "Data management and analysis in R",
+    "section": "Factors are ordered",
+    "text": "Factors are ordered\n\n# change order of levels\niris$Species <- factor(iris$Species, levels = c(\"virginica\", \"versicolor\", \"setosa\"))\n\nlevels(iris$Species)\n\n[1] \"virginica\"  \"versicolor\" \"setosa\"    \n\niris %>% \n  ggplot(aes(x = Species, y = Sepal.Length)) + geom_jitter()"
   },
   {
     "objectID": "01_Introduction.html",
@@ -483,18 +714,11 @@
     "text": "Combine Pipe with ggplot()\nWe can even combine it with ggplot!\nNote: within ggplot you have to use +, before the ggplot-call you have to use %>%. Confusing, I know… ::: {.cell}\nmpg %>% \n  filter(class == \"2seater\" | class == \"compact\") %>%  \n  ggplot(aes(x = displ, y = hwy, color = class)) + \n  geom_point()\n\n\n\n:::"
   },
   {
-    "objectID": "03_Wrangling.html#time-to-try-it-yourself",
-    "href": "03_Wrangling.html#time-to-try-it-yourself",
-    "title": "Data management and analysis in R",
-    "section": "Time to try it yourself:",
-    "text": "Time to try it yourself:\n–> check out Exercise Part 1."
-  },
-  {
     "objectID": "03_Wrangling.html#summarize-data-summarise",
     "href": "03_Wrangling.html#summarize-data-summarise",
     "title": "Data management and analysis in R",
     "section": "Summarize data: summarise()",
-    "text": "Summarize data: summarise()\nCollapses data frame to a single row –>\n\nmpg %>% \n  summarise(hwy = mean(hwy))\n\n# A tibble: 1 × 1\n    hwy\n  <dbl>\n1  23.4"
+    "text": "Summarize data: summarise()\nCollapses data frame to a single row by using a supplied function.\nExample: What is the average hwy of all cars in the dataset?\n\nmpg %>% \n  summarise(hwy = mean(hwy))\n\n# A tibble: 1 × 1\n    hwy\n  <dbl>\n1  23.4"
   },
   {
     "objectID": "03_Wrangling.html#summarise",
@@ -508,14 +732,14 @@
     "href": "03_Wrangling.html#summarize-different-groups-group_by-summarise",
     "title": "Data management and analysis in R",
     "section": "Summarize different groups: group_by() & summarise()",
-    "text": "Summarize different groups: group_by() & summarise()\nQuestion: What is the average hwy for each car-class?\n\nby_class <- mpg %>% \n  group_by(class) %>% \n  summarise(hwy_avg = mean(hwy))\nby_class\n\n# A tibble: 7 × 2\n  class      hwy_avg\n  <chr>        <dbl>\n1 2seater       24.8\n2 compact       28.3\n3 midsize       27.3\n4 minivan       22.4\n5 pickup        16.9\n6 subcompact    28.1\n7 suv           18.1\n\n\n\n\nwe can summarise values for all kind of groups!"
+    "text": "Summarize different groups: group_by() & summarise()\nWe can define groups in the dataset for which we calculate summary values.\nExample: What is the average hwy for each car-class?\n\nby_class <- mpg %>% \n  group_by(class) %>% \n  summarise(hwy_avg = mean(hwy))\nby_class\n\n# A tibble: 7 × 2\n  class      hwy_avg\n  <chr>        <dbl>\n1 2seater       24.8\n2 compact       28.3\n3 midsize       27.3\n4 minivan       22.4\n5 pickup        16.9\n6 subcompact    28.1\n7 suv           18.1\n\n\n–> we can summarise values for all kind of groups!"
   },
   {
     "objectID": "03_Wrangling.html#group_by-with-several-grouping-variables",
     "href": "03_Wrangling.html#group_by-with-several-grouping-variables",
     "title": "Data management and analysis in R",
     "section": "Group_by() with several grouping variables",
-    "text": "Group_by() with several grouping variables\n\nby_class_drv <- mpg %>% \n  group_by(class, drv) %>% \n  summarise(avg_hwy = mean(hwy))\n\n`summarise()` has grouped output by 'class'. You can override using the\n`.groups` argument.\n\nby_class_drv\n\n# A tibble: 12 × 3\n# Groups:   class [7]\n   class      drv   avg_hwy\n   <chr>      <chr>   <dbl>\n 1 2seater    r        24.8\n 2 compact    4        25.8\n 3 compact    f        29.1\n 4 midsize    4        24  \n 5 midsize    f        27.6\n 6 minivan    f        22.4\n 7 pickup     4        16.9\n 8 subcompact 4        26  \n 9 subcompact f        30.5\n10 subcompact r        23.2\n11 suv        4        18.3\n12 suv        r        17.5\n\n\n\n\nImportant: before we can group this dataset again we need to ungroup() first!"
+    "text": "Group_by() with several grouping variables\nWe can also use several variables for the grouping.\n\nby_class_drv <- mpg %>% \n  group_by(class, drv) %>% \n  summarise(avg_hwy = mean(hwy))\n\n`summarise()` has grouped output by 'class'. You can override using the\n`.groups` argument.\n\nby_class_drv\n\n# A tibble: 12 × 3\n# Groups:   class [7]\n   class      drv   avg_hwy\n   <chr>      <chr>   <dbl>\n 1 2seater    r        24.8\n 2 compact    4        25.8\n 3 compact    f        29.1\n 4 midsize    4        24  \n 5 midsize    f        27.6\n 6 minivan    f        22.4\n 7 pickup     4        16.9\n 8 subcompact 4        26  \n 9 subcompact f        30.5\n10 subcompact r        23.2\n11 suv        4        18.3\n12 suv        r        17.5\n\n\n\n\nImportant: before we can group this dataset again we need to ungroup() first!"
   },
   {
     "objectID": "03_Wrangling.html#advanced-example-group_by-summarise",
@@ -539,25 +763,18 @@
     "text": "Group_by() & mutate()\nCalculations on group level without collapsing the dataset.\n\nmpg %>% \n  group_by(class) %>% \n  mutate(avg_hwy = mean(hwy, na.rm=TRUE)) %>% \n  select(1:2, hwy, avg_hwy)\n\nAdding missing grouping variables: `class`\n\n\n# A tibble: 234 × 5\n# Groups:   class [7]\n   class   manufacturer model        hwy avg_hwy\n   <chr>   <chr>        <chr>      <int>   <dbl>\n 1 compact audi         a4            29    28.3\n 2 compact audi         a4            29    28.3\n 3 compact audi         a4            31    28.3\n 4 compact audi         a4            30    28.3\n 5 compact audi         a4            26    28.3\n 6 compact audi         a4            26    28.3\n 7 compact audi         a4            27    28.3\n 8 compact audi         a4 quattro    26    28.3\n 9 compact audi         a4 quattro    25    28.3\n10 compact audi         a4 quattro    28    28.3\n# … with 224 more rows"
   },
   {
-    "objectID": "03_Wrangling.html#missing-values",
-    "href": "03_Wrangling.html#missing-values",
+    "objectID": "03_Wrangling.html#how-to-check-for-missing-values",
+    "href": "03_Wrangling.html#how-to-check-for-missing-values",
     "title": "Data management and analysis in R",
-    "section": "Missing Values",
-    "text": "Missing Values\n\nMissing values are observations with no information.\nthis is not the same as zero!\n\n\n(df <- data.frame(x = c(1,3,NA,7), \n                 y = c(2,4,2,9)))\n\n   x y\n1  1 2\n2  3 4\n3 NA 2\n4  7 9"
+    "section": "How to check for missing values",
+    "text": "How to check for missing values\nWe can check for missing values by is.na.\n\nis.na(df)\n\n         x     y\n[1,] FALSE FALSE\n[2,] FALSE FALSE\n[3,]  TRUE FALSE\n[4,] FALSE FALSE\n\nsummary(df)\n\n       x               y       \n Min.   :1.000   Min.   :2.00  \n 1st Qu.:2.000   1st Qu.:2.00  \n Median :3.000   Median :3.00  \n Mean   :3.667   Mean   :4.25  \n 3rd Qu.:5.000   3rd Qu.:5.25  \n Max.   :7.000   Max.   :9.00  \n NA's   :1"
   },
   {
-    "objectID": "03_Wrangling.html#missing-values-1",
-    "href": "03_Wrangling.html#missing-values-1",
+    "objectID": "03_Wrangling.html#calculations-with-missing-values",
+    "href": "03_Wrangling.html#calculations-with-missing-values",
     "title": "Data management and analysis in R",
-    "section": "Missing Values",
-    "text": "Missing Values\nWe can check for missing values by is.na.\n\nis.na(df)\n\n         x     y\n[1,] FALSE FALSE\n[2,] FALSE FALSE\n[3,]  TRUE FALSE\n[4,] FALSE FALSE\n\nsummary(df)\n\n       x               y       \n Min.   :1.000   Min.   :2.00  \n 1st Qu.:2.000   1st Qu.:2.00  \n Median :3.000   Median :3.00  \n Mean   :3.667   Mean   :4.25  \n 3rd Qu.:5.000   3rd Qu.:5.25  \n Max.   :7.000   Max.   :9.00  \n NA's   :1"
-  },
-  {
-    "objectID": "03_Wrangling.html#missing-values-2",
-    "href": "03_Wrangling.html#missing-values-2",
-    "title": "Data management and analysis in R",
-    "section": "Missing Values",
-    "text": "Missing Values\nWhat happens if we summarize columns with missing values?\n\n# summarise df\ndf %>% \n  summarise(x = mean(x), \n            y = mean(y))\n\n   x    y\n1 NA 4.25\n\n# Often better:\n# summarise omitting NA's\ndf %>% \n  summarise(x = mean(x, na.rm=TRUE), \n            y = mean(y, na.rm=TRUE))\n\n         x    y\n1 3.666667 4.25"
+    "section": "Calculations with missing values",
+    "text": "Calculations with missing values\nWhat happens if we summarize columns with missing values?\n\n# summarise df\ndf %>% \n  summarise(x = mean(x), \n            y = mean(y))\n\n   x    y\n1 NA 4.25\n\n# Often better:\n# summarise omitting NA's\ndf %>% \n  summarise(x = mean(x, na.rm=TRUE), \n            y = mean(y, na.rm=TRUE))\n\n         x    y\n1 3.666667 4.25"
   },
   {
     "objectID": "03_Wrangling.html#removing-nas-from-dataset",
@@ -567,78 +784,8 @@
     "text": "Removing NA’s from dataset\nYou can remove observations (rows) from your dataset that include NA’s in a specific column using\n\n# remove all rows that contain NA's in the column hwy\nmpg %>% \n  filter(!is.na(hwy))\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
   },
   {
-    "objectID": "03_Wrangling.html#data-wrangling-cheat-sheet",
-    "href": "03_Wrangling.html#data-wrangling-cheat-sheet",
-    "title": "Data management and analysis in R",
-    "section": "Data Wrangling Cheat Sheet",
-    "text": "Data Wrangling Cheat Sheet\nhttps://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf"
-  },
-  {
-    "objectID": "03_Wrangling.html#summing-up",
-    "href": "03_Wrangling.html#summing-up",
-    "title": "Data management and analysis in R",
-    "section": "Summing up",
-    "text": "Summing up"
-  },
-  {
-    "objectID": "03_Wrangling.html#exercise-part-2",
-    "href": "03_Wrangling.html#exercise-part-2",
-    "title": "Data management and analysis in R",
-    "section": "Exercise Part 2",
-    "text": "Exercise Part 2\nThings are coming together…"
-  },
-  {
     "objectID": "03_Wrangling.html#summing-up-1",
     "href": "03_Wrangling.html#summing-up-1",
-    "title": "Data management and analysis in R",
-    "section": "Summing up",
-    "text": "Summing up"
-  },
-  {
-    "objectID": "03_Wrangling.html#reading-text-files",
-    "href": "03_Wrangling.html#reading-text-files",
-    "title": "Data management and analysis in R",
-    "section": "Reading text files",
-    "text": "Reading text files\n\nmost general function is read.table() from base-R\n\n\n\n\n\n\n\ndata <- read.table(\"./datasets/bigmess.csv\", sep = \",\", dec = \".\",\n                   skip = 0, header = TRUE)\n\nhead(data)\n\n  dataset       x       y\n1    dino 55.3846 97.1795\n2    dino 51.5385 96.0256\n3    dino 46.1538 94.4872\n4    dino 42.8205 91.4103\n5    dino 40.7692 88.3333\n6    dino 38.7179 84.8718"
-  },
-  {
-    "objectID": "03_Wrangling.html#important-variables",
-    "href": "03_Wrangling.html#important-variables",
-    "title": "Data management and analysis in R",
-    "section": "Important variables",
-    "text": "Important variables\nFor the import we need to define a number of variables\n\ndata <- read.table(\"./datasets/bigmess.csv\", \n                   sep = \",\", \n                   dec = \".\",\n                   skip = 0,\n                   header = TRUE)\n\n\n\nHow are columns separated? sep = \",\" (“,”, “;”,…)\ndecimal points: dec = \".\" (“,”)\nskip: do not read the first n lines (often metadata)\nare column names included? header = TRUE/FALSE\n?read.table for help"
-  },
-  {
-    "objectID": "03_Wrangling.html#package-readr-simplifies-some-steps",
-    "href": "03_Wrangling.html#package-readr-simplifies-some-steps",
-    "title": "Data management and analysis in R",
-    "section": "Package readr simplifies some steps",
-    "text": "Package readr simplifies some steps\n\nread_delim() # any delimiter\nread_csv() # comma-separated\nread_csv2() # comma-separated, dec = \",\"\nread_tsv() # tab-delimited\n\n\n\nAdditional arguments:\n\n\n\n\ncol_names\nskip\nna: how are NA’ represented in the data\n\n\n\n\nAdvantage:\n\n\n\n\nfaster than base-R\nthey don’t change column formats (e.g. character to factors)"
-  },
-  {
-    "objectID": "03_Wrangling.html#relative-absolute-paths",
-    "href": "03_Wrangling.html#relative-absolute-paths",
-    "title": "Data management and analysis in R",
-    "section": "Relative & Absolute paths",
-    "text": "Relative & Absolute paths\nWhere is the data stored?\nTwo Options:\nEither: Define the full path\n\npath <- \"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology/Day_2/bigmess.csv\"\n\ndata <- read_csv(path, col_names = TRUE)\n\nBetter: relative path from working directory (project folder)\nProject folder:\n\"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology\nExpress relative to the project folder, start in project folder using “./”\n\ndata <- read_csv(\"./Day_2/bigmess.csv\", col_names = TRUE)"
-  },
-  {
-    "objectID": "03_Wrangling.html#reading-excel-files",
-    "href": "03_Wrangling.html#reading-excel-files",
-    "title": "Data management and analysis in R",
-    "section": "Reading excel-files",
-    "text": "Reading excel-files\nOften we get data in Excel, or we enter data using Excel.\nHow to get in R?\nOption 1:\n\n\nexport table as .csv or .txt from excel\n\n\n\n\nread as shown above\n\n\nOption 2:\n\n\npackage(readxl)"
-  },
-  {
-    "objectID": "03_Wrangling.html#libraryreadxl",
-    "href": "03_Wrangling.html#libraryreadxl",
-    "title": "Data management and analysis in R",
-    "section": "library(readxl)",
-    "text": "library(readxl)\n\nlibrary(readxl) \n\ndata <- read_excel(\"./datasets/bigmess.xlsx\", \n                   col_names = TRUE, \n                   sheet = \"data\") # specify the worksheet, either by number or name, default is 1"
-  },
-  {
-    "objectID": "03_Wrangling.html#summing-up-2",
-    "href": "03_Wrangling.html#summing-up-2",
     "title": "Data management and analysis in R",
     "section": "Summing up",
     "text": "Summing up"
@@ -648,56 +795,70 @@
     "href": "04_Reading.html",
     "title": "Data management and analysis in R",
     "section": "",
-    "text": "Data wrangling\n\n\nReading data is the first step of data wrangling and of course essential prior to any data analysis. R provides multiple ways to read data of various formats. In this course, we focus on 2-dimensional, rectangluar data, i.e. simple tables, which is stored as text files or as excel-files."
+    "text": "DS workflow\n\n\n\n\n\n\n\npackages\n\n\n\n\n\nReading data is the first step of data wrangling and of course essential prior to any data analysis. R provides multiple ways to read data of various formats. In this course, we focus on 2-dimensional, rectangluar data, i.e. simple tables, which is stored as text files or as excel-files.\n\n\nThe most general function to read rectangular data into R is read.table()included in base-R.\n\n\n\n\n\n\ndata <- read.table(\"./datasets/bigmess.csv\", sep = \",\", dec = \".\",\n                   skip = 0, header = TRUE)\n\nhead(data)\n\n  dataset       x       y\n1    dino 55.3846 97.1795\n2    dino 51.5385 96.0256\n3    dino 46.1538 94.4872\n4    dino 42.8205 91.4103\n5    dino 40.7692 88.3333\n6    dino 38.7179 84.8718\n\n\n\n\n\nFor the import we need to define a number of variables\n\ndata <- read.table(\"./datasets/bigmess.csv\", \n                   sep = \",\", \n                   dec = \".\",\n                   skip = 0,\n                   header = TRUE, \n                   comment.char = \"#\")\n\n\nHow are columns separated? sep = \",\" (“,”, “;”,…)\ndecimal points: dec = \".\" (“,”)\nskip: do not read the first n lines (often metadata)\nare column names included? header = TRUE/FALSE\ncomment.char: character that defines comments in the (ignored for reading)\n?read.table for help\n\n\n\n\nEven though base R provides all the essential functionality for reading text files, the tidyverse offers two interesting alternatives. Readris a package for reading text files, is fast, and provides some interesting extras for working within the tidyverse. Readxlis great to read excel files.\n\n\n\nHex stickers of readr and readxl\n\n\n\n\n\nThis package is part of the core suite of the tidyverse, that means in order to use it is not necessary to specifically load the package if you have loaded library(tidyverse).\n\n# make sure, tidyverse is installed and loaded\nread_delim() # any delimiter\nread_csv() # comma-separated\nread_csv2() # comma-separated, dec = \",\"\nread_tsv() # tab-delimited\n\nAdditional arguments: - col_names - skip - na: how are NA’ represented in the data\nAdvantage: - faster than base-R - they don’t change column formats (e.g. character to factors) - recognizes date-time columns\n\n\n\nWhere is the data stored?\nTwo Options:\n\nDefine the absolute path\n\n\npath <- \"C:/Users/Johnny/Teaching/R4Eco-course/datasets/bigmess.csv\"\n\ndata <- read_csv(path, col_names = TRUE)\n\n\nRECOMMENDED: relative path from working directory (project folder)\n\nProject folder:\n\"C:/Users/Johnny/Teaching/R4Eco-course/\"\nExpress relative to the project folder, start in project folder using “./”\n\ndata <- read_csv(\"./Day_2/bigmess.csv\", col_names = TRUE)\n\nYou can check your working directory using the function getwd(). If you work consistently with an R-project, you should not have any trouble. In case things are off, you can also change your working directory using setwd().\n\n\n\nOften we get data in Excel, or we enter data using Excel. The latter is the only thing that you should ever consider using Excel for… Anyway, how can we get that data into R?\n\nOption 1:\n\n\nexport table as .csv or .txt from excel\nread as shown above\n\n\nOption 2:\n\n\npackage(readxl)\n\n\n\n\nThe R-package to read xls files is called readxl. It is not part of the core-tidyverse, therefore, you need to install and load it manually. You can install it by executing install.packages(\"readxl\") in your console.\n\nlibrary(readxl) # load package\ndata <- read_excel(\"./datasets/bigmess.xlsx\", \n                   col_names = TRUE, \n                   sheet = \"data\") # specify the worksheet, either by number or name, default is 1\n\nThe help (?read_excel) and the online documentation are of great help for all the details."
   },
   {
-    "objectID": "04_Reading.html#reading-text-files",
-    "href": "04_Reading.html#reading-text-files",
+    "objectID": "07_DatesTimes.html#dates-times-2",
+    "href": "07_DatesTimes.html#dates-times-2",
     "title": "Data management and analysis in R",
-    "section": "Reading text files",
-    "text": "Reading text files\n\nmost general function is read.table() from base-R\n\n\n\n\n\n\n\ndata <- read.table(\"./datasets/bigmess.csv\", sep = \",\", dec = \".\",\n                   skip = 0, header = TRUE)\n\nhead(data)\n\n  dataset       x       y\n1    dino 55.3846 97.1795\n2    dino 51.5385 96.0256\n3    dino 46.1538 94.4872\n4    dino 42.8205 91.4103\n5    dino 40.7692 88.3333\n6    dino 38.7179 84.8718"
+    "section": "Dates & Times",
+    "text": "Dates & Times\nTimes are difficult.\nTons of formats, e.g. \n\n\"2017-01-31 6 p.m.\"\n\"January 31st, 2017, 18:00\"\n\"31-Jan-2017 18-00\"\n# and many more...\n\nFurther complications…\n\n\ntime zones\ndaylight saving times\nleap years\nused to be very complicated in base-R\nThe package lubridate comes in for the rescue…"
   },
   {
-    "objectID": "04_Reading.html#important-variables",
-    "href": "04_Reading.html#important-variables",
+    "objectID": "07_DatesTimes.html#dates-times-3",
+    "href": "07_DatesTimes.html#dates-times-3",
     "title": "Data management and analysis in R",
-    "section": "Important variables",
-    "text": "Important variables\nFor the import we need to define a number of variables\n\ndata <- read.table(\"./datasets/bigmess.csv\", \n                   sep = \",\", \n                   dec = \".\",\n                   skip = 0,\n                   header = TRUE)\n\n\n\nHow are columns separated? sep = \",\" (“,”, “;”,…)\ndecimal points: dec = \".\" (“,”)\nskip: do not read the first n lines (often metadata)\nare column names included? header = TRUE/FALSE\n?read.table for help"
+    "section": "Dates & Times",
+    "text": "Dates & Times\n\ntypically stored in textfiles as strings\nwe can transfrom them to date/time objects\nR distinguishes three classes\n\n\n\ndate: prints as <date>\ntime: prints as <time>\ndate-time: contains date + time, also called POSIXct\n\n\n\n\nuse the simplest possible class suitable for you"
   },
   {
-    "objectID": "04_Reading.html#package-readr-simplifies-some-steps",
-    "href": "04_Reading.html#package-readr-simplifies-some-steps",
+    "objectID": "07_DatesTimes.html#dates-times-from-strings",
+    "href": "07_DatesTimes.html#dates-times-from-strings",
     "title": "Data management and analysis in R",
-    "section": "Package readr simplifies some steps",
-    "text": "Package readr simplifies some steps\n\nread_delim() # any delimiter\nread_csv() # comma-separated\nread_csv2() # comma-separated, dec = \",\"\nread_tsv() # tab-delimited\n\n\n\nAdditional arguments:\n\n\n\n\ncol_names\nskip\nna: how are NA’ represented in the data\n\n\n\n\nAdvantage:\n\n\n\n\nfaster than base-R\nthey don’t change column formats (e.g. character to factors)"
+    "section": "Dates & Times from strings",
+    "text": "Dates & Times from strings\n\na <-\"2017-01-31 20:11:59\"\n# transform a into date-time object\n\n# Base-R\na1 <- as.POSIXct(strptime(a, format = \"%Y-%m-%d %H:%M:%S\"))\na1\n\n[1] \"2017-01-31 20:11:59 CET\"\n\n# Lubridate\nlibrary(lubridate) # not part of core-tidyverse, install and load separately\na2 <- ymd_hms(a)\na2\n\n[1] \"2017-01-31 20:11:59 UTC\"\n\n# watch out for timezones!"
   },
   {
-    "objectID": "04_Reading.html#relative-absolute-paths",
-    "href": "04_Reading.html#relative-absolute-paths",
+    "objectID": "07_DatesTimes.html#dates-times-from-strings-1",
+    "href": "07_DatesTimes.html#dates-times-from-strings-1",
     "title": "Data management and analysis in R",
-    "section": "Relative & Absolute paths",
-    "text": "Relative & Absolute paths\nWhere is the data stored?\nTwo Options:\nEither: Define the full path\n\npath <- \"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology/Day_2/bigmess.csv\"\n\ndata <- read_csv(path, col_names = TRUE)\n\nBetter: relative path from working directory (project folder)\nProject folder:\n\"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology\nExpress relative to the project folder, start in project folder using “./”\n\ndata <- read_csv(\"./Day_2/bigmess.csv\", col_names = TRUE)"
+    "section": "Dates & Times from strings",
+    "text": "Dates & Times from strings\n\nymd(\"2017-01-31\")\n\n[1] \"2017-01-31\"\n\nymd(20170131)\n\n[1] \"2017-01-31\"\n\nmdy(\"January 31st, 2017\")\n\n[1] \"2017-01-31\"\n\ndmy(\"31-Jan-2017\")\n\n[1] \"2017-01-31\""
   },
   {
-    "objectID": "04_Reading.html#reading-excel-files",
-    "href": "04_Reading.html#reading-excel-files",
+    "objectID": "07_DatesTimes.html#dates-times-from-strings-2",
+    "href": "07_DatesTimes.html#dates-times-from-strings-2",
     "title": "Data management and analysis in R",
-    "section": "Reading excel-files",
-    "text": "Reading excel-files\nOften we get data in Excel, or we enter data using Excel.\nHow to get in R?\nOption 1:\n\n\nexport table as .csv or .txt from excel\n\n\n\n\nread as shown above\n\n\nOption 2:\n\n\npackage(readxl)"
+    "section": "Dates & Times from strings",
+    "text": "Dates & Times from strings\nIf not timezone is provided, lubridate assumes time is in ‘UTC’.\n\nymd_hms(\"2017-01-31 20:11:59\")\n\n[1] \"2017-01-31 20:11:59 UTC\"\n\nmdy_hm(\"01/31/2017 08:01\")\n\n[1] \"2017-01-31 08:01:00 UTC\"\n\n# define timezone\nymd_hms(\"2017-01-31 20:11:59\", tz = \"Europe/Berlin\")\n\n[1] \"2017-01-31 20:11:59 CET\""
   },
   {
-    "objectID": "04_Reading.html#libraryreadxl",
-    "href": "04_Reading.html#libraryreadxl",
+    "objectID": "07_DatesTimes.html#merge-from-individual-components",
+    "href": "07_DatesTimes.html#merge-from-individual-components",
     "title": "Data management and analysis in R",
-    "section": "library(readxl)",
-    "text": "library(readxl)\n\nlibrary(readxl) \n\ndata <- read_excel(\"./datasets/bigmess.xlsx\", \n                   col_names = TRUE, \n                   sheet = \"data\") # specify the worksheet, either by number or name, default is 1"
+    "section": "Merge from individual components",
+    "text": "Merge from individual components\n\nflights %>% \n  select(year, month, day, hour, minute) %>% \n  head()\n\n# A tibble: 6 × 5\n   year month   day  hour minute\n  <int> <int> <int> <dbl>  <dbl>\n1  2013     1     1     5     15\n2  2013     1     1     5     29\n3  2013     1     1     5     40\n4  2013     1     1     5     45\n5  2013     1     1     6      0\n6  2013     1     1     5     58\n\nflights %>% \n  select(year, month, day, hour, minute) %>% \n  mutate(departure = make_datetime(year, month, day, hour, minute))\n\n# A tibble: 336,776 × 6\n    year month   day  hour minute departure          \n   <int> <int> <int> <dbl>  <dbl> <dttm>             \n 1  2013     1     1     5     15 2013-01-01 05:15:00\n 2  2013     1     1     5     29 2013-01-01 05:29:00\n 3  2013     1     1     5     40 2013-01-01 05:40:00\n 4  2013     1     1     5     45 2013-01-01 05:45:00\n 5  2013     1     1     6      0 2013-01-01 06:00:00\n 6  2013     1     1     5     58 2013-01-01 05:58:00\n 7  2013     1     1     6      0 2013-01-01 06:00:00\n 8  2013     1     1     6      0 2013-01-01 06:00:00\n 9  2013     1     1     6      0 2013-01-01 06:00:00\n10  2013     1     1     6      0 2013-01-01 06:00:00\n# … with 336,766 more rows"
   },
   {
-    "objectID": "04_Reading.html#summing-up",
-    "href": "04_Reading.html#summing-up",
+    "objectID": "07_DatesTimes.html#access-components",
+    "href": "07_DatesTimes.html#access-components",
     "title": "Data management and analysis in R",
-    "section": "Summing up",
-    "text": "Summing up"
+    "section": "Access components",
+    "text": "Access components\nAccessor-functions: year(), month(), etc…\n\na <- ymd_hms(\"2017-01-31 20:11:59\")\n\nyear(a)\n\n[1] 2017\n\nyday(a) # julian day\n\n[1] 31\n\nwday(a, label = TRUE) # weekday\n\n[1] Tue\nLevels: Sun < Mon < Tue < Wed < Thu < Fri < Sat"
+  },
+  {
+    "objectID": "07_DatesTimes.html#round-datestimes",
+    "href": "07_DatesTimes.html#round-datestimes",
+    "title": "Data management and analysis in R",
+    "section": "round dates/times",
+    "text": "round dates/times\nRound to a nearby unit of time: floor_date(), round_date(), ceiling_date()\n\nyou can specify units\nmultiple of units possible, e.g. round to 15 minutes (useful for time-series)\n\n\na <- ymd_hms(\"2017-01-31 20:11:59\")\n\nround_date(a, unit = \"hour\")\n\n[1] \"2017-01-31 20:00:00 UTC\"\n\nceiling_date(a, unit = \"15 minute\")\n\n[1] \"2017-01-31 20:15:00 UTC\""
+  },
+  {
+    "objectID": "07_DatesTimes.html#time-zones",
+    "href": "07_DatesTimes.html#time-zones",
+    "title": "Data management and analysis in R",
+    "section": "Time Zones",
+    "text": "Time Zones\nRecommendation: always define the timezone you are working in\n\na <- ymd_hms(\"2017-01-31 20:11:59\", tz = \"Europe/Berlin\")\na\n\n[1] \"2017-01-31 20:11:59 CET\"\n\n\nchange Timezones with with_tz()\nList of time zones in OlsonNames(): typically defined as Continent/City\n\nb <- with_tz(a, tzone = \"America/Phoenix\")\nb\n\n[1] \"2017-01-31 12:11:59 MST\""
   },
   {
     "objectID": "03_Exercise.html",

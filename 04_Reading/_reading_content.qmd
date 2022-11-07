@@ -14,22 +14,12 @@ kable_pretty <- function(data) {
 ```
 
 
-
-# Reading Data 
-
-```{r echo = FALSE, out.width = "25%"}
-include_graphics("./figures/readr_readxl.png")
-```
-
-
-
 ## Reading text files
 
-- most general function is read.table() from base-R
-
+The most general function to read rectangular data into R is `read.table()`included in base-R. 
 
 ```{r echo = FALSE, out.width = "20%"}
-include_graphics("./figures/read_data_example.png")
+include_graphics("./figures/read_data_example.PNG")
 ```
 
 
@@ -51,21 +41,34 @@ data <- read.table("./datasets/bigmess.csv",
                    sep = ",", 
                    dec = ".",
                    skip = 0,
-                   header = TRUE)
+                   header = TRUE, 
+                   comment.char = "#")
 ```
 
->- How are columns separated? `sep = ","` (",", ";",...)
->- decimal points: `dec = "."` (",")
->- skip: do not read the first n lines (often metadata)
->- are column names included? header = TRUE/FALSE
->- ?read.table for help
+- How are columns separated? `sep = ","` (",", ";",...)
+- decimal points: `dec = "."` (",")
+- skip: do not read the first n lines (often metadata)
+- are column names included? header = TRUE/FALSE
+- `comment.char`: character that defines comments in the (ignored for reading)
+- ?read.table for help
+
+
+## `tidyverse` packages for reading data 
+
+Even though base R provides all the essential functionality for reading text files, the tidyverse offers two interesting alternatives. `Readr`is a package for reading text files, is fast, and provides some interesting extras for working within the tidyverse. `Readxl`is great to read excel files.  
+
+
+![Hex stickers of `readr` and `readxl`](./figures/readr_readxl.png){width=20%}
+
+
 
 
 ## Package readr simplifies some steps
 
+This package is part of the core suite of the `tidyverse`, that means in order to use it is not necessary to specifically load the package if you have loaded `library(tidyverse)`. 
 
 ```{r, eval = FALSE}
-
+# make sure, tidyverse is installed and loaded
 read_delim() # any delimiter
 read_csv() # comma-separated
 read_csv2() # comma-separated, dec = ","
@@ -73,43 +76,40 @@ read_tsv() # tab-delimited
 
 ```
 
->- __Additional arguments:__
-
->- col_names
->- skip
->- na: how are NA' represented in the data 
-
+__Additional arguments:__
+- col_names
+- skip
+- na: how are NA' represented in the data 
 
 
->- __Advantage:__
 
->- faster than base-R
->- they don't change column formats (e.g. character to factors)
+__Advantage:__
+- faster than base-R
+- they don't change column formats (e.g. character to factors)
+- recognizes date-time columns
 
 
-## Relative & Absolute paths
+
+## Define the file location 
 
 Where is the data stored?
 
 Two Options: 
 
-Either: Define the full path
+(A) Define the **absolute path**
 
 ```{r, eval = FALSE}
-path <- "C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology/Day_2/bigmess.csv"
+path <- "C:/Users/Johnny/Teaching/R4Eco-course/datasets/bigmess.csv"
 
 data <- read_csv(path, col_names = TRUE)
 
 ```
 
-
-
-
-__Better__: relative path from working directory (project folder)
+(B) **RECOMMENDED**: relative path from working directory (project folder)
 
 Project folder: 
 
-`"C:/Users/c7701081/Dropbox/Teaching/Data-Management_Science/DataManagement/DS4Ecology`
+`"C:/Users/Johnny/Teaching/R4Eco-course/"`
 
 Express relative to the project folder, start in project folder using "./"
 
@@ -119,44 +119,32 @@ data <- read_csv("./Day_2/bigmess.csv", col_names = TRUE)
 
 ```
 
+You can check your working directory using the function `getwd()`. If you work consistently with an R-project, you should not have any trouble. In case things are off, you can also change your working directory using `setwd()`.
+
 
 ## Reading excel-files
 
-Often we get data in Excel, or we enter data using Excel. 
+Often we get data in Excel, or we enter data using Excel. The latter is the only thing that you should ever consider using Excel for... Anyway, how can we get that data into R?
 
-How to get in R?
+(A) Option 1:
 
-Option 1:
+- export table as .csv or .txt from excel
+- read as shown above
 
->- export table as .csv or .txt from excel
+(B) Option 2: 
 
->- read as shown above
-
-Option 2: 
-
->- package(readxl)
+- `package(readxl)`
 
 
-## library(readxl)
+## The package`readxl`
 
+The R-package to read xls files is called `readxl`. It is not part of the core-tidyverse, therefore, you need to install and load it manually. You can install it by executing `install.packages("readxl")` in your console. 
 
 ```{r, eval = FALSE}
-library(readxl) 
-
+library(readxl) # load package
 data <- read_excel("./datasets/bigmess.xlsx", 
                    col_names = TRUE, 
                    sheet = "data") # specify the worksheet, either by number or name, default is 1
 ```
 
-
-## Summing up
-
-```{r echo = FALSE, out.width = "60%"}
-include_graphics("./figures/Data_wrangling.png")
-```
-
-```{r echo = FALSE, out.width = "35%"}
-include_graphics("./figures/tidyverse_2.png")
-```
-
-
+The help (`?read_excel`) and the [online documentation](https://readxl.tidyverse.org/) are of great help for all the details. 
