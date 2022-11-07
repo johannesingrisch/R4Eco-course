@@ -1,4 +1,6 @@
-# The art of looking at data: Data Exploration & Visualization
+# Data Exploration & Visualization
+
+> The art of looking at data
 
 Efficient data visualization is key in data science. Not only will it help you to understand your own data, but also is it a primary mean to communicate results to others and make complex results easiert to understand. 
 

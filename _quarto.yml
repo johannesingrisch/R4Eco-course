@@ -20,7 +20,7 @@ website:
         file: Organisation.qmd
       - text: "Getting started with R"
         file: 01_Introduction.qmd
-      - section: "Data exploration and visualisation"
+      - section: "Data visualisation"
         text: "Visualisation"
         file: 02_Visualisation.qmd
         contents: 
@@ -28,6 +28,11 @@ website:
             text: "Exercise"
       - text: "Data Wrangling"
         file: 03_Wrangling.qmd
+        contents:
+          - href: 03_Exercise.qmd
+            text: "Exercise"
+      - text: "Reading data"
+        file: 04_Reading.qmd
 #      - section: "Data Manipulation"
 #        contents: 
 #          - href: 03_xxxx.qmd
