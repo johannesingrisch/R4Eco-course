@@ -1,0 +1,15 @@
+## Acknowledgments
+
+This course would not have been possible without all the fantastic content that is made available by the R community.
+
+Find below some highly recommended websites and books for further reading. 
+
+## Resources
+
+[**R for data science**](https://r4ds.had.co.nz/#welcome) by Hadley Wickham and Garrett Grolemund. Fantastic introduction into R and the tidyverse, from the first steps to elegant visualization, modelling, and communication tools. 
+
+[**ggplot2: Elegant graphics for Data Analysis**](https://ggplot2-book.org/) by Hadley Wickham. Great introduction into data visualization with ggplot2
+
+[**Fundamentals of Data Visualization**](https://clauswilke.com/dataviz/) by Claus Wilke. The title says it all.
+
+[**Quarto**](https://quarto.org/) This website and the lecture slides were created using Quarto, the website is a perfect place to get started. 

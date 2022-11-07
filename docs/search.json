@@ -319,7 +319,7 @@
     "href": "index.html",
     "title": "Data management and analysis in R",
     "section": "",
-    "text": "Introduction into data analysis and management in R\nWelcome to the course website of “Data management and analysis in environmental sciences”.\nThe aim of this course is to provide a basic introduction to analysing and visualizing data with R. In this course, we focus on tools provided by the so-called tidyverse, a collection of R-packages that allows for quick, efficient and readable data analysis.\nThis site contain slides and additional study material provided by Johannes Ingrisch, University of Innsbruck."
+    "text": "Introduction to data analysis and management in R\nWelcome to the course website of “Data management and analysis in environmental sciences”.\nThe aim of this course is to provide a basic introduction to analysing and visualizing data with R. In this course, we focus on tools provided by the so-called tidyverse, a collection of R-packages that allows for quick, efficient and readable data analysis.\nThis site contain slides and additional study material provided by Johannes Ingrisch, University of Innsbruck."
   },
   {
     "objectID": "figures/02_Visualisation.html#data-exploration",

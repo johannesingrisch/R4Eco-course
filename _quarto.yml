@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Data management and analysis in R"
+#  title: ""
   repo-url: https://github.com/johannesingrisch/R4Eco-course
   repo-actions: [issue]
   search: 
@@ -11,16 +12,18 @@ website:
     type: textbox
   navbar:
     background: "#4C9FB5"
+#    background: "light"
     logo: discdown_logo.png
     right: 
-      - text: "Home"
-        file: index.qmd
+#      - text: "Home"
+#        file: index.qmd
       - text: "Resources"
         file: 00_Resources.qmd
 
   sidebar:
     style: "docked"
-    background: "light"
+#    logo: discdown_logo.png
+#    background: "#4C9FB5"
     contents:
       - text: "Home"
         file: index.qmd
