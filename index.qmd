@@ -1,4 +1,4 @@
-# Data management and analysis in environmental sciences {.unnumbered}
+# Introduction into data analysis and management in R {.unnumbered}
 
 Welcome to the course website of "Data management and analysis in environmental sciences". 
 
