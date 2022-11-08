@@ -48,8 +48,8 @@ Together we
 
 Important in this course (and for life):
 
--      tidyverse
-- readxl
+- `tidyverse`
+- `readxl`
 
 Can be installed via 
 
@@ -68,7 +68,9 @@ Task: install tidyverse
 
 ## Base-R and the tidyverse (I)
 
+::: {.content-visible when-profile="website"}
 Base-R means the 'original' language of R. Typically, this contains a lot of `$` square brackets `[]`. Certainly important to know, but sometimes a bit hard to follow, especially when getting started with R...
+:::
 
 Example: 
 
@@ -82,8 +84,12 @@ CO2_ML[CO2_ML==-999.999] = NA
 
 ## Base-R and the tidyverse (II)
 
+::: {.content-visible when-profile="website"}
 In this course we will also learn a lot of 'tidyverse' style, which is simpler to read and write. 
 Typical are functions with useful names and the so-called pipe `%>%`. We will get to know all this in the course. 
+:::
+
+Doing the same 'tidyverse-style'
 
 ```{r, eval = FALSE}
 # tidyverse
@@ -94,13 +100,10 @@ CO2_ML %>%
   
 ```
 
->- complements and supplements base-R code
->- does not replace base-R
->- increases efficiency
->- tons of useful functions
-
-
-
+- complements and supplements base-R code
+- does not replace base-R
+- increases efficiency
+- tons of useful functions
 
 
 

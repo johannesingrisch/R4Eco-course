@@ -29,7 +29,7 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 > - Useful stuff along the way, e.g. handling dates & times
 
 
-::: {.content-visible when-format="revealjs"}
+::: {.content-visible when-profile="slides"}
 
 ## Today's outline
 
@@ -40,7 +40,7 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 
 :::
 
-::: {.content-visible when-format="revealjs"}
+::: {.content-visible when-profile="slides"}
 
 ## Timetable 
 
@@ -57,7 +57,7 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 
 :::
 
-::: {.content-visible when-format="revealjs"}
+::: {.content-visible when-profile="slides"}
 
 ## Course structure
 
@@ -69,7 +69,7 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 
 :::
 
-::: {.content-visible when-format="revealjs"}
+::: {.content-visible when-profile="slides"}
 
 
 ## Assessment
@@ -82,7 +82,7 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 
 :::
 
-::: {.content-visible when-format="revealjs"}
+::: {.content-visible when-profile="slides"}
 
 
 ## Round of Introduction

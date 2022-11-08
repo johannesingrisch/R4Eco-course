@@ -1,3 +1,17 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+library(tidyverse)
+library(knitr)
+options("kableExtra.html.bsTable" = T)
+kable_pretty <- function(data) {
+  kable(data, "html") %>%
+    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
+}
+```
+
+
+
 # Data Exploration & Visualization
 
 > The art of looking at data
@@ -11,5 +25,6 @@ In this course we will focus on visualizing data with a R-package called 'ggplot
 Before creating the first plots, we need a first idea of the struture and content of the dataset we are interested in. For this, R provides some nice functions. 
 
 To get started we use a dataset that is already included in R called `mpg`. 
+
 
 {{< include 02_Visualisation/_visualisation_content.qmd >}}
