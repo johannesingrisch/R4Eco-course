@@ -1,0 +1,67 @@
+project: 
+  type: website
+  output-dir: docs
+
+
+website:
+  title: "Data management and analysis in R"
+  repo-url: https://github.com/johannesingrisch/R4Eco-course
+  repo-actions: [issue]
+  search: 
+    location: sidebar
+    type: textbox
+  navbar:
+    background: "#4C9FB5"
+    logo: discdown_logo.png
+    right: 
+      - text: "Resources"
+        file: 00_Resources.qmd
+
+  sidebar:
+    style: "docked"
+    contents:
+      - text: "Home"
+        file: index.qmd
+      - text: "Course introduction"
+        file: 00_Organisation.qmd
+      - text: "Getting started with R"
+        file: 01_Introduction.qmd
+      - section: "Data visualisation"
+        text: "Visualisation"
+        file: 02_Visualisation.qmd
+        contents: 
+          - href: 02_Exercise.qmd
+            text: "Exercise"
+      - text: "Data Wrangling"
+        file: 03_Wrangling.qmd
+        contents:
+          - href: 03_Exercise.qmd
+            text: "Exercise"
+      - text: "Reading data"
+        file: 04_Reading.qmd
+      - text: "Tidy data"
+        file: 05_TidyData.qmd
+      - text: "Joining data"
+        file: 06_MergeData.qmd
+#      - section: "Data types"
+#        contents: 
+#          - href: 09_DataTypes.qmd
+#            text: "Data types and classes"
+#          - href: 10_Factors.qmd
+#            text: "Factors"
+#          - href: 07_DatesTimes.qmd
+#            text: "Dates & Times"
+#      - text: "Base-R"
+#        file: "08_BaseR.qmd"
+
+  page-footer: 
+    center: "Copyright 2022, Johannes Ingrisch" 
+    background: "light"
+
+format:
+  html:
+    theme: cosmo
+    #css: styles.css
+    toc: true
+    code-copy: true
+    linkcolor: "#4C9FB5"
