@@ -6,10 +6,11 @@ author: "Jesse Radolinski, Johannes Ingrisch"
 institute: "Department of Ecology, University of Innsbruck"
 format:
   revealjs: 
-    theme: moon
+    theme: default
     slide-number: true
     logo: "./figures/logo_uibk.jpg"
     smaller: true
 ---
 
-{{< include 01_Intro/_intro_content.qmd >}}
+
+{{< include 00_Organisation.qmd >}}

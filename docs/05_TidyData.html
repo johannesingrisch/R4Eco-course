@@ -145,10 +145,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
- <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./00_Resources.html">
  <span class="menu-text">Resources</span></a>
   </li>  
@@ -183,87 +179,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Organisation.html" class="sidebar-item-text sidebar-link">Course introduction</a>
+  <a href="./00_Organisation.html" class="sidebar-item-text sidebar-link">Course introduction</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_Introduction.html" class="sidebar-item-text sidebar-link">Getting started with R</a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./02_Visualisation.html" class="sidebar-item-text sidebar-link">Data visualisation</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_Exercise.html" class="sidebar-item-text sidebar-link">Exercise</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./03_Wrangling.html" class="sidebar-item-text sidebar-link">Data Wrangling</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./03_Exercise.html" class="sidebar-item-text sidebar-link">Exercise</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./04_Reading.html" class="sidebar-item-text sidebar-link">Reading data</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05_TidyData.html" class="sidebar-item-text sidebar-link active">Tidy data</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06_MergeData.html" class="sidebar-item-text sidebar-link">Joining data</a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Data types</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09_DataTypes.html" class="sidebar-item-text sidebar-link">Data types and classes</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10_Factors.html" class="sidebar-item-text sidebar-link">Factors</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07_DatesTimes.html" class="sidebar-item-text sidebar-link">Dates &amp; Times</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08_BaseR.html" class="sidebar-item-text sidebar-link">Base-R</a>
   </div>
 </li>
     </ul>
@@ -275,8 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#from-messy-data-to-tidy-data" id="toc-from-messy-data-to-tidy-data" class="nav-link active" data-scroll-target="#from-messy-data-to-tidy-data">From Messy Data To Tidy Data</a></li>
-  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy Data</a>
+  <li><a href="#from-messy-data-to-tidy-data" id="toc-from-messy-data-to-tidy-data" class="nav-link active" data-scroll-target="#from-messy-data-to-tidy-data">From Messy Data To Tidy Data</a>
   <ul class="collapse">
   <li><a href="#what-is-tidy-data" id="toc-what-is-tidy-data" class="nav-link" data-scroll-target="#what-is-tidy-data">What is ‘tidy data’?</a></li>
   <li><a href="#same-data-can-be-stored-in-multiple-ways" id="toc-same-data-can-be-stored-in-multiple-ways" class="nav-link" data-scroll-target="#same-data-can-be-stored-in-multiple-ways">Same data can be stored in multiple ways</a></li>
@@ -315,11 +235,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="from-messy-data-to-tidy-data" class="level1">
 <h1>From Messy Data To Tidy Data</h1>
-</section>
-<section id="tidy-data" class="level1">
-<h1>Tidy Data</h1>
+<blockquote class="blockquote">
 <p>“Happy families are all alike; every unhappy family is unhappy in its own way.” –– Leo Tolstoy</p>
+</blockquote>
+<blockquote class="blockquote">
 <p>“Tidy datasets are all alike, but every messy dataset is messy in its own way.” –– Hadley Wickham</p>
+</blockquote>
 <section id="what-is-tidy-data" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-tidy-data">What is ‘tidy data’?</h2>
 <div class="cell">

@@ -6,7 +6,7 @@
 <script src="_intro_slides_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="_intro_slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="_intro_slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="_intro_slides_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="_intro_slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.242">
 
   <meta name="author" content="Jesse Radolinski, Johannes Ingrisch">
@@ -319,7 +319,7 @@
     }
   </style>
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
@@ -343,27 +343,18 @@ Jesse Radolinski, Johannes Ingrisch
 <p>Learn the tools and skills to</p>
 <ul>
 <li class="fragment"><strong>organise</strong> your <strong>data &amp; code</strong> consistently</li>
-</ul>
-<ul>
 <li class="fragment">win the everyday data <strong>wrangling</strong></li>
-</ul>
-<ul>
 <li class="fragment">make quick (and cool) <strong>visualizations</strong></li>
-</ul>
-<ul>
 <li class="fragment">keep your project <strong>reproducible</strong></li>
-</ul>
-<ul>
 <li class="fragment">present and communicate your results</li>
-</ul>
-<ul>
 <li class="fragment">be able to do your own troubleshooting</li>
 </ul>
 </section>
 <section id="a-typical-data-science-project" class="slide level2">
 <h2>A typical Data Science Project</h2>
 
-<img data-src="./figures/Data_exploration.png" class="r-stretch quarto-figure-center"><p class="caption">Data Science Workflow</p></section>
+<img data-src="./figures/Data_exploration.png" class="r-stretch quarto-figure-center"><p class="caption">Data Science Workflow</p><p>Source: <a href="https://r4ds.had.co.nz/">R for Data Science</a></p>
+</section>
 <section id="course-content" class="slide level2">
 <h2>Course content</h2>
 <ul>
@@ -378,9 +369,17 @@ Jesse Radolinski, Johannes Ingrisch
 <li class="fragment">Useful stuff along the way, e.g.&nbsp;handling dates &amp; times</li>
 </ul>
 </section>
+<section id="todays-outline" class="slide level2">
+<h2>Today’s outline</h2>
+<ul>
+<li class="fragment">Getting to know R &amp; RStudio</li>
+<li class="fragment">Data Visualization with ggplot2</li>
+<li class="fragment">Hands-on exercise</li>
+<li class="fragment">Assignment</li>
+</ul>
+</section>
 <section id="timetable" class="slide level2">
 <h2>Timetable</h2>
-<div class="smaller">
 <table>
 <colgroup>
 <col style="width: 22%">
@@ -437,14 +436,17 @@ Jesse Radolinski, Johannes Ingrisch
 </tr>
 </tbody>
 </table>
-</div>
 </section>
 <section id="course-structure" class="slide level2">
 <h2>Course structure</h2>
 <ul>
-<li class="fragment">Weekly sessions: combined lecture &amp; excercise: Interactive!</li>
-<li class="fragment">A task will be set at the end of each session</li>
-<li class="fragment">Due dates will be given, typically latest 2.5 weeks after each session</li>
+<li class="fragment">Our sessions will combine lecture &amp; exercise: Interactive!</li>
+</ul>
+<ul>
+<li class="fragment">An assignment will be set at the end of each session</li>
+</ul>
+<ul>
+<li class="fragment">Due dates for assignment submission will be given, typically latest 2.5 weeks after each session</li>
 </ul>
 </section>
 <section id="assessment" class="slide level2">
@@ -466,104 +468,10 @@ Jesse Radolinski, Johannes Ingrisch
 <li class="fragment">Any experience with R so far?</li>
 </ul>
 </section>
-<section id="todays-outline" class="slide level2">
-<h2>Today’s outline</h2>
-<ul>
-<li class="fragment">Getting to know R &amp; RStudio</li>
-<li class="fragment">Data Visualization with ggplot2</li>
-<li class="fragment">Exercise</li>
-<li class="fragment">Assignment</li>
-</ul>
-</section>
-<section id="prerequisites-for-working-with-r" class="slide level2">
-<h2>Prerequisites for working with R</h2>
-<p>Updated versions of:</p>
-<ul>
-<li>R: https://cloud.r-project.org</li>
-<li>RStudio: http://www.rstudio.com/download</li>
-</ul>
-</section>
-<section id="r-r-studio" class="slide level2">
-<h2>R &amp; R Studio</h2>
-
-<img data-src="./figures/RStudio_Basic.PNG" class="r-stretch quarto-figure-center"><p class="caption">R Studio working environment</p></section>
-<section id="getting-organised-r-projects-r-scripts" class="slide level2">
-<h2>Getting organised: R-projects &amp; R-scripts</h2>
-<ul>
-<li class="fragment">your whole data science project within one folder</li>
-<li class="fragment">R-Studio project</li>
-<li class="fragment">working directory</li>
-<li class="fragment">Rscripts: store with meaningful names</li>
-<li class="fragment">use relative paths instead of absolute</li>
-</ul>
-<ul>
-<li class="fragment"><strong>Everything in one place</strong></li>
-<li class="fragment"><strong>Allows moving between computers</strong></li>
-</ul>
-</section>
-<section id="exercise-workflow-basics" class="slide level2">
-<h2>Exercise: Workflow Basics</h2>
-<ul>
-<li>create a project for this course</li>
-<li>create an R-script</li>
-<li>write code in script and send to console</li>
-<li>comment script using ‘#’</li>
-</ul>
-</section>
-<section id="packages" class="slide level2">
-<h2>Packages</h2>
-<ul>
-<li>add-ons</li>
-<li>increase functionality of R</li>
-</ul>
-<p>Important:</p>
-<ul>
-<li>tidyverse</li>
-<li>readxl</li>
-</ul>
-<p>Can be installed via</p>
-<div class="cell">
+<p><img src="./figures/logo_uibk.jpg" class="slide-logo"></p>
+<div class="footer footer-default">
 
 </div>
-<p>and loaded via</p>
-<div class="cell">
-
-</div>
-<p>Task: install tidyverse</p>
-</section>
-<section id="base-r-and-the-tidyverse" class="slide level2">
-<h2>Base-R and the tidyverse</h2>
-<p>Tidyverse is a suite of packages that use a consistent language of code.</p>
-<div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<ul>
-<li class="fragment">complements and supplements base-R code</li>
-<li class="fragment">does not replace base-R</li>
-<li class="fragment">increases efficiency</li>
-<li class="fragment">tons of useful functions</li>
-</ul>
-<ul>
-<li class="fragment">easier to write</li>
-<li class="fragment">easier to read</li>
-</ul>
-</section>
-<section id="useful-ressources-getting-help" class="slide level2">
-<h2>Useful Ressources &amp; Getting help…</h2>
-<ul>
-<li>https://r4ds.had.co.nz/</li>
-<li>www.r-bloggers.com</li>
-<li>Google (or alternatives): “R”</li>
-<li>stackoverflow</li>
-</ul>
-
-<img src="./figures/logo_uibk.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
-
-</div>
-</section>
     </div>
   </div>
 
@@ -775,44 +683,6 @@ Jesse Radolinski, Johannes Ingrisch
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
