@@ -1,21 +1,10 @@
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(kableExtra)
-library(tidyverse)
-library(knitr)
-options("kableExtra.html.bsTable" = T)
-kable_pretty <- function(data) {
-  kable(data, "html") %>%
-    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
-}
-```
-
-
 ## Data Exploration
 
-- Example Dataset 'mpg': fuel economy data of cars
+> First step is to get an overview over the dataset that we want to work on
 
+## Example: Dataset mpg
+
+- 'mpg': fuel economy data of cars
 - how does the data look like? We could open it in Excel..
 
 ```{r echo = FALSE, out.width = "70%"}
@@ -23,9 +12,7 @@ include_graphics("./figures/mpg_excel.PNG")
 
 ```
 
-
-
-## The mpg dataset (I)
+---
 
 For provided datasets we can use the R help to get more info
 
@@ -33,6 +20,7 @@ For provided datasets we can use the R help to get more info
 ?(mpg)
 ```
 
+--- 
 
 Look at the first 6 lines of the dataset
 
@@ -41,10 +29,9 @@ head(mpg)
 ```
 
 displ: engine displacement in litres
-
 hwy: highway efficiency (miles per gallon)
 
-## The mpg dataset (II)
+---
 
 More info about the structure of the datset
 
@@ -52,8 +39,7 @@ More info about the structure of the datset
 str(mpg)
 ```
 
-
-## The mpg dataset (III)
+---
 
 Additional functions, check it out by yourself!
 
@@ -77,7 +63,9 @@ dim(mpg)
 
 
 
-## Data Visualization 
+## Data Visualisation 
+
+> Look at your data to understand your data
 
 Different options to create plots in R
 
@@ -86,8 +74,7 @@ Different options to create plots in R
 - ggplot2: versatile. elegant. consistent. fun. wohooo!
 
 
-
-## Data Visualization in ggplot2: Examples
+## ggplot2: Inspiration
 
 ```{r echo = FALSE, out.width = "90%"}
 include_graphics("./figures/ggplot_examples.png")
@@ -100,16 +87,19 @@ From the ggplot2 [manual](https://ggplot2.tidyverse.org/)
 
 *ggplot2 is a system for declaratively creating graphics, based on [**The Grammar of Graphics**](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl). You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.*
 
-Lets go step-by-step through creating a figure. 
+## Creating a figure layer by layer
 
-## (1) The canvas
+**(1) The canvas**
 
 ```{r, out.width = "50%"}
 mpg %>% 
   ggplot()
 ```
 
-## (2) Add Axes
+---
+
+**(2) Add Axes**
+
 We want to plot `hwy ~ displ`
 
 displ: engine volume
@@ -120,10 +110,11 @@ mpg %>%
   ggplot(aes(x = displ, y = hwy))
 ```
 
+---
 
-## (3) Add Data
+**(3) Add Data**
 
--> adding layers
+-> addding a layer of points
 
 ```{r, out.width = "50%"}
 mpg %>% 
@@ -131,8 +122,11 @@ mpg %>%
   geom_point()
 ```
 
+---
 
-## (4) Use Colors
+**(4) Use Colors**
+
+-> adding color to the points, depeding on the value of variable `manufacturer`
 
 ```{r, out.width = "50%"}
 mpg %>% 
@@ -140,7 +134,9 @@ mpg %>%
   geom_point()
 ```
 
-## (5) Add Labels
+---
+
+**(5) Add Labels**
 
 ```{r, out.width = "50%"}
 mpg %>% 
@@ -151,8 +147,9 @@ mpg %>%
        caption = "mgp data")
 ```
 
+---
 
-## (6) Save output
+**(6) Save output**
 
 ```{r, eval = FALSE}
 p <- mpg %>% 
@@ -187,44 +184,51 @@ To make a graph, we replace the bracketed sections with
 - a geom function
 - a collection of mappings/aestethics
 
-## mappings/aestethics: colors & shapes & linetypes
+## mappings: colors & shapes & linetypes
 
+:::: {.columns}
+
+::: {.column width="40%"}
 - color
 - fill
 - shape
 - linetype
 - size
 - alpha
+:::
 
-```{r echo = FALSE, out.width = "90%"}
-include_graphics("./figures/ggplot_aes.png")
+::: {.column width="60%"}
+![Shapes & Linetypes](./figures/ggplot_aes.png)
+:::
 
-```
+::::
 
 
 
-
-## Colors & shape: Example
-
+## Mapping colors
 ```{r out.width="50%"}
-#| layout-ncol: 2
-#| 
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy, 
-                           color = drv))
+            color = drv))
+```
 
+## Mapping shapes
+
+```{r}
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy, 
              shape = drv))
 ```
 
+
+
 ## Automatic vs. manual setting of mappings
 
-```{r out.width="50%"}
+```{r}
 #| layout-ncol: 2
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy, 
-                           color = drv))
+             color = drv))
 
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy), 
@@ -265,6 +269,7 @@ ggplot(data = mpg) +
   geom_smooth(aes(x = displ, y = hwy))
 ```
 
+Can be simplified to:
 
 ```{r, eval = FALSE}
 ggplot(data = mpg, 
@@ -292,10 +297,14 @@ ggplot(data = mpg,
 
 ```
 
->__How can we fix it?__
+>__What is happening here?__
 
 
-## Solution: Individual aes() for different geoms
+## Note the difference!
+
+> aes() applied to all geoms or individually.
+
+
 
 ```{r, out.width="50%", message = FALSE}
 #| layout-ncol: 2
@@ -345,20 +354,22 @@ head(mpg)
 
 ## Discrete vs. continuous variables
 
-```{r, out.width="50%", message = FALSE}
+
+```{r}
 #| layout-ncol: 2
-# V1
 ggplot(data = mpg, 
        aes(x = displ, y = hwy)) + 
   geom_point(aes(color = drv)) 
 
-# V2
 ggplot(data = mpg, 
        aes(x = displ, y = hwy, color = cty)) + 
   geom_point() 
 ```
 
+
 ## Geoms with statistical transformation
+
+ggplot provides geoms, that apply a statistical tranformation of the data prior to plotting it. These include: 
 
 - geom_smooth
 - geom_bar
@@ -467,7 +478,11 @@ Many ways to customize your figures
 >- adjust axis labels, ...
 >- ...
 
+::: aside
+
 **Get inspired** in the [R-graph gallery](https://r-graph-gallery.com/)
+
+:::
 
 
 

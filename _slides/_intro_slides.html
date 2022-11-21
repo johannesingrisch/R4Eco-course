@@ -468,10 +468,116 @@ Jesse Radolinski, Johannes Ingrisch
 <li class="fragment">Any experience with R so far?</li>
 </ul>
 </section>
-<p><img src="./figures/logo_uibk.jpg" class="slide-logo"></p>
-<div class="footer footer-default">
+<section id="getting-started" class="title-slide slide level1 center">
+<h1>Getting started…</h1>
+
+</section>
+
+<section id="getting-started-with-r" class="title-slide slide level1 center">
+<h1>Getting started with R</h1>
+
+</section>
+
+<section id="installation" class="slide level2">
+<h2>Installation</h2>
+<p>Install R and Rstudio on your computer, if already installed, make sure they are up to date.</p>
+<p>Both programs are available for free:</p>
+<ul>
+<li>R: https://cloud.r-project.org</li>
+<li>RStudio: http://www.rstudio.com/download</li>
+</ul>
+</section>
+<section id="r-r-studio" class="slide level2">
+<h2>R &amp; R Studio</h2>
+
+<img data-src="./figures/RStudio_Basic.PNG" class="r-stretch quarto-figure-center"><p class="caption">R Studio working environment</p></section>
+<section id="hands-on" class="slide level2">
+<h2>Hands-on</h2>
+<ul>
+<li>use R as a calculator</li>
+<li>use a script and send code to the console</li>
+</ul>
+</section>
+<section id="getting-organised-r-projects-r-scripts" class="slide level2">
+<h2>Getting organised: R-projects &amp; R-scripts</h2>
+<ul>
+<li class="fragment">your whole data science project within one folder</li>
+<li class="fragment">this folder as working directory for R</li>
+<li class="fragment">Rscripts: store with meaningful names</li>
+<li class="fragment">use relative paths instead of absolute</li>
+<li class="fragment">‘R-Studio projects’ help to organise this</li>
+</ul>
+<ul>
+<li class="fragment"><strong>Everything in one place</strong></li>
+<li class="fragment"><strong>Allows sharing &amp; moving between computers</strong></li>
+</ul>
+</section>
+<section id="hands-on-workflow-basics" class="slide level2">
+<h2>Hands-on: Workflow Basics</h2>
+<p>Together we</p>
+<ul>
+<li>create a project for this course</li>
+<li>create an R-script</li>
+<li>write code in script and send to console</li>
+<li>comment the script using ‘#’</li>
+</ul>
+</section>
+<section id="additional-functionality-r-packages" class="slide level2">
+<h2>Additional functionality: R-Packages</h2>
+<ul>
+<li>add-ons</li>
+<li>increase functionality of R</li>
+</ul>
+<p>Important in this course (and for life):</p>
+<ul>
+<li><pre><code> tidyverse</code></pre></li>
+<li>readxl</li>
+</ul>
+<p>Can be installed via</p>
+<div class="cell">
 
 </div>
+<p>and loaded via</p>
+<div class="cell">
+
+</div>
+<p>Task: install tidyverse</p>
+</section>
+<section id="base-r-and-the-tidyverse-i" class="slide level2">
+<h2>Base-R and the tidyverse (I)</h2>
+<p>Base-R means the ‘original’ language of R. Typically, this contains a lot of <code>$</code> square brackets <code>[]</code>. Certainly important to know, but sometimes a bit hard to follow, especially when getting started with R…</p>
+<p>Example:</p>
+<div class="cell">
+
+</div>
+</section>
+<section id="base-r-and-the-tidyverse-ii" class="slide level2">
+<h2>Base-R and the tidyverse (II)</h2>
+<p>In this course we will also learn a lot of ‘tidyverse’ style, which is simpler to read and write. Typical are functions with useful names and the so-called pipe <code>%&gt;%</code>. We will get to know all this in the course.</p>
+<div class="cell">
+
+</div>
+<ul>
+<li class="fragment">complements and supplements base-R code</li>
+<li class="fragment">does not replace base-R</li>
+<li class="fragment">increases efficiency</li>
+<li class="fragment">tons of useful functions</li>
+</ul>
+</section>
+<section id="useful-ressources-getting-help" class="slide level2">
+<h2>Useful Ressources &amp; Getting help…</h2>
+<p>Getting started with any programming language can be a pain. But there is help!</p>
+<ul>
+<li>https://r4ds.had.co.nz/</li>
+<li>www.r-bloggers.com</li>
+<li>Google (or alternatives): “R”</li>
+<li>stackoverflow</li>
+</ul>
+
+<img src="figures/logo_uibk.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
+
+</div>
+</section>
     </div>
   </div>
 
@@ -683,6 +789,44 @@ Jesse Radolinski, Johannes Ingrisch
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

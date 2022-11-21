@@ -187,6 +187,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./01_Introduction.html" class="sidebar-item-text sidebar-link">Getting started with R</a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./02_Visualisation.html" class="sidebar-item-text sidebar-link active">Data visualisation</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Exercise.html" class="sidebar-item-text sidebar-link">Exercise</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -199,18 +214,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#data-exploration-visualization" id="toc-data-exploration-visualization" class="nav-link active" data-scroll-target="#data-exploration-visualization">Data Exploration &amp; Visualization</a>
   <ul class="collapse">
   <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a></li>
-  <li><a href="#the-mpg-dataset-i" id="toc-the-mpg-dataset-i" class="nav-link" data-scroll-target="#the-mpg-dataset-i">The mpg dataset (I)</a></li>
-  <li><a href="#the-mpg-dataset-ii" id="toc-the-mpg-dataset-ii" class="nav-link" data-scroll-target="#the-mpg-dataset-ii">The mpg dataset (II)</a></li>
-  <li><a href="#the-mpg-dataset-iii" id="toc-the-mpg-dataset-iii" class="nav-link" data-scroll-target="#the-mpg-dataset-iii">The mpg dataset (III)</a></li>
+  <li><a href="#example-dataset-mpg" id="toc-example-dataset-mpg" class="nav-link" data-scroll-target="#example-dataset-mpg">Example: Dataset mpg</a></li>
   <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
-  <li><a href="#data-visualization-in-ggplot2-examples" id="toc-data-visualization-in-ggplot2-examples" class="nav-link" data-scroll-target="#data-visualization-in-ggplot2-examples">Data Visualization in ggplot2: Examples</a></li>
+  <li><a href="#ggplot2-inspiration" id="toc-ggplot2-inspiration" class="nav-link" data-scroll-target="#ggplot2-inspiration">ggplot2: Inspiration</a></li>
   <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2">ggplot2</a></li>
-  <li><a href="#the-canvas" id="toc-the-canvas" class="nav-link" data-scroll-target="#the-canvas">(1) The canvas</a></li>
-  <li><a href="#add-axes" id="toc-add-axes" class="nav-link" data-scroll-target="#add-axes">(2) Add Axes</a></li>
-  <li><a href="#add-data" id="toc-add-data" class="nav-link" data-scroll-target="#add-data">(3) Add Data</a></li>
-  <li><a href="#use-colors" id="toc-use-colors" class="nav-link" data-scroll-target="#use-colors">(4) Use Colors</a></li>
-  <li><a href="#add-labels" id="toc-add-labels" class="nav-link" data-scroll-target="#add-labels">(5) Add Labels</a></li>
-  <li><a href="#save-output" id="toc-save-output" class="nav-link" data-scroll-target="#save-output">(6) Save output</a></li>
+  <li><a href="#creating-a-figure-layer-by-layer" id="toc-creating-a-figure-layer-by-layer" class="nav-link" data-scroll-target="#creating-a-figure-layer-by-layer">Creating a figure layer by layer</a></li>
   <li><a href="#time-to-try-it-yourself" id="toc-time-to-try-it-yourself" class="nav-link" data-scroll-target="#time-to-try-it-yourself">Time to try it yourself</a></li>
   <li><a href="#ggplot-general-template" id="toc-ggplot-general-template" class="nav-link" data-scroll-target="#ggplot-general-template">ggplot: General template</a></li>
   <li><a href="#mappingsaestethics-colors-shapes-linetypes" id="toc-mappingsaestethics-colors-shapes-linetypes" class="nav-link" data-scroll-target="#mappingsaestethics-colors-shapes-linetypes">mappings/aestethics: colors &amp; shapes &amp; linetypes</a></li>
@@ -257,22 +265,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To get started we use a dataset that is already included in R called <code>mpg</code>.</p>
 <section id="data-exploration" class="level2">
 <h2 class="anchored" data-anchor-id="data-exploration">Data Exploration</h2>
+<blockquote class="blockquote">
+<p>First step is to get an overview over the dataset that we want to work on</p>
+</blockquote>
+</section>
+<section id="example-dataset-mpg" class="level2">
+<h2 class="anchored" data-anchor-id="example-dataset-mpg">Example: Dataset mpg</h2>
 <ul>
-<li><p>Example Dataset ‘mpg’: fuel economy data of cars</p></li>
-<li><p>how does the data look like? We could open it in Excel..</p></li>
+<li>‘mpg’: fuel economy data of cars</li>
+<li>how does the data look like? We could open it in Excel..</li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="./figures/mpg_excel.PNG" class="img-fluid" style="width:70.0%"></p>
 </div>
 </div>
-</section>
-<section id="the-mpg-dataset-i" class="level2">
-<h2 class="anchored" data-anchor-id="the-mpg-dataset-i">The mpg dataset (I)</h2>
+<hr>
 <p>For provided datasets we can use the R help to get more info</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>?(mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<hr>
 <p>Look at the first 6 lines of the dataset</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -288,11 +301,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…</code></pre>
 </div>
 </div>
-<p>displ: engine displacement in litres</p>
-<p>hwy: highway efficiency (miles per gallon)</p>
-</section>
-<section id="the-mpg-dataset-ii" class="level2">
-<h2 class="anchored" data-anchor-id="the-mpg-dataset-ii">The mpg dataset (II)</h2>
+<p>displ: engine displacement in litres hwy: highway efficiency (miles per gallon)</p>
+<hr>
 <p>More info about the structure of the datset</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -311,9 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  $ class       : chr [1:234] "compact" "compact" "compact" "compact" ...</code></pre>
 </div>
 </div>
-</section>
-<section id="the-mpg-dataset-iii" class="level2">
-<h2 class="anchored" data-anchor-id="the-mpg-dataset-iii">The mpg dataset (III)</h2>
+<hr>
 <p>Additional functions, check it out by yourself!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -337,8 +345,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>ggplot2: versatile. elegant. consistent. fun. wohooo!</li>
 </ul>
 </section>
-<section id="data-visualization-in-ggplot2-examples" class="level2">
-<h2 class="anchored" data-anchor-id="data-visualization-in-ggplot2-examples">Data Visualization in ggplot2: Examples</h2>
+<section id="ggplot2-inspiration" class="level2">
+<h2 class="anchored" data-anchor-id="ggplot2-inspiration">ggplot2: Inspiration</h2>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="./figures/ggplot_examples.png" class="img-fluid" style="width:90.0%"></p>
@@ -349,10 +357,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="ggplot2">ggplot2</h2>
 <p>From the ggplot2 <a href="https://ggplot2.tidyverse.org/">manual</a></p>
 <p><em>ggplot2 is a system for declaratively creating graphics, based on <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl"><strong>The Grammar of Graphics</strong></a>. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</em></p>
-<p>Lets go step-by-step through creating a figure.</p>
 </section>
-<section id="the-canvas" class="level2">
-<h2 class="anchored" data-anchor-id="the-canvas">(1) The canvas</h2>
+<section id="creating-a-figure-layer-by-layer" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-figure-layer-by-layer">Creating a figure layer by layer</h2>
+<p><strong>(1) The canvas</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -360,10 +368,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="02_Visualisation_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" style="width:50.0%"></p>
 </div>
 </div>
-</section>
-<section id="add-axes" class="level2">
-<h2 class="anchored" data-anchor-id="add-axes">(2) Add Axes</h2>
-<p>We want to plot <code>hwy ~&nbsp;displ</code></p>
+<hr>
+<p><strong>(2) Add Axes</strong> We want to plot <code>hwy ~&nbsp;displ</code></p>
 <p>displ: engine volume hwy: fuel efficiency (miles per gallon)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
@@ -372,9 +378,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="02_Visualisation_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" style="width:50.0%"></p>
 </div>
 </div>
-</section>
-<section id="add-data" class="level2">
-<h2 class="anchored" data-anchor-id="add-data">(3) Add Data</h2>
+<hr>
+<p><strong>(3) Add Data</strong></p>
 <p>-&gt; adding layers</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
@@ -384,9 +389,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="02_Visualisation_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" style="width:50.0%"></p>
 </div>
 </div>
-</section>
-<section id="use-colors" class="level2">
-<h2 class="anchored" data-anchor-id="use-colors">(4) Use Colors</h2>
+<hr>
+<p><strong>(4) Use Colors</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> manufacturer)) <span class="sc">+</span> </span>
@@ -395,9 +399,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="02_Visualisation_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" style="width:50.0%"></p>
 </div>
 </div>
-</section>
-<section id="add-labels" class="level2">
-<h2 class="anchored" data-anchor-id="add-labels">(5) Add Labels</h2>
+<hr>
+<p><strong>(5) Add Labels</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> manufacturer)) <span class="sc">+</span> </span>
@@ -409,9 +412,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="02_Visualisation_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" style="width:50.0%"></p>
 </div>
 </div>
-</section>
-<section id="save-output" class="level2">
-<h2 class="anchored" data-anchor-id="save-output">(6) Save output</h2>
+<hr>
+<p><strong>(6) Save output</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> manufacturer)) <span class="sc">+</span> </span>

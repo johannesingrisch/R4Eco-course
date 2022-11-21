@@ -1,0 +1,58 @@
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+library(tidyverse)
+library(knitr)
+options("kableExtra.html.bsTable" = T)
+kable_pretty <- function(data) {
+  kable(data, "html") %>%
+    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
+}
+```
+
+
+{{< include 00_Organisation.qmd >}}
+
+## Part 1 {background-color="LightSteelBlue"}
+
+::: {.r-fit-text}
+
+Getting started...
+
+:::
+
+{{< include 01_Intro/_intro_content.qmd >}}
+
+## Part 2 {background-color="LightSteelBlue"}
+
+::: {.r-fit-text}
+Data Exploration & Visualisation
+:::
+
+
+## Data Exploration & Visualisation
+
+![Data Exploration](./figures/Data_exploration.png){width=60%}
+
+
+
+
+{{< include 02_Visualisation/_visualisation_content.qmd >}}
+
+
+## Assignment
+
+![Iris flowers](./figures/iris.png){width = 60%}
+
+
+
+```{r echo = FALSE, out.width = "65%"}
+head(iris)
+```
+
+
+
+## Wrap-up
+
+![Data Exploration](./figures/Data_exploration.png){width=60%}
+

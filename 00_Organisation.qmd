@@ -11,10 +11,18 @@ Learn the tools and skills to
 
 
 ## A typical Data Science Project
+![Data Exploration](./figures/Data_exploration.png){width=60%}
 
-![Data Science Workflow](./figures/Data_exploration.png)
+
+::: {.content-visible when-profile="slides"}
+
+::: aside
 
 Source: [R for Data Science](https://r4ds.had.co.nz/)
+
+:::
+
+:::
 
 ## Course content
 
@@ -29,18 +37,8 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 > - Useful stuff along the way, e.g. handling dates & times
 
 
-::: {.content-visible when-format="revealjs"}
 
-## Today's outline
-
-> - Getting to know R & RStudio
-> - Data Visualization with ggplot2
-> - Hands-on exercise
-> - Assignment
-
-:::
-
-::: {.content-visible when-format="revealjs"}
+::: {.content-visible when-profile="slides"}
 
 ## Timetable 
 
@@ -57,7 +55,7 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 
 :::
 
-::: {.content-visible when-format="revealjs"}
+::: {.content-visible when-profile="slides"}
 
 ## Course structure
 
@@ -69,7 +67,7 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 
 :::
 
-::: {.content-visible when-format="revealjs"}
+::: {.content-visible when-profile="slides"}
 
 
 ## Assessment
@@ -82,7 +80,20 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 
 :::
 
-::: {.content-visible when-format="revealjs"}
+
+::: {.content-visible when-profile="slides"}
+
+## Today's outline
+
+> - Getting to know R & RStudio
+> - Data Visualization with ggplot2
+> - Hands-on exercise
+> - Assignment
+
+:::
+
+
+::: {.content-visible when-profile="slides"}
 
 
 ## Round of Introduction
