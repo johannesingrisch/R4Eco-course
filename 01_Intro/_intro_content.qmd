@@ -11,7 +11,7 @@ Both programs are available for free:
 
 ## R & R Studio
 
-![R Studio working environment](./figures/RStudio_Basic.PNG)
+![R Studio working environment](./figures/RStudio_Basic.PNG){width=60%}
 
 ## Hands-on
 
@@ -43,6 +43,8 @@ Together we
 
 ## Additional functionality: R-Packages
 
+R packages are:
+
 - add-ons
 - increase functionality of R
 
@@ -69,7 +71,7 @@ Task: install tidyverse
 ## Base-R and the tidyverse (I)
 
 ::: {.content-visible when-profile="website"}
-Base-R means the 'original' language of R. Typically, this contains a lot of `$` square brackets `[]`. Certainly important to know, but sometimes a bit hard to follow, especially when getting started with R...
+Base-R refers to the 'original' language of R. Typically, this contains a lot of `$` square brackets `[]`. Certainly important to know, but sometimes a bit hard to follow, especially when getting started with R...
 :::
 
 Example: 
@@ -92,6 +94,12 @@ Typical are functions with useful names and the so-called pipe `%>%`. We will ge
 Doing the same 'tidyverse-style'
 
 ```{r, eval = FALSE}
+# Base R
+time.as.string = paste(CO2_ML$year,CO2_ML$month,CO2_ML$day,sep="-")
+CO2_ML$dt = as.POSIXct(strptime(time.as.string,"%Y-%m-%d"), tz = "GMT") # convert time to an R time stamp
+CO2_ML[CO2_ML==-999.999] = NA 
+
+
 # tidyverse
 CO2_ML %>% 
   mutate(time.as.string = paste(year, month, day, sep = "-"), # create timestamp

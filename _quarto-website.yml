@@ -32,17 +32,17 @@ website:
         contents: 
           - href: 02_Exercise.qmd
             text: "Exercise"
-      - text: "Data Wrangling"
-        file: 03_Wrangling.qmd
-        contents:
-          - href: 03_Exercise.qmd
-            text: "Exercise"
-      - text: "Reading data"
-        file: 04_Reading.qmd
-      - text: "Tidy data"
-        file: 05_TidyData.qmd
-      - text: "Joining data"
-        file: 06_MergeData.qmd
+#      - text: "Data Wrangling"
+#        file: 03_Wrangling.qmd
+#        contents:
+#          - href: 03_Exercise.qmd
+#            text: "Exercise"
+#      - text: "Reading data"
+#        file: 04_Reading.qmd
+#      - text: "Tidy data"
+#        file: 05_TidyData.qmd
+#      - text: "Joining data"
+#        file: 06_MergeData.qmd
 #      - section: "Data types"
 #        contents: 
 #          - href: 09_DataTypes.qmd

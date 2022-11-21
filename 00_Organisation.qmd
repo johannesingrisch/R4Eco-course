@@ -11,10 +11,18 @@ Learn the tools and skills to
 
 
 ## A typical Data Science Project
+![Data Exploration](./figures/Data_exploration.png){width=60%}
 
-![Data Science Workflow](./figures/Data_exploration.png)
+
+::: {.content-visible when-profile="slides"}
+
+::: aside
 
 Source: [R for Data Science](https://r4ds.had.co.nz/)
+
+:::
+
+:::
 
 ## Course content
 
@@ -29,16 +37,6 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 > - Useful stuff along the way, e.g. handling dates & times
 
 
-::: {.content-visible when-profile="slides"}
-
-## Today's outline
-
-> - Getting to know R & RStudio
-> - Data Visualization with ggplot2
-> - Hands-on exercise
-> - Assignment
-
-:::
 
 ::: {.content-visible when-profile="slides"}
 
@@ -81,6 +79,19 @@ Source: [R for Data Science](https://r4ds.had.co.nz/)
 > - Material is developed progressively through the course, so whenever possible it is strongly recommended to complete tasks before the next lecture
 
 :::
+
+
+::: {.content-visible when-profile="slides"}
+
+## Today's outline
+
+> - Getting to know R & RStudio
+> - Data Visualization with ggplot2
+> - Hands-on exercise
+> - Assignment
+
+:::
+
 
 ::: {.content-visible when-profile="slides"}
 

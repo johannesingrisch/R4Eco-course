@@ -63,7 +63,9 @@ dim(mpg)
 
 
 
-## Data Visualization 
+## Data Visualisation 
+
+> Look at your data to understand your data
 
 Different options to create plots in R
 
@@ -182,44 +184,51 @@ To make a graph, we replace the bracketed sections with
 - a geom function
 - a collection of mappings/aestethics
 
-## mappings/aestethics: colors & shapes & linetypes
+## mappings: colors & shapes & linetypes
 
+:::: {.columns}
+
+::: {.column width="40%"}
 - color
 - fill
 - shape
 - linetype
 - size
 - alpha
+:::
 
-```{r echo = FALSE, out.width = "90%"}
-include_graphics("./figures/ggplot_aes.png")
+::: {.column width="60%"}
+![Shapes & Linetypes](./figures/ggplot_aes.png)
+:::
 
-```
+::::
 
 
 
-
-## Colors & shape: Example
-
+## Mapping colors
 ```{r out.width="50%"}
-#| layout-ncol: 2
-#| 
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy, 
-                           color = drv))
+            color = drv))
+```
 
+## Mapping shapes
+
+```{r}
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy, 
              shape = drv))
 ```
 
+
+
 ## Automatic vs. manual setting of mappings
 
-```{r out.width="50%"}
+```{r}
 #| layout-ncol: 2
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy, 
-                           color = drv))
+             color = drv))
 
 ggplot(data = mpg) + 
   geom_point(aes(x = displ, y = hwy), 
@@ -260,6 +269,7 @@ ggplot(data = mpg) +
   geom_smooth(aes(x = displ, y = hwy))
 ```
 
+Can be simplified to:
 
 ```{r, eval = FALSE}
 ggplot(data = mpg, 
@@ -287,10 +297,14 @@ ggplot(data = mpg,
 
 ```
 
->__How can we fix it?__
+>__What is happening here?__
 
 
-## Solution: Individual aes() for different geoms
+## Note the difference!
+
+> aes() applied to all geoms or individually.
+
+
 
 ```{r, out.width="50%", message = FALSE}
 #| layout-ncol: 2
@@ -340,20 +354,22 @@ head(mpg)
 
 ## Discrete vs. continuous variables
 
-```{r, out.width="50%", message = FALSE}
+
+```{r}
 #| layout-ncol: 2
-# V1
 ggplot(data = mpg, 
        aes(x = displ, y = hwy)) + 
   geom_point(aes(color = drv)) 
 
-# V2
 ggplot(data = mpg, 
        aes(x = displ, y = hwy, color = cty)) + 
   geom_point() 
 ```
 
+
 ## Geoms with statistical transformation
+
+ggplot provides geoms, that apply a statistical tranformation of the data prior to plotting it. These include: 
 
 - geom_smooth
 - geom_bar
@@ -462,7 +478,11 @@ Many ways to customize your figures
 >- adjust axis labels, ...
 >- ...
 
+::: aside
+
 **Get inspired** in the [R-graph gallery](https://r-graph-gallery.com/)
+
+:::
 
 
 
