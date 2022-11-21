@@ -247,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="r-r-studio">R &amp; R Studio</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio_Basic.PNG" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio_Basic.PNG" class="img-fluid figure-img" style="width:60.0%"></p>
 <p></p><figcaption class="figure-caption">R Studio working environment</figcaption><p></p>
 </figure>
 </div>
@@ -289,54 +289,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="additional-functionality-r-packages" class="level2">
 <h2 class="anchored" data-anchor-id="additional-functionality-r-packages">Additional functionality: R-Packages</h2>
+<p>R packages are:</p>
 <ul>
 <li>add-ons</li>
 <li>increase functionality of R</li>
 </ul>
 <p>Important in this course (and for life):</p>
 <ul>
-<li><pre><code> tidyverse</code></pre></li>
-<li>readxl</li>
+<li><code>tidyverse</code></li>
+<li><code>readxl</code></li>
 </ul>
 <p>Can be installed via</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and loaded via</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Task: install tidyverse</p>
 </section>
 <section id="base-r-and-the-tidyverse-i" class="level2">
 <h2 class="anchored" data-anchor-id="base-r-and-the-tidyverse-i">Base-R and the tidyverse (I)</h2>
-<p>Base-R means the ‘original’ language of R. Typically, this contains a lot of <code>$</code> square brackets <code>[]</code>. Certainly important to know, but sometimes a bit hard to follow, especially when getting started with R…</p>
+<div>
+<p>Base-R refers to the ‘original’ language of R. Typically, this contains a lot of <code>$</code> square brackets <code>[]</code>. Certainly important to know, but sometimes a bit hard to follow, especially when getting started with R…</p>
+</div>
 <p>Example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>time.as.string <span class="ot">=</span> <span class="fu">paste</span>(CO2_ML<span class="sc">$</span>year,CO2_ML<span class="sc">$</span>month,CO2_ML<span class="sc">$</span>day,<span class="at">sep=</span><span class="st">"-"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>CO2_ML<span class="sc">$</span>dt <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(time.as.string,<span class="st">"%Y-%m-%d"</span>), <span class="at">tz =</span> <span class="st">"GMT"</span>) <span class="co"># convert time to an R time stamp</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>CO2_ML[CO2_ML<span class="sc">==-</span><span class="fl">999.999</span>] <span class="ot">=</span> <span class="cn">NA</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>time.as.string <span class="ot">=</span> <span class="fu">paste</span>(CO2_ML<span class="sc">$</span>year,CO2_ML<span class="sc">$</span>month,CO2_ML<span class="sc">$</span>day,<span class="at">sep=</span><span class="st">"-"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>CO2_ML<span class="sc">$</span>dt <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(time.as.string,<span class="st">"%Y-%m-%d"</span>), <span class="at">tz =</span> <span class="st">"GMT"</span>) <span class="co"># convert time to an R time stamp</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>CO2_ML[CO2_ML<span class="sc">==-</span><span class="fl">999.999</span>] <span class="ot">=</span> <span class="cn">NA</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="base-r-and-the-tidyverse-ii" class="level2">
 <h2 class="anchored" data-anchor-id="base-r-and-the-tidyverse-ii">Base-R and the tidyverse (II)</h2>
+<div>
 <p>In this course we will also learn a lot of ‘tidyverse’ style, which is simpler to read and write. Typical are functions with useful names and the so-called pipe <code>%&gt;%</code>. We will get to know all this in the course.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>CO2_ML <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time.as.string =</span> <span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">"-"</span>), <span class="co"># create timestamp</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dt =</span> <span class="fu">ymd</span>(time.as.string, <span class="at">tz =</span> <span class="st">"GMT"</span>), <span class="co"># convert to time</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">CO2_ML =</span> <span class="fu">ifelse</span>(CO2_ML <span class="sc">==</span> <span class="sc">-</span><span class="fl">999.999</span>, <span class="cn">NA</span>, CO2_ML))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<blockquote class="blockquote">
+<p>Doing the same ‘tidyverse-style’</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>time.as.string <span class="ot">=</span> <span class="fu">paste</span>(CO2_ML<span class="sc">$</span>year,CO2_ML<span class="sc">$</span>month,CO2_ML<span class="sc">$</span>day,<span class="at">sep=</span><span class="st">"-"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>CO2_ML<span class="sc">$</span>dt <span class="ot">=</span> <span class="fu">as.POSIXct</span>(<span class="fu">strptime</span>(time.as.string,<span class="st">"%Y-%m-%d"</span>), <span class="at">tz =</span> <span class="st">"GMT"</span>) <span class="co"># convert time to an R time stamp</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>CO2_ML[CO2_ML<span class="sc">==-</span><span class="fl">999.999</span>] <span class="ot">=</span> <span class="cn">NA</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>CO2_ML <span class="sc">%&gt;%</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time.as.string =</span> <span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">"-"</span>), <span class="co"># create timestamp</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">dt =</span> <span class="fu">ymd</span>(time.as.string, <span class="at">tz =</span> <span class="st">"GMT"</span>), <span class="co"># convert to time</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">CO2_ML =</span> <span class="fu">ifelse</span>(CO2_ML <span class="sc">==</span> <span class="sc">-</span><span class="fl">999.999</span>, <span class="cn">NA</span>, CO2_ML))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li>complements and supplements base-R code</li>
 <li>does not replace base-R</li>
 <li>increases efficiency</li>
 <li>tons of useful functions</li>
 </ul>
-</blockquote>
 </section>
 <section id="useful-ressources-getting-help" class="level2">
 <h2 class="anchored" data-anchor-id="useful-ressources-getting-help">Useful Ressources &amp; Getting help…</h2>
