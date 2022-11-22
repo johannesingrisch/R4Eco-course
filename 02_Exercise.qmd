@@ -25,13 +25,51 @@ Explore the mpg dataset, using functions like `summary()`, `dim()`, `head()` to 
 2. What do the different variables describe? Inspect using the R-help: `?mpg`
 3. What is the difference between  variables like e.g. 'model', 'trans' and 'displ', 'hwy'?
 
+:::{.callout-tip collapse="true"}
+
+## Solution
+
+1. How many rows and columns does it have?
+
+```{r}
+
+dim(mpg)
+
+```
+
+The dataset has 234 rows and 11 columns. 
+
+3. What is the difference between variables like e.g. 'model', 'trans' and 'displ', 'hwy'?
+
+We can use `str(mpg)` to take a look at the structure of the dataset. This tells us that `model` and `trans` are variables of type character, these are discrete variables, i.e. they can only take certain values. In contrast, `displ`and `hwy` are numeric variables, they can have values on a continues scale. 
+
+
+:::
+
+
 
 ### 1.2 Create ggplot-figures
 
 1. Create a scatterplot of 'hwy' vs. 'cyl'. 
 2. Save the plot as pdf and find it in your working directory
-3. Make a plot of 'manufacturer' vs. 'class'. Why is this plot not useful? Could you think of more useful ways to display such a relation?
 
+:::{.callout-tip collapse="true"}
+
+## Solution
+
+1. Create a scatterplot of 'hwy' vs. 'cyl'. 
+2. Save the plot as pdf and find it in your working directory
+
+```{r, eval = FALSE}
+ggplot(data = mpg, aes(x = hwy, y = cyl)) + 
+geom_point()
+
+ggsave("hwy_vs_cyl.pdf")
+
+```
+
+
+:::
 
 
 ### 1.3. Investigate 'Outliers'
@@ -49,6 +87,24 @@ mpg %>%
   theme(legend.position = "none")
 ```
 
+:::{.callout-tip collapse="true"}
+
+## Solution
+
+We can map different additional variables. For example
+
+```{r}
+
+ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) + 
+geom_point() 
+
+
+```
+
+Mapping `class` by colors we can see that all these cars are of 2-seaters. 
+
+:::
+
 
 ## Part 2
 
@@ -59,7 +115,11 @@ Recreate the scatterplot of displ vs. hwy. Include further variables making use 
 * Try to include information on the number of cyclinder (cyl), the type of car (class). What pattern can you identify?
 
 
-```{r, include = FALSE}
+:::{.callout-tip collapse="true"}
+
+## Solution
+
+```{r}
 
 mpg %>%
   ggplot(aes(x = displ, y = hwy, color = class)) +
@@ -67,8 +127,19 @@ mpg %>%
 ```
 
 
+:::
+
+
 * Can you use the different aesthetics for all types of variables? 
 What type of aesthetics are useful for which type of variables? 
+
+
+
+:::{.callout-tip collapse="true"}
+
+## Solution
+
+Not all types of variables work for all kind of variables. For example, shape cannot be used to map continuous variables, try out the examples below.
 
 ```{r, include = FALSE, eval = FALSE}
 
@@ -87,6 +158,9 @@ mpg %>%
 ```
 
 
+:::
+
+
 * Create the two figures below and check out the color scales. What is the difference and what is the reason for it? What happens if you substitute `color = year` by `color = as.factor(year)`?
 
 ```{r, eval = FALSE}
@@ -100,22 +174,45 @@ mpg %>%
 ```
 
 
+:::{.callout-tip collapse="true"}
+
+## Solution
+In the first figure, `year`is treated as a continous variable, therefore a continuous color scale is used in the figure. By applying `as.factor()` we change the variable into a discrete data type. The dataset contains only data of two years (1998, 2008), which is why the resulting mapping contains two levels of color. 
+
+
+:::
+
+
 ### 2.2 Moving on beyond the scatter
 
 
 * Summarize the number of cars of each manufacturer in a figure and try to take the different classes into account. 
 Hint: `geom_bar()` might be your friend.
 
-```{r, include = FALSE}
+:::{.callout-tip collapse="true"}
+
+## Solution
+
+We can create a barplot, which displays the number of cars by each manufacturer. In addition, we can distinguish different car classes for each manufacturer by using `fill = class`.
+
+```{r}
 
 ggplot(data = mpg, aes(manufacturer, fill = class)) +
   geom_bar()
 ```
 
 
+:::
+
+
 * Boxplots are really useful since they contain a lot of information. Use boxplots to investigate whether different different fuel types ('fl') have different efficiency (hwy). 
 
 * Use facets to go into more detail. 
+
+:::{.callout-tip collapse="true"}
+
+## Solution
+
 
 ```{r, include = FALSE}
 mpg %>%
@@ -129,6 +226,8 @@ mpg %>%
 ```
 
 
+
+:::
 
 
 
