@@ -32,11 +32,11 @@ website:
         contents: 
           - href: 02_Exercise.qmd
             text: "Exercise"
-#      - text: "Data Wrangling"
-#        file: 03_Wrangling.qmd
-#        contents:
-#          - href: 03_Exercise.qmd
-#            text: "Exercise"
+      - text: "Data Wrangling"
+        file: 03_Wrangling.qmd
+        contents:
+          - href: 03_Exercise.qmd
+            text: "Exercise"
 #      - text: "Reading data"
 #        file: 04_Reading.qmd
 #      - text: "Tidy data"
