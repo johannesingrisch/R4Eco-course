@@ -217,6 +217,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Reading.html" class="sidebar-item-text sidebar-link">Reading data</a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -230,56 +235,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#transforming-data-using-dplyr" id="toc-transforming-data-using-dplyr" class="nav-link" data-scroll-target="#transforming-data-using-dplyr">Transforming data using <code>dplyr</code></a></li>
   </ul></li>
-  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting">Subsetting</a>
-  <ul class="collapse">
+  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting">Subsetting</a></li>
   <li><a href="#filter-rows-with-filter" id="toc-filter-rows-with-filter" class="nav-link" data-scroll-target="#filter-rows-with-filter">Filter rows with filter()</a></li>
-  <li><a href="#filter-rows-with-filter-1" id="toc-filter-rows-with-filter-1" class="nav-link" data-scroll-target="#filter-rows-with-filter-1">Filter rows with filter()</a></li>
   <li><a href="#comparisons" id="toc-comparisons" class="nav-link" data-scroll-target="#comparisons">Comparisons</a></li>
   <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical operators</a></li>
-  <li><a href="#logical-operators-1" id="toc-logical-operators-1" class="nav-link" data-scroll-target="#logical-operators-1">Logical operators</a></li>
-  <li><a href="#logical-operators-2" id="toc-logical-operators-2" class="nav-link" data-scroll-target="#logical-operators-2">Logical operators</a></li>
+  <li><a href="#negate-statements" id="toc-negate-statements" class="nav-link" data-scroll-target="#negate-statements">Negate statements</a></li>
+  <li><a href="#arrange-data" id="toc-arrange-data" class="nav-link" data-scroll-target="#arrange-data">Arrange data</a></li>
   <li><a href="#arrange-rows-in-ascending-order-arrange" id="toc-arrange-rows-in-ascending-order-arrange" class="nav-link" data-scroll-target="#arrange-rows-in-ascending-order-arrange">Arrange rows in ascending order: arrange()</a></li>
-  <li><a href="#arrange-rows-in-descending-order-arrange" id="toc-arrange-rows-in-descending-order-arrange" class="nav-link" data-scroll-target="#arrange-rows-in-descending-order-arrange">Arrange rows in descending order: arrange()</a></li>
-  <li><a href="#arrange-multiple-columns" id="toc-arrange-multiple-columns" class="nav-link" data-scroll-target="#arrange-multiple-columns">arrange(): multiple columns</a></li>
+  <li><a href="#arrange-in-reversed-order" id="toc-arrange-in-reversed-order" class="nav-link" data-scroll-target="#arrange-in-reversed-order">arrange in reversed order</a></li>
+  <li><a href="#arrange-multiple-variables" id="toc-arrange-multiple-variables" class="nav-link" data-scroll-target="#arrange-multiple-variables">arrange(): multiple variables</a></li>
+  <li><a href="#select-variables" id="toc-select-variables" class="nav-link" data-scroll-target="#select-variables">Select variables</a></li>
   <li><a href="#select-columns-select" id="toc-select-columns-select" class="nav-link" data-scroll-target="#select-columns-select">Select columns: select()</a></li>
-  <li><a href="#select-columns-select-1" id="toc-select-columns-select-1" class="nav-link" data-scroll-target="#select-columns-select-1">Select columns: select()</a></li>
-  <li><a href="#select-columns-select-2" id="toc-select-columns-select-2" class="nav-link" data-scroll-target="#select-columns-select-2">Select columns: select()</a></li>
+  <li><a href="#reverse-selection" id="toc-reverse-selection" class="nav-link" data-scroll-target="#reverse-selection">Reverse selection</a></li>
   <li><a href="#select-helper-functions" id="toc-select-helper-functions" class="nav-link" data-scroll-target="#select-helper-functions">select(): helper functions</a></li>
-  </ul></li>
-  <li><a href="#create-new-variables-mutate" id="toc-create-new-variables-mutate" class="nav-link" data-scroll-target="#create-new-variables-mutate">Create new variables: mutate()</a>
-  <ul class="collapse">
+  <li><a href="#create-new-variables-mutate" id="toc-create-new-variables-mutate" class="nav-link" data-scroll-target="#create-new-variables-mutate">Create new variables: mutate()</a></li>
   <li><a href="#calculate-a-new-variable" id="toc-calculate-a-new-variable" class="nav-link" data-scroll-target="#calculate-a-new-variable">Calculate a new variable</a></li>
   <li><a href="#calculate-a-new-variable-in-multiple-steps" id="toc-calculate-a-new-variable-in-multiple-steps" class="nav-link" data-scroll-target="#calculate-a-new-variable-in-multiple-steps">Calculate a new variable in multiple steps</a></li>
-  </ul></li>
-  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe">The Pipe: %&gt;%</a>
-  <ul class="collapse">
+  <li><a href="#the-pipe-operators-and-1" id="toc-the-pipe-operators-and-1" class="nav-link" data-scroll-target="#the-pipe-operators-and-1">The Pipe Operators: <code>%&gt;%</code> and <code>|&gt;</code></a></li>
   <li><a href="#how-to-use-the-pipe" id="toc-how-to-use-the-pipe" class="nav-link" data-scroll-target="#how-to-use-the-pipe">How to use the pipe %&gt;%</a></li>
   <li><a href="#combine-multiple-operations" id="toc-combine-multiple-operations" class="nav-link" data-scroll-target="#combine-multiple-operations">Combine Multiple Operations: %&gt;%</a></li>
   <li><a href="#combine-pipe-with-ggplot" id="toc-combine-pipe-with-ggplot" class="nav-link" data-scroll-target="#combine-pipe-with-ggplot">Combine Pipe with ggplot()</a></li>
-  </ul></li>
   <li><a href="#time-to-try-it-yourself" id="toc-time-to-try-it-yourself" class="nav-link" data-scroll-target="#time-to-try-it-yourself">Time to try it yourself:</a></li>
-  <li><a href="#summarising-and-grouping-data" id="toc-summarising-and-grouping-data" class="nav-link" data-scroll-target="#summarising-and-grouping-data">Summarising and grouping data</a>
-  <ul class="collapse">
+  <li><a href="#summarising-and-grouping-data" id="toc-summarising-and-grouping-data" class="nav-link" data-scroll-target="#summarising-and-grouping-data">Summarising and grouping data</a></li>
   <li><a href="#summarize-data-summarise" id="toc-summarize-data-summarise" class="nav-link" data-scroll-target="#summarize-data-summarise">Summarize data: summarise()</a></li>
-  <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise">summarise()</a></li>
+  <li><a href="#multiple-summary-functions" id="toc-multiple-summary-functions" class="nav-link" data-scroll-target="#multiple-summary-functions">multiple summary functions</a></li>
   <li><a href="#summarize-different-groups-group_by-summarise" id="toc-summarize-different-groups-group_by-summarise" class="nav-link" data-scroll-target="#summarize-different-groups-group_by-summarise">Summarize different groups: group_by() &amp; summarise()</a></li>
   <li><a href="#group_by-with-several-grouping-variables" id="toc-group_by-with-several-grouping-variables" class="nav-link" data-scroll-target="#group_by-with-several-grouping-variables">Group_by() with several grouping variables</a></li>
   <li><a href="#advanced-example-group_by-summarise" id="toc-advanced-example-group_by-summarise" class="nav-link" data-scroll-target="#advanced-example-group_by-summarise">Advanced Example: Group_by() &amp; summarise()</a></li>
   <li><a href="#advanced-example-group_by-summarise-ggplot" id="toc-advanced-example-group_by-summarise-ggplot" class="nav-link" data-scroll-target="#advanced-example-group_by-summarise-ggplot">Advanced Example: Group_by() &amp; summarise() &amp; ggplot()</a></li>
   <li><a href="#group_by-mutate" id="toc-group_by-mutate" class="nav-link" data-scroll-target="#group_by-mutate">Group_by() &amp; mutate()</a></li>
-  </ul></li>
-  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing Values</a>
-  <ul class="collapse">
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing values</a></li>
   <li><a href="#how-to-check-for-missing-values" id="toc-how-to-check-for-missing-values" class="nav-link" data-scroll-target="#how-to-check-for-missing-values">How to check for missing values</a></li>
   <li><a href="#calculations-with-missing-values" id="toc-calculations-with-missing-values" class="nav-link" data-scroll-target="#calculations-with-missing-values">Calculations with missing values</a></li>
   <li><a href="#removing-nas-from-dataset" id="toc-removing-nas-from-dataset" class="nav-link" data-scroll-target="#removing-nas-from-dataset">Removing NA’s from dataset</a></li>
-  </ul></li>
   <li><a href="#data-wrangling-cheat-sheet" id="toc-data-wrangling-cheat-sheet" class="nav-link" data-scroll-target="#data-wrangling-cheat-sheet">Data Wrangling Cheat Sheet</a></li>
-  <li><a href="#summing-up" id="toc-summing-up" class="nav-link" data-scroll-target="#summing-up">Summing up</a></li>
-  <li><a href="#exercise-part-2" id="toc-exercise-part-2" class="nav-link" data-scroll-target="#exercise-part-2">Exercise Part 2</a>
-  <ul class="collapse">
-  <li><a href="#summing-up-1" id="toc-summing-up-1" class="nav-link" data-scroll-target="#summing-up-1">Summing up</a></li>
-  </ul></li>
+  <li><a href="#exercise-part-2" id="toc-exercise-part-2" class="nav-link" data-scroll-target="#exercise-part-2">Exercise Part 2</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/johannesingrisch/R4Eco-course/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -321,11 +311,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="subsetting" class="level1">
 <h1>Subsetting</h1>
 <p>Often we want to narrow down a large datset to a subset, either by filtering observations (i.e.&nbsp;reduce the number of rows) or by selecting specific variables only (i.e.&nbsp;reduce the number of columns).</p>
-<p><code>Dplyr</code>provides two handy functions for this</p>
+<p><code>Dplyr</code> provides two handy functions for this</p>
 <ul>
 <li>filter()</li>
 <li>select()</li>
 </ul>
+</section>
 <section id="filter-rows-with-filter" class="level2">
 <h2 class="anchored" data-anchor-id="filter-rows-with-filter">Filter rows with filter()</h2>
 <p>Create a subset of observations based on values of certain variables.</p>
@@ -343,9 +334,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 5 chevrolet    corvette   7    2008     8 manual(… r        15    24 p     2sea…</code></pre>
 </div>
 </div>
-</section>
-<section id="filter-rows-with-filter-1" class="level2">
-<h2 class="anchored" data-anchor-id="filter-rows-with-filter-1">Filter rows with filter()</h2>
 <p>We can also use multiple conditions</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, class <span class="sc">==</span> <span class="st">"2seater"</span>, trans <span class="sc">==</span> <span class="st">"auto(l4)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -361,6 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="comparisons">Comparisons</h2>
 <p>Using comparisons:</p>
 <p><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code></p>
+<p>Example: Keep all data where <code>hwy</code> is larger or equal to and cyl is equal or less than 4.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, hwy <span class="sc">&gt;=</span> <span class="dv">30</span>, cyl <span class="sc">&lt;=</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -385,34 +374,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="logical-operators" class="level2">
 <h2 class="anchored" data-anchor-id="logical-operators">Logical operators</h2>
+<p>We can use logical operators to filter data. The most important operators are illustrated in the following figure</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="./figures/Boolean_operators.png" class="img-fluid" style="width:60.0%"></p>
 </div>
 </div>
+<p>Can be applied as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, cyl <span class="sc">==</span> <span class="dv">4</span> <span class="sc">|</span> cyl <span class="sc">==</span> <span class="dv">5</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, cyl <span class="sc">==</span> <span class="dv">4</span>,  drv <span class="sc">!=</span> <span class="st">"f"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## keep rows where cyl has value 4 OR 5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, cyl <span class="sc">==</span> <span class="dv">4</span> <span class="sc">|</span> cyl <span class="sc">==</span> <span class="dv">5</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># keep rows where cyl has value 4 but drv IS NOT "f"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, cyl <span class="sc">==</span> <span class="dv">4</span>,  drv <span class="sc">!=</span> <span class="st">"f"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="logical-operators-1" class="level2">
-<h2 class="anchored" data-anchor-id="logical-operators-1">Logical operators</h2>
-<p><code>%in%</code> can simplify life:</p>
+<p>Instead of using several OR conditions, <code>%in%</code> provides a nice shortcut and can simplify life:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, cyl <span class="sc">==</span> <span class="dv">4</span> <span class="sc">|</span> cyl <span class="sc">==</span> <span class="dv">5</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, cyl <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<blockquote class="blockquote">
 <p>Combining multiple conditions can quickly become confusing. Consider doing it stepwise.</p>
+</blockquote>
 </section>
-<section id="logical-operators-2" class="level2">
-<h2 class="anchored" data-anchor-id="logical-operators-2">Logical operators</h2>
-<p>Sometimes it is easier to define what should stay out, instead of what should stay in.</p>
-<p>Example: exclude all SUVs from manufacturer Chevrolet</p>
+<section id="negate-statements" class="level2">
+<h2 class="anchored" data-anchor-id="negate-statements">Negate statements</h2>
+<p>Sometimes it is easier to define what should stay out, instead of what should stay in. We can define what should go out and use <code>!</code> to negate this statement. See the following example:</p>
+<p>Aim : exclude all SUVs from manufacturer Chevrolet</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, <span class="sc">!</span>(class <span class="sc">==</span> <span class="st">"suv"</span> <span class="sc">&amp;</span> manufacturer <span class="sc">==</span> <span class="st">"chevrolet"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="arrange-data" class="level1">
+<h1>Arrange data</h1>
 </section>
 <section id="arrange-rows-in-ascending-order-arrange" class="level2">
 <h2 class="anchored" data-anchor-id="arrange-rows-in-ascending-order-arrange">Arrange rows in ascending order: arrange()</h2>
@@ -438,8 +433,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="arrange-rows-in-descending-order-arrange" class="level2">
-<h2 class="anchored" data-anchor-id="arrange-rows-in-descending-order-arrange">Arrange rows in descending order: arrange()</h2>
+<section id="arrange-in-reversed-order" class="level2">
+<h2 class="anchored" data-anchor-id="arrange-in-reversed-order">arrange in reversed order</h2>
 <p>By using <code>desc()</code>we can change the order to descending.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(mpg, <span class="fu">desc</span>(hwy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -461,8 +456,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="arrange-multiple-columns" class="level2">
-<h2 class="anchored" data-anchor-id="arrange-multiple-columns">arrange(): multiple columns</h2>
+<section id="arrange-multiple-variables" class="level2">
+<h2 class="anchored" data-anchor-id="arrange-multiple-variables">arrange(): multiple variables</h2>
 <p>We can use multiple variables to define the order of the arranged dataset.</p>
 <p>Note: order of the variables matters:</p>
 <div class="cell">
@@ -484,6 +479,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 # … with 224 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="select-variables" class="level1">
+<h1>Select variables</h1>
 </section>
 <section id="select-columns-select" class="level2">
 <h2 class="anchored" data-anchor-id="select-columns-select">Select columns: select()</h2>
@@ -508,10 +506,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 # … with 224 more rows</code></pre>
 </div>
 </div>
-</section>
-<section id="select-columns-select-1" class="level2">
-<h2 class="anchored" data-anchor-id="select-columns-select-1">Select columns: select()</h2>
-<p>Keep all columns from <code>year</code> to <code>cty</code>.</p>
+<p>Example: Keep all columns from <code>year</code> to <code>cty</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mpg, year<span class="sc">:</span>cty)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -532,8 +527,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="select-columns-select-2" class="level2">
-<h2 class="anchored" data-anchor-id="select-columns-select-2">Select columns: select()</h2>
+<section id="reverse-selection" class="level2">
+<h2 class="anchored" data-anchor-id="reverse-selection">Reverse selection</h2>
 <p>Instead of actively selecting the columns we want, we can also remove those which we don’t want:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(mpg, <span class="sc">-</span>model, <span class="sc">-</span> cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -575,10 +570,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>various other options: see the help by calling <code>?select</code></li>
 </ul>
 </section>
-</section>
 <section id="create-new-variables-mutate" class="level1">
 <h1>Create new variables: mutate()</h1>
 <p>With <code>mutate()</code> we can create a new variable which is added at the end of our dataset.</p>
+</section>
 <section id="calculate-a-new-variable" class="level2">
 <h2 class="anchored" data-anchor-id="calculate-a-new-variable">Calculate a new variable</h2>
 <p>Example: Calculate fuel consumption (L / 100km) = 1 / hwy /2.352 * 100</p>
@@ -626,22 +621,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Note: mutate() can immediatly re-use any newly created variables within the same call of <code>mutate()</code>.</p>
 </section>
-</section>
-<section id="the-pipe" class="level1">
-<h1>The Pipe: %&gt;%</h1>
+<section id="the-pipe-operators-and-1" class="level1">
+<h1>The Pipe Operators: <code>%&gt;%</code> and <code>|&gt;</code></h1>
+<p>R provides a useful operatur called the pipe. Initially it was introduced within the tidyverse, and the pipe operator looked like this <code>%&gt;%</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="./figures/pipe.png" class="img-fluid" style="width:25.0%"></p>
 </div>
 </div>
-<p>The pipe is a really useful operator to string together multiple operations in R.</p>
+<p>Recently, a pipe operator was also introduced natively in R, where it is <code>|&gt;</code>.</p>
+<p>The idea is the same: The pipe is a really useful operator to string together multiple operations in R.</p>
 <p>R-Studio Shortcut: <strong>Ctrl + Shift + M</strong></p>
+<p>In R Studio you can choose in the global options, whether you want to use the tidy pipe or the native pipe.</p>
+</section>
 <section id="how-to-use-the-pipe" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-the-pipe">How to use the pipe %&gt;%</h2>
 <p>Passes object on the lefthand side as first argument of function on righthand side.</p>
 <ul>
 <li><code>x %&gt;% f(y)</code> is similar to <code>f(x,y)</code></li>
 </ul>
+<p>Example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(mpg, class <span class="sc">==</span> <span class="st">"seater"</span> <span class="sc">|</span> class <span class="sc">==</span> <span class="st">"compact"</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -673,20 +672,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6 compact audi             4   1.8    25  0.04  </code></pre>
 </div>
 </div>
+<p>A lot is happening in these few lines, and the pipe allows for a very concise and readable piece of code.</p>
 </section>
 <section id="combine-pipe-with-ggplot" class="level2">
 <h2 class="anchored" data-anchor-id="combine-pipe-with-ggplot">Combine Pipe with ggplot()</h2>
 <p>We can even combine it with ggplot!</p>
-<p>Note: within ggplot you have to use <code>+</code>, before the ggplot-call you have to use <code>%&gt;%</code>. Confusing, I know… ::: {.cell}</p>
+<p>Note: within ggplot you have to use <code>+</code>, before the ggplot-call you have to use <code>%&gt;%</code>. Confusing indeed…</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">"2seater"</span> <span class="sc">|</span> class <span class="sc">==</span> <span class="st">"compact"</span>) <span class="sc">%&gt;%</span>  </span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span> </span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" style="width:60.0%"></p>
+<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" style="width:60.0%"></p>
 </div>
-<p>:::</p>
-</section>
+</div>
 </section>
 <section id="time-to-try-it-yourself" class="level1">
 <h1>Time to try it yourself:</h1>
@@ -694,6 +694,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="summarising-and-grouping-data" class="level1">
 <h1>Summarising and grouping data</h1>
+</section>
 <section id="summarize-data-summarise" class="level2">
 <h2 class="anchored" data-anchor-id="summarize-data-summarise">Summarize data: summarise()</h2>
 <p>Collapses data frame to a single row by using a supplied function.</p>
@@ -709,8 +710,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="summarise" class="level2">
-<h2 class="anchored" data-anchor-id="summarise">summarise()</h2>
+<section id="multiple-summary-functions" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-summary-functions">multiple summary functions</h2>
 <p>Also possible for multiple functions and variables</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
@@ -784,7 +785,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <blockquote class="blockquote">
 <ul>
-<li><strong>Important</strong>: before we can group this dataset again we need to ungroup() first!</li>
+<li><strong>Important</strong>: before we can group this dataset again we need to <code>ungroup()</code> first!</li>
 </ul>
 </blockquote>
 </section>
@@ -824,7 +825,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="at">width =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="at">height =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" style="width:50.0%"></p>
+<p><img src="03_Wrangling_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" style="width:50.0%"></p>
 </div>
 </div>
 </section>
@@ -858,9 +859,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-</section>
 <section id="missing-values" class="level1">
-<h1>Missing Values</h1>
+<h1>Missing values</h1>
 <ul>
 <li>Missing values are observations with no information.</li>
 <li>this is <strong>not</strong> the same as zero!</li>
@@ -876,9 +876,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 4  7 9</code></pre>
 </div>
 </div>
+</section>
 <section id="how-to-check-for-missing-values" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-check-for-missing-values">How to check for missing values</h2>
-<p>We can check for missing values by <code>is.na</code>.</p>
+<p>We can check for missing values by <code>is.na()</code>. Also the function summary() tells us about it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -914,7 +915,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 1 NA 4.25</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Often better:</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summarise omitting NA's</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summarise omitting NA's, </span></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">x =</span> <span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
 <span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="fu">mean</span>(y, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -949,48 +950,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-</section>
 <section id="data-wrangling-cheat-sheet" class="level1">
 <h1>Data Wrangling Cheat Sheet</h1>
-<p>https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf</p>
+<p><a href="https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf" class="uri">https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf</a></p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="./figures/Cheatsheet_wrangling.png" class="img-fluid" style="width:60.0%"></p>
 </div>
 </div>
 </section>
-<section id="summing-up" class="level1">
-<h1>Summing up</h1>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="./figures/Data_wrangling.png" class="img-fluid" style="width:60.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="./figures/tidyverse_0.png" class="img-fluid" style="width:35.0%"></p>
-</div>
-</div>
-</section>
 <section id="exercise-part-2" class="level1">
 <h1>Exercise Part 2</h1>
 <p>Things are coming together…</p>
-<section id="summing-up-1" class="level2">
-<h2 class="anchored" data-anchor-id="summing-up-1">Summing up</h2>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="./figures/Data_wrangling.png" class="img-fluid" style="width:60.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="./figures/tidyverse_0.png" class="img-fluid" style="width:35.0%"></p>
-</div>
-</div>
+</section>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -28,14 +28,38 @@ include_graphics("./figures/dplyr.png")
 - reorder observations
 - ...
 
-# Subsetting 
+
+::: {.content-visible when-profile="website"}
+
+# Subsetting
 
 Often we want to narrow down a large datset to a subset, either by filtering observations (i.e. reduce the number of rows) or by selecting specific variables only (i.e. reduce the number of columns). 
 
-`Dplyr`provides two handy functions for this
+`Dplyr` provides two handy functions for this
 
 - filter()
 - select()
+
+
+:::
+
+
+::: {.content-visible when-profile="slides"}
+
+## Subsetting
+
+Often we want to narrow down a large datset to a subset, either by filtering observations (i.e. reduce the number of rows) or by selecting specific variables only (i.e. reduce the number of columns). 
+
+`Dplyr` provides two handy functions for this
+
+- filter()
+- select()
+
+
+:::
+
+
+
 
 ## Filter rows with filter()
 
@@ -46,8 +70,6 @@ For this we use **logical operators**.
 ```{r}
 filter(mpg, class == "2seater")
 ```
-
-## Filter rows with filter()
 
 We can also use multiple conditions
 
@@ -62,6 +84,8 @@ Using comparisons:
 
 `>`, `>=`, `<`, `<=`, `==`, `!=` 
 
+Example: Keep all data where `hwy` is larger or equal to and cyl is equal or less than 4.
+
 ```{r}
 filter(mpg, hwy >= 30, cyl <= 4)
 ```
@@ -74,21 +98,24 @@ Take care:
 
 ## Logical operators
 
+We can use logical operators to filter data. The most important operators are illustrated in the following figure
+
 ```{r echo = FALSE, out.width = "60%"}
 include_graphics("./figures/Boolean_operators.png")
 ```
 
+Can be applied as follows: 
+
 ```{r, eval = FALSE}
+## keep rows where cyl has value 4 OR 5
 filter(mpg, cyl == 4 | cyl == 5)
 
+# keep rows where cyl has value 4 but drv IS NOT "f"
 filter(mpg, cyl == 4,  drv != "f")
 
 ```
 
-
-## Logical operators
-
-`%in%` can simplify life:
+Instead of using several OR conditions, `%in%` provides a nice shortcut and can simplify life: 
 
 ```{r, eval = FALSE}
 filter(mpg, cyl == 4 | cyl == 5)
@@ -96,14 +123,14 @@ filter(mpg, cyl == 4 | cyl == 5)
 filter(mpg, cyl %in% c(4,5))
 ```
 
-Combining multiple conditions can quickly become confusing. Consider doing it stepwise.
+> Combining multiple conditions can quickly become confusing. Consider doing it stepwise.
 
 
-## Logical operators
+## Negate statements
 
-Sometimes it is easier to define what should stay out, instead of what should stay in.
+Sometimes it is easier to define what should stay out, instead of what should stay in. We can define what should go out and use `!` to negate this statement. See the following example:
 
-Example: exclude all SUVs from manufacturer Chevrolet
+Aim : exclude all SUVs from manufacturer Chevrolet
 
 ```{r, eval = FALSE}
 
@@ -111,6 +138,12 @@ filter(mpg, !(class == "suv" & manufacturer == "chevrolet"))
 
 ```
 
+
+::: {.content-visible when-profile="website"}
+
+# Arrange data
+
+:::
 
 ## Arrange rows in ascending order: arrange()
 
@@ -122,8 +155,7 @@ Example: order the dataset `mpg`in ascending order according to the variable `hw
 arrange(mpg, hwy)
 ```
 
-
-## Arrange rows in descending order: arrange()
+## arrange in reversed order
 
 By using `desc()`we can change the order to descending. 
 
@@ -132,7 +164,7 @@ By using `desc()`we can change the order to descending.
 arrange(mpg, desc(hwy))
 ```
 
-## arrange(): multiple columns
+## arrange(): multiple variables
 
 We can use multiple variables to define the order of the arranged dataset.
 
@@ -142,6 +174,14 @@ Note: order of the variables matters:
 arrange(mpg, desc(cyl), hwy)
 ```
 
+
+::: {.content-visible when-profile="website"}
+
+
+# Select variables 
+
+
+:::
 
 ## Select columns: select()
 
@@ -153,15 +193,13 @@ Example: From the dataset `mpg`we only want to keep the columns `model`, `drv`, 
 select(mpg, model, drv, hwy)
 ```
 
-## Select columns: select()
-
-Keep all columns from `year` to `cty`. 
+Example: Keep all columns from `year` to `cty`. 
 
 ```{r}
 select(mpg, year:cty)
 ```
 
-## Select columns: select()
+## Reverse selection
 
 Instead of actively selecting the columns we want, we can also remove those which we don't want: 
 
@@ -189,9 +227,24 @@ select(mpg, efficiency = hwy, everything())
 
 - various other options: see the help by calling `?select`
 
+
+::: {.content-visible when-profile="website"}
+
 # Create new variables: mutate()
 
 With `mutate()` we can create a new variable which is added at the end of our dataset. 
+
+
+:::
+
+::: {.content-visible when-profile="slides"}
+
+## Create new variables: mutate()
+
+With `mutate()` we can create a new variable which is added at the end of our dataset. 
+
+:::
+
 
 
 ## Calculate a new variable
@@ -220,15 +273,44 @@ head(mpg2)
 
 Note: mutate() can immediatly re-use any newly created variables within the same call of `mutate()`.
 
-# The Pipe: %>%
+
+::: {.content-visible when-profile="slides"}
+
+
+## The Pipe Operators: `%>%` and `|>`
+
+R provides a useful operatur called the pipe. Initially it was introduced within the tidyverse, and the pipe operator looked like this `%>%`. 
 
 ```{r echo = FALSE, out.width = "25%"}
 include_graphics("./figures/pipe.png")
 ```
 
-The pipe is a really useful operator to string together multiple operations in R. 
+R-Studio Shortcut: __Ctrl + Shift + M__
+
+
+:::
+
+
+
+::: {.content-visible when-profile="website"}
+
+# The Pipe Operators: `%>%` and `|>`
+
+R provides a useful operatur called the pipe. Initially it was introduced within the tidyverse, and the pipe operator looked like this `%>%`. 
+
+```{r echo = FALSE, out.width = "25%"}
+include_graphics("./figures/pipe.png")
+```
+
+Recently, a pipe operator was also introduced natively in R, where it is `|>`.
+
+The idea is the same: The pipe is a really useful operator to string together multiple operations in R. 
 
 R-Studio Shortcut: __Ctrl + Shift + M__
+
+In R Studio you can choose in the global options, whether you want to use the tidy pipe or the native pipe. 
+
+:::
 
 
 ## How to use the pipe %>%
@@ -236,6 +318,8 @@ R-Studio Shortcut: __Ctrl + Shift + M__
 Passes object on the lefthand side as first argument of function on righthand side. 
 
 - `x %>% f(y)` is similar to `f(x,y)`
+
+Example:
 
 ```{r, eval = FALSE}
 filter(mpg, class == "seater" | class == "compact")
@@ -262,12 +346,14 @@ head(mpg_sub)
 
 ```
 
+A lot is happening in these few lines, and the pipe allows for a very concise and readable piece of code. 
 
 ## Combine Pipe with ggplot()
 
 We can even combine it with ggplot!
 
-Note: within ggplot you have to use `+`, before the ggplot-call you have to use `%>%`. Confusing, I know... 
+Note: within ggplot you have to use `+`, before the ggplot-call you have to use `%>%`. Confusing indeed... 
+
 ```{r, out.width = "60%"}
 mpg %>% 
   filter(class == "2seater" | class == "compact") %>%  
@@ -277,14 +363,40 @@ mpg %>%
 
 
 
+::: {.content-visible when-profile="website"}
+
 # Time to try it yourself: 
 
 --> check out Exercise Part 1.
 
+:::
 
 
+
+::: {.content-visible when-profile="slides"}
+
+## Time to try it yourself: 
+
+--> check out Exercise Part 1.
+
+:::
+
+
+
+::: {.content-visible when-profile="website"}
 
 # Summarising and grouping data
+
+:::
+
+
+
+::: {.content-visible when-profile="slides"}
+
+## Summarising and grouping data
+
+:::
+
 
 ## Summarize data: summarise()
 
@@ -298,7 +410,7 @@ mpg %>%
 ```
 
 
-## summarise()
+## multiple summary functions
 
 Also possible for multiple functions and variables
 
@@ -346,7 +458,7 @@ by_class_drv
 ```
 
 
->- __Important__: before we can group this dataset again we need to ungroup() first!
+>- __Important__: before we can group this dataset again we need to `ungroup()` first!
 
 
 ## Advanced Example: Group_by() & summarise()
@@ -366,6 +478,7 @@ by_class
 ```
 
 ## Advanced Example: Group_by() & summarise() & ggplot()
+
 
 ```{r, out.width = "50%"}
 
@@ -393,10 +506,13 @@ mpg %>%
 
 
 
-# Missing Values
+::: {.content-visible when-profile="website"}
+
+# Missing values
 
 - Missing values are observations with no information. 
 - this is __not__ the same as zero!
+
 
 ```{r}
 (df <- data.frame(x = c(1,3,NA,7), 
@@ -404,9 +520,28 @@ mpg %>%
 ```
 
 
+:::
+
+
+::: {.content-visible when-profile="slides"}
+
+## Missing values
+
+- Missing values are observations with no information. 
+- this is __not__ the same as zero!
+
+
+```{r}
+(df <- data.frame(x = c(1,3,NA,7), 
+                 y = c(2,4,2,9)))
+```
+
+:::
+
+
 ## How to check for missing values
 
-We can check for missing values by `is.na`. 
+We can check for missing values by `is.na()`. Also the function summary() tells us about it. 
 
 ```{r out.width="80%"}
 is.na(df)
@@ -425,7 +560,7 @@ df %>%
             y = mean(y))
 
 # Often better:
-# summarise omitting NA's
+# summarise omitting NA's, 
 df %>% 
   summarise(x = mean(x, na.rm=TRUE), 
             y = mean(y, na.rm=TRUE))
@@ -444,27 +579,19 @@ mpg %>%
 ```
 
 
+::: {.content-visible when-profile="website"}
 
 # Data Wrangling Cheat Sheet
 
-https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+<https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf>
 
 ```{r echo = FALSE, out.width = "60%"}
 include_graphics("./figures/Cheatsheet_wrangling.png")
 ```
 
+:::
 
-
-# Summing up
-
-```{r echo = FALSE, out.width = "60%"}
-include_graphics("./figures/Data_wrangling.png")
-```
-
-```{r echo = FALSE, out.width = "35%"}
-include_graphics("./figures/tidyverse_0.png")
-```
-
+::: {.content-visible when-profile="website"}
 
 
 # Exercise Part 2
@@ -472,16 +599,5 @@ include_graphics("./figures/tidyverse_0.png")
 
 Things are coming together...
 
-
-
-
-## Summing up
-
-```{r echo = FALSE, out.width = "60%"}
-include_graphics("./figures/Data_wrangling.png")
-```
-
-```{r echo = FALSE, out.width = "35%"}
-include_graphics("./figures/tidyverse_0.png")
-```
+:::
 

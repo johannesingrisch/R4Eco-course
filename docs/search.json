@@ -340,42 +340,28 @@
     "href": "03_Wrangling.html#filter-rows-with-filter",
     "title": "Data management and analysis in R",
     "section": "Filter rows with filter()",
-    "text": "Filter rows with filter()\nCreate a subset of observations based on values of certain variables.\nFor this we use logical operators.\n\nfilter(mpg, class == \"2seater\")\n\n# A tibble: 5 × 11\n  manufacturer model    displ  year   cyl trans    drv     cty   hwy fl    class\n  <chr>        <chr>    <dbl> <int> <int> <chr>    <chr> <int> <int> <chr> <chr>\n1 chevrolet    corvette   5.7  1999     8 manual(… r        16    26 p     2sea…\n2 chevrolet    corvette   5.7  1999     8 auto(l4) r        15    23 p     2sea…\n3 chevrolet    corvette   6.2  2008     8 manual(… r        16    26 p     2sea…\n4 chevrolet    corvette   6.2  2008     8 auto(s6) r        15    25 p     2sea…\n5 chevrolet    corvette   7    2008     8 manual(… r        15    24 p     2sea…"
-  },
-  {
-    "objectID": "03_Wrangling.html#filter-rows-with-filter-1",
-    "href": "03_Wrangling.html#filter-rows-with-filter-1",
-    "title": "Data management and analysis in R",
-    "section": "Filter rows with filter()",
-    "text": "Filter rows with filter()\nWe can also use multiple conditions\n\nfilter(mpg, class == \"2seater\", trans == \"auto(l4)\")\n\n# A tibble: 1 × 11\n  manufacturer model    displ  year   cyl trans    drv     cty   hwy fl    class\n  <chr>        <chr>    <dbl> <int> <int> <chr>    <chr> <int> <int> <chr> <chr>\n1 chevrolet    corvette   5.7  1999     8 auto(l4) r        15    23 p     2sea…"
+    "text": "Filter rows with filter()\nCreate a subset of observations based on values of certain variables.\nFor this we use logical operators.\n\nfilter(mpg, class == \"2seater\")\n\n# A tibble: 5 × 11\n  manufacturer model    displ  year   cyl trans    drv     cty   hwy fl    class\n  <chr>        <chr>    <dbl> <int> <int> <chr>    <chr> <int> <int> <chr> <chr>\n1 chevrolet    corvette   5.7  1999     8 manual(… r        16    26 p     2sea…\n2 chevrolet    corvette   5.7  1999     8 auto(l4) r        15    23 p     2sea…\n3 chevrolet    corvette   6.2  2008     8 manual(… r        16    26 p     2sea…\n4 chevrolet    corvette   6.2  2008     8 auto(s6) r        15    25 p     2sea…\n5 chevrolet    corvette   7    2008     8 manual(… r        15    24 p     2sea…\n\n\nWe can also use multiple conditions\n\nfilter(mpg, class == \"2seater\", trans == \"auto(l4)\")\n\n# A tibble: 1 × 11\n  manufacturer model    displ  year   cyl trans    drv     cty   hwy fl    class\n  <chr>        <chr>    <dbl> <int> <int> <chr>    <chr> <int> <int> <chr> <chr>\n1 chevrolet    corvette   5.7  1999     8 auto(l4) r        15    23 p     2sea…"
   },
   {
     "objectID": "03_Wrangling.html#comparisons",
     "href": "03_Wrangling.html#comparisons",
     "title": "Data management and analysis in R",
     "section": "Comparisons",
-    "text": "Comparisons\nUsing comparisons:\n>, >=, <, <=, ==, !=\n\nfilter(mpg, hwy >= 30, cyl <= 4)\n\n# A tibble: 26 × 11\n   manufacturer model  displ  year   cyl trans     drv     cty   hwy fl    class\n   <chr>        <chr>  <dbl> <int> <int> <chr>     <chr> <int> <int> <chr> <chr>\n 1 audi         a4       2    2008     4 manual(m… f        20    31 p     comp…\n 2 audi         a4       2    2008     4 auto(av)  f        21    30 p     comp…\n 3 chevrolet    malibu   2.4  2008     4 auto(l4)  f        22    30 r     mids…\n 4 honda        civic    1.6  1999     4 manual(m… f        28    33 r     subc…\n 5 honda        civic    1.6  1999     4 auto(l4)  f        24    32 r     subc…\n 6 honda        civic    1.6  1999     4 manual(m… f        25    32 r     subc…\n 7 honda        civic    1.6  1999     4 auto(l4)  f        24    32 r     subc…\n 8 honda        civic    1.8  2008     4 manual(m… f        26    34 r     subc…\n 9 honda        civic    1.8  2008     4 auto(l5)  f        25    36 r     subc…\n10 honda        civic    1.8  2008     4 auto(l5)  f        24    36 c     subc…\n# … with 16 more rows\n\n\nTake care:\n= instead of == produces error. Happens to me all the time…"
+    "text": "Comparisons\nUsing comparisons:\n>, >=, <, <=, ==, !=\nExample: Keep all data where hwy is larger or equal to and cyl is equal or less than 4.\n\nfilter(mpg, hwy >= 30, cyl <= 4)\n\n# A tibble: 26 × 11\n   manufacturer model  displ  year   cyl trans     drv     cty   hwy fl    class\n   <chr>        <chr>  <dbl> <int> <int> <chr>     <chr> <int> <int> <chr> <chr>\n 1 audi         a4       2    2008     4 manual(m… f        20    31 p     comp…\n 2 audi         a4       2    2008     4 auto(av)  f        21    30 p     comp…\n 3 chevrolet    malibu   2.4  2008     4 auto(l4)  f        22    30 r     mids…\n 4 honda        civic    1.6  1999     4 manual(m… f        28    33 r     subc…\n 5 honda        civic    1.6  1999     4 auto(l4)  f        24    32 r     subc…\n 6 honda        civic    1.6  1999     4 manual(m… f        25    32 r     subc…\n 7 honda        civic    1.6  1999     4 auto(l4)  f        24    32 r     subc…\n 8 honda        civic    1.8  2008     4 manual(m… f        26    34 r     subc…\n 9 honda        civic    1.8  2008     4 auto(l5)  f        25    36 r     subc…\n10 honda        civic    1.8  2008     4 auto(l5)  f        24    36 c     subc…\n# … with 16 more rows\n\n\nTake care:\n= instead of == produces error. Happens to me all the time…"
   },
   {
     "objectID": "03_Wrangling.html#logical-operators",
     "href": "03_Wrangling.html#logical-operators",
     "title": "Data management and analysis in R",
     "section": "Logical operators",
-    "text": "Logical operators\n\n\n\n\n\n\nfilter(mpg, cyl == 4 | cyl == 5)\n\nfilter(mpg, cyl == 4,  drv != \"f\")"
+    "text": "Logical operators\nWe can use logical operators to filter data. The most important operators are illustrated in the following figure\n\n\n\n\n\nCan be applied as follows:\n\n## keep rows where cyl has value 4 OR 5\nfilter(mpg, cyl == 4 | cyl == 5)\n\n# keep rows where cyl has value 4 but drv IS NOT \"f\"\nfilter(mpg, cyl == 4,  drv != \"f\")\n\nInstead of using several OR conditions, %in% provides a nice shortcut and can simplify life:\n\nfilter(mpg, cyl == 4 | cyl == 5)\n\nfilter(mpg, cyl %in% c(4,5))\n\n\nCombining multiple conditions can quickly become confusing. Consider doing it stepwise."
   },
   {
-    "objectID": "03_Wrangling.html#logical-operators-1",
-    "href": "03_Wrangling.html#logical-operators-1",
+    "objectID": "03_Wrangling.html#negate-statements",
+    "href": "03_Wrangling.html#negate-statements",
     "title": "Data management and analysis in R",
-    "section": "Logical operators",
-    "text": "Logical operators\n%in% can simplify life:\n\nfilter(mpg, cyl == 4 | cyl == 5)\n\nfilter(mpg, cyl %in% c(4,5))\n\nCombining multiple conditions can quickly become confusing. Consider doing it stepwise."
-  },
-  {
-    "objectID": "03_Wrangling.html#logical-operators-2",
-    "href": "03_Wrangling.html#logical-operators-2",
-    "title": "Data management and analysis in R",
-    "section": "Logical operators",
-    "text": "Logical operators\nSometimes it is easier to define what should stay out, instead of what should stay in.\nExample: exclude all SUVs from manufacturer Chevrolet\n\nfilter(mpg, !(class == \"suv\" & manufacturer == \"chevrolet\"))"
+    "section": "Negate statements",
+    "text": "Negate statements\nSometimes it is easier to define what should stay out, instead of what should stay in. We can define what should go out and use ! to negate this statement. See the following example:\nAim : exclude all SUVs from manufacturer Chevrolet\n\nfilter(mpg, !(class == \"suv\" & manufacturer == \"chevrolet\"))"
   },
   {
     "objectID": "03_Wrangling.html#arrange-rows-in-ascending-order-arrange",
@@ -385,39 +371,32 @@
     "text": "Arrange rows in ascending order: arrange()\nWe can order the observations by values of one (or more) variable.\nExample: order the dataset mpgin ascending order according to the variable hwy.\n\narrange(mpg, hwy)\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 dodge        dakota pi…   4.7  2008     8 auto… 4         9    12 e     pick…\n 2 dodge        durango 4…   4.7  2008     8 auto… 4         9    12 e     suv  \n 3 dodge        ram 1500 …   4.7  2008     8 auto… 4         9    12 e     pick…\n 4 dodge        ram 1500 …   4.7  2008     8 manu… 4         9    12 e     pick…\n 5 jeep         grand che…   4.7  2008     8 auto… 4         9    12 e     suv  \n 6 chevrolet    k1500 tah…   5.3  2008     8 auto… 4        11    14 e     suv  \n 7 jeep         grand che…   6.1  2008     8 auto… 4        11    14 p     suv  \n 8 chevrolet    c1500 sub…   5.3  2008     8 auto… r        11    15 e     suv  \n 9 chevrolet    k1500 tah…   5.7  1999     8 auto… 4        11    15 r     suv  \n10 dodge        dakota pi…   5.2  1999     8 auto… 4        11    15 r     pick…\n# … with 224 more rows"
   },
   {
-    "objectID": "03_Wrangling.html#arrange-rows-in-descending-order-arrange",
-    "href": "03_Wrangling.html#arrange-rows-in-descending-order-arrange",
+    "objectID": "03_Wrangling.html#arrange-in-reversed-order",
+    "href": "03_Wrangling.html#arrange-in-reversed-order",
     "title": "Data management and analysis in R",
-    "section": "Arrange rows in descending order: arrange()",
-    "text": "Arrange rows in descending order: arrange()\nBy using desc()we can change the order to descending.\n\narrange(mpg, desc(hwy))\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 volkswagen   jetta        1.9  1999     4 manu… f        33    44 d     comp…\n 2 volkswagen   new beetle   1.9  1999     4 manu… f        35    44 d     subc…\n 3 volkswagen   new beetle   1.9  1999     4 auto… f        29    41 d     subc…\n 4 toyota       corolla      1.8  2008     4 manu… f        28    37 r     comp…\n 5 honda        civic        1.8  2008     4 auto… f        25    36 r     subc…\n 6 honda        civic        1.8  2008     4 auto… f        24    36 c     subc…\n 7 toyota       corolla      1.8  1999     4 manu… f        26    35 r     comp…\n 8 toyota       corolla      1.8  2008     4 auto… f        26    35 r     comp…\n 9 honda        civic        1.8  2008     4 manu… f        26    34 r     subc…\n10 honda        civic        1.6  1999     4 manu… f        28    33 r     subc…\n# … with 224 more rows"
+    "section": "arrange in reversed order",
+    "text": "arrange in reversed order\nBy using desc()we can change the order to descending.\n\narrange(mpg, desc(hwy))\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 volkswagen   jetta        1.9  1999     4 manu… f        33    44 d     comp…\n 2 volkswagen   new beetle   1.9  1999     4 manu… f        35    44 d     subc…\n 3 volkswagen   new beetle   1.9  1999     4 auto… f        29    41 d     subc…\n 4 toyota       corolla      1.8  2008     4 manu… f        28    37 r     comp…\n 5 honda        civic        1.8  2008     4 auto… f        25    36 r     subc…\n 6 honda        civic        1.8  2008     4 auto… f        24    36 c     subc…\n 7 toyota       corolla      1.8  1999     4 manu… f        26    35 r     comp…\n 8 toyota       corolla      1.8  2008     4 auto… f        26    35 r     comp…\n 9 honda        civic        1.8  2008     4 manu… f        26    34 r     subc…\n10 honda        civic        1.6  1999     4 manu… f        28    33 r     subc…\n# … with 224 more rows"
   },
   {
-    "objectID": "03_Wrangling.html#arrange-multiple-columns",
-    "href": "03_Wrangling.html#arrange-multiple-columns",
+    "objectID": "03_Wrangling.html#arrange-multiple-variables",
+    "href": "03_Wrangling.html#arrange-multiple-variables",
     "title": "Data management and analysis in R",
-    "section": "arrange(): multiple columns",
-    "text": "arrange(): multiple columns\nWe can use multiple variables to define the order of the arranged dataset.\nNote: order of the variables matters:\n\narrange(mpg, desc(cyl), hwy)\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 dodge        dakota pi…   4.7  2008     8 auto… 4         9    12 e     pick…\n 2 dodge        durango 4…   4.7  2008     8 auto… 4         9    12 e     suv  \n 3 dodge        ram 1500 …   4.7  2008     8 auto… 4         9    12 e     pick…\n 4 dodge        ram 1500 …   4.7  2008     8 manu… 4         9    12 e     pick…\n 5 jeep         grand che…   4.7  2008     8 auto… 4         9    12 e     suv  \n 6 chevrolet    k1500 tah…   5.3  2008     8 auto… 4        11    14 e     suv  \n 7 jeep         grand che…   6.1  2008     8 auto… 4        11    14 p     suv  \n 8 chevrolet    c1500 sub…   5.3  2008     8 auto… r        11    15 e     suv  \n 9 chevrolet    k1500 tah…   5.7  1999     8 auto… 4        11    15 r     suv  \n10 dodge        dakota pi…   5.2  1999     8 auto… 4        11    15 r     pick…\n# … with 224 more rows"
+    "section": "arrange(): multiple variables",
+    "text": "arrange(): multiple variables\nWe can use multiple variables to define the order of the arranged dataset.\nNote: order of the variables matters:\n\narrange(mpg, desc(cyl), hwy)\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 dodge        dakota pi…   4.7  2008     8 auto… 4         9    12 e     pick…\n 2 dodge        durango 4…   4.7  2008     8 auto… 4         9    12 e     suv  \n 3 dodge        ram 1500 …   4.7  2008     8 auto… 4         9    12 e     pick…\n 4 dodge        ram 1500 …   4.7  2008     8 manu… 4         9    12 e     pick…\n 5 jeep         grand che…   4.7  2008     8 auto… 4         9    12 e     suv  \n 6 chevrolet    k1500 tah…   5.3  2008     8 auto… 4        11    14 e     suv  \n 7 jeep         grand che…   6.1  2008     8 auto… 4        11    14 p     suv  \n 8 chevrolet    c1500 sub…   5.3  2008     8 auto… r        11    15 e     suv  \n 9 chevrolet    k1500 tah…   5.7  1999     8 auto… 4        11    15 r     suv  \n10 dodge        dakota pi…   5.2  1999     8 auto… 4        11    15 r     pick…\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#select-columns-select",
     "href": "03_Wrangling.html#select-columns-select",
     "title": "Data management and analysis in R",
     "section": "Select columns: select()",
-    "text": "Select columns: select()\nWe can also choose specific columns of dataset (and remove the rest).\nExample: From the dataset mpgwe only want to keep the columns model, drv, andn hwy.\n\nselect(mpg, model, drv, hwy)\n\n# A tibble: 234 × 3\n   model      drv     hwy\n   <chr>      <chr> <int>\n 1 a4         f        29\n 2 a4         f        29\n 3 a4         f        31\n 4 a4         f        30\n 5 a4         f        26\n 6 a4         f        26\n 7 a4         f        27\n 8 a4 quattro 4        26\n 9 a4 quattro 4        25\n10 a4 quattro 4        28\n# … with 224 more rows"
+    "text": "Select columns: select()\nWe can also choose specific columns of dataset (and remove the rest).\nExample: From the dataset mpgwe only want to keep the columns model, drv, andn hwy.\n\nselect(mpg, model, drv, hwy)\n\n# A tibble: 234 × 3\n   model      drv     hwy\n   <chr>      <chr> <int>\n 1 a4         f        29\n 2 a4         f        29\n 3 a4         f        31\n 4 a4         f        30\n 5 a4         f        26\n 6 a4         f        26\n 7 a4         f        27\n 8 a4 quattro 4        26\n 9 a4 quattro 4        25\n10 a4 quattro 4        28\n# … with 224 more rows\n\n\nExample: Keep all columns from year to cty.\n\nselect(mpg, year:cty)\n\n# A tibble: 234 × 5\n    year   cyl trans      drv     cty\n   <int> <int> <chr>      <chr> <int>\n 1  1999     4 auto(l5)   f        18\n 2  1999     4 manual(m5) f        21\n 3  2008     4 manual(m6) f        20\n 4  2008     4 auto(av)   f        21\n 5  1999     6 auto(l5)   f        16\n 6  1999     6 manual(m5) f        18\n 7  2008     6 auto(av)   f        18\n 8  1999     4 manual(m5) 4        18\n 9  1999     4 auto(l5)   4        16\n10  2008     4 manual(m6) 4        20\n# … with 224 more rows"
   },
   {
-    "objectID": "03_Wrangling.html#select-columns-select-1",
-    "href": "03_Wrangling.html#select-columns-select-1",
+    "objectID": "03_Wrangling.html#reverse-selection",
+    "href": "03_Wrangling.html#reverse-selection",
     "title": "Data management and analysis in R",
-    "section": "Select columns: select()",
-    "text": "Select columns: select()\nKeep all columns from year to cty.\n\nselect(mpg, year:cty)\n\n# A tibble: 234 × 5\n    year   cyl trans      drv     cty\n   <int> <int> <chr>      <chr> <int>\n 1  1999     4 auto(l5)   f        18\n 2  1999     4 manual(m5) f        21\n 3  2008     4 manual(m6) f        20\n 4  2008     4 auto(av)   f        21\n 5  1999     6 auto(l5)   f        16\n 6  1999     6 manual(m5) f        18\n 7  2008     6 auto(av)   f        18\n 8  1999     4 manual(m5) 4        18\n 9  1999     4 auto(l5)   4        16\n10  2008     4 manual(m6) 4        20\n# … with 224 more rows"
-  },
-  {
-    "objectID": "03_Wrangling.html#select-columns-select-2",
-    "href": "03_Wrangling.html#select-columns-select-2",
-    "title": "Data management and analysis in R",
-    "section": "Select columns: select()",
-    "text": "Select columns: select()\nInstead of actively selecting the columns we want, we can also remove those which we don’t want:\n\nselect(mpg, -model, - cyl)\n\n# A tibble: 234 × 9\n   manufacturer displ  year trans      drv     cty   hwy fl    class  \n   <chr>        <dbl> <int> <chr>      <chr> <int> <int> <chr> <chr>  \n 1 audi           1.8  1999 auto(l5)   f        18    29 p     compact\n 2 audi           1.8  1999 manual(m5) f        21    29 p     compact\n 3 audi           2    2008 manual(m6) f        20    31 p     compact\n 4 audi           2    2008 auto(av)   f        21    30 p     compact\n 5 audi           2.8  1999 auto(l5)   f        16    26 p     compact\n 6 audi           2.8  1999 manual(m5) f        18    26 p     compact\n 7 audi           3.1  2008 auto(av)   f        18    27 p     compact\n 8 audi           1.8  1999 manual(m5) 4        18    26 p     compact\n 9 audi           1.8  1999 auto(l5)   4        16    25 p     compact\n10 audi           2    2008 manual(m6) 4        20    28 p     compact\n# … with 224 more rows"
+    "section": "Reverse selection",
+    "text": "Reverse selection\nInstead of actively selecting the columns we want, we can also remove those which we don’t want:\n\nselect(mpg, -model, - cyl)\n\n# A tibble: 234 × 9\n   manufacturer displ  year trans      drv     cty   hwy fl    class  \n   <chr>        <dbl> <int> <chr>      <chr> <int> <int> <chr> <chr>  \n 1 audi           1.8  1999 auto(l5)   f        18    29 p     compact\n 2 audi           1.8  1999 manual(m5) f        21    29 p     compact\n 3 audi           2    2008 manual(m6) f        20    31 p     compact\n 4 audi           2    2008 auto(av)   f        21    30 p     compact\n 5 audi           2.8  1999 auto(l5)   f        16    26 p     compact\n 6 audi           2.8  1999 manual(m5) f        18    26 p     compact\n 7 audi           3.1  2008 auto(av)   f        18    27 p     compact\n 8 audi           1.8  1999 manual(m5) 4        18    26 p     compact\n 9 audi           1.8  1999 auto(l5)   4        16    25 p     compact\n10 audi           2    2008 manual(m6) 4        20    28 p     compact\n# … with 224 more rows"
   },
   {
     "objectID": "03_Wrangling.html#select-helper-functions",
@@ -445,21 +424,21 @@
     "href": "03_Wrangling.html#how-to-use-the-pipe",
     "title": "Data management and analysis in R",
     "section": "How to use the pipe %>%",
-    "text": "How to use the pipe %>%\nPasses object on the lefthand side as first argument of function on righthand side.\n\nx %>% f(y) is similar to f(x,y)\n\n\nfilter(mpg, class == \"seater\" | class == \"compact\")\n\n# is similar to\n\nmpg %>% \n  filter(class == \"seater\" | class == \"compact\")"
+    "text": "How to use the pipe %>%\nPasses object on the lefthand side as first argument of function on righthand side.\n\nx %>% f(y) is similar to f(x,y)\n\nExample:\n\nfilter(mpg, class == \"seater\" | class == \"compact\")\n\n# is similar to\n\nmpg %>% \n  filter(class == \"seater\" | class == \"compact\")"
   },
   {
     "objectID": "03_Wrangling.html#combine-multiple-operations",
     "href": "03_Wrangling.html#combine-multiple-operations",
     "title": "Data management and analysis in R",
     "section": "Combine Multiple Operations: %>%",
-    "text": "Combine Multiple Operations: %>%\nIt becomes to really useful when doing multiple operations at once:\n\nmpg_sub <- mpg %>% \n  filter(class == \"2seater\" | class == \"compact\") %>% \n  select(class, manufacturer, cyl, displ, hwy) %>% \n  mutate(consump = 1/hwy) %>% \n  arrange(hwy)\nhead(mpg_sub)\n\n# A tibble: 6 × 6\n  class   manufacturer   cyl displ   hwy consump\n  <chr>   <chr>        <int> <dbl> <int>   <dbl>\n1 2seater chevrolet        8   5.7    23  0.0435\n2 compact volkswagen       6   2.8    23  0.0435\n3 2seater chevrolet        8   7      24  0.0417\n4 compact volkswagen       6   2.8    24  0.0417\n5 compact volkswagen       6   2.8    24  0.0417\n6 compact audi             4   1.8    25  0.04"
+    "text": "Combine Multiple Operations: %>%\nIt becomes to really useful when doing multiple operations at once:\n\nmpg_sub <- mpg %>% \n  filter(class == \"2seater\" | class == \"compact\") %>% \n  select(class, manufacturer, cyl, displ, hwy) %>% \n  mutate(consump = 1/hwy) %>% \n  arrange(hwy)\nhead(mpg_sub)\n\n# A tibble: 6 × 6\n  class   manufacturer   cyl displ   hwy consump\n  <chr>   <chr>        <int> <dbl> <int>   <dbl>\n1 2seater chevrolet        8   5.7    23  0.0435\n2 compact volkswagen       6   2.8    23  0.0435\n3 2seater chevrolet        8   7      24  0.0417\n4 compact volkswagen       6   2.8    24  0.0417\n5 compact volkswagen       6   2.8    24  0.0417\n6 compact audi             4   1.8    25  0.04  \n\n\nA lot is happening in these few lines, and the pipe allows for a very concise and readable piece of code."
   },
   {
     "objectID": "03_Wrangling.html#combine-pipe-with-ggplot",
     "href": "03_Wrangling.html#combine-pipe-with-ggplot",
     "title": "Data management and analysis in R",
     "section": "Combine Pipe with ggplot()",
-    "text": "Combine Pipe with ggplot()\nWe can even combine it with ggplot!\nNote: within ggplot you have to use +, before the ggplot-call you have to use %>%. Confusing, I know… ::: {.cell}\nmpg %>% \n  filter(class == \"2seater\" | class == \"compact\") %>%  \n  ggplot(aes(x = displ, y = hwy, color = class)) + \n  geom_point()\n\n\n\n:::"
+    "text": "Combine Pipe with ggplot()\nWe can even combine it with ggplot!\nNote: within ggplot you have to use +, before the ggplot-call you have to use %>%. Confusing indeed…\n\nmpg %>% \n  filter(class == \"2seater\" | class == \"compact\") %>%  \n  ggplot(aes(x = displ, y = hwy, color = class)) + \n  geom_point()"
   },
   {
     "objectID": "03_Wrangling.html#summarize-data-summarise",
@@ -469,11 +448,11 @@
     "text": "Summarize data: summarise()\nCollapses data frame to a single row by using a supplied function.\nExample: What is the average hwy of all cars in the dataset?\n\nmpg %>% \n  summarise(hwy = mean(hwy))\n\n# A tibble: 1 × 1\n    hwy\n  <dbl>\n1  23.4"
   },
   {
-    "objectID": "03_Wrangling.html#summarise",
-    "href": "03_Wrangling.html#summarise",
+    "objectID": "03_Wrangling.html#multiple-summary-functions",
+    "href": "03_Wrangling.html#multiple-summary-functions",
     "title": "Data management and analysis in R",
-    "section": "summarise()",
-    "text": "summarise()\nAlso possible for multiple functions and variables\n\nmpg %>% \n  summarise(hwy_avg = mean(hwy), \n          hwy_max = max(hwy), \n          hwy_min = min(hwy),\n          hwy_sd = sd(hwy), \n          displ_avg = mean(displ))\n\n# A tibble: 1 × 5\n  hwy_avg hwy_max hwy_min hwy_sd displ_avg\n    <dbl>   <int>   <int>  <dbl>     <dbl>\n1    23.4      44      12   5.95      3.47"
+    "section": "multiple summary functions",
+    "text": "multiple summary functions\nAlso possible for multiple functions and variables\n\nmpg %>% \n  summarise(hwy_avg = mean(hwy), \n          hwy_max = max(hwy), \n          hwy_min = min(hwy),\n          hwy_sd = sd(hwy), \n          displ_avg = mean(displ))\n\n# A tibble: 1 × 5\n  hwy_avg hwy_max hwy_min hwy_sd displ_avg\n    <dbl>   <int>   <int>  <dbl>     <dbl>\n1    23.4      44      12   5.95      3.47"
   },
   {
     "objectID": "03_Wrangling.html#summarize-different-groups-group_by-summarise",
@@ -515,14 +494,14 @@
     "href": "03_Wrangling.html#how-to-check-for-missing-values",
     "title": "Data management and analysis in R",
     "section": "How to check for missing values",
-    "text": "How to check for missing values\nWe can check for missing values by is.na.\n\nis.na(df)\n\n         x     y\n[1,] FALSE FALSE\n[2,] FALSE FALSE\n[3,]  TRUE FALSE\n[4,] FALSE FALSE\n\nsummary(df)\n\n       x               y       \n Min.   :1.000   Min.   :2.00  \n 1st Qu.:2.000   1st Qu.:2.00  \n Median :3.000   Median :3.00  \n Mean   :3.667   Mean   :4.25  \n 3rd Qu.:5.000   3rd Qu.:5.25  \n Max.   :7.000   Max.   :9.00  \n NA's   :1"
+    "text": "How to check for missing values\nWe can check for missing values by is.na(). Also the function summary() tells us about it.\n\nis.na(df)\n\n         x     y\n[1,] FALSE FALSE\n[2,] FALSE FALSE\n[3,]  TRUE FALSE\n[4,] FALSE FALSE\n\nsummary(df)\n\n       x               y       \n Min.   :1.000   Min.   :2.00  \n 1st Qu.:2.000   1st Qu.:2.00  \n Median :3.000   Median :3.00  \n Mean   :3.667   Mean   :4.25  \n 3rd Qu.:5.000   3rd Qu.:5.25  \n Max.   :7.000   Max.   :9.00  \n NA's   :1"
   },
   {
     "objectID": "03_Wrangling.html#calculations-with-missing-values",
     "href": "03_Wrangling.html#calculations-with-missing-values",
     "title": "Data management and analysis in R",
     "section": "Calculations with missing values",
-    "text": "Calculations with missing values\nWhat happens if we summarize columns with missing values?\n\n# summarise df\ndf %>% \n  summarise(x = mean(x), \n            y = mean(y))\n\n   x    y\n1 NA 4.25\n\n# Often better:\n# summarise omitting NA's\ndf %>% \n  summarise(x = mean(x, na.rm=TRUE), \n            y = mean(y, na.rm=TRUE))\n\n         x    y\n1 3.666667 4.25"
+    "text": "Calculations with missing values\nWhat happens if we summarize columns with missing values?\n\n# summarise df\ndf %>% \n  summarise(x = mean(x), \n            y = mean(y))\n\n   x    y\n1 NA 4.25\n\n# Often better:\n# summarise omitting NA's, \ndf %>% \n  summarise(x = mean(x, na.rm=TRUE), \n            y = mean(y, na.rm=TRUE))\n\n         x    y\n1 3.666667 4.25"
   },
   {
     "objectID": "03_Wrangling.html#removing-nas-from-dataset",
@@ -530,13 +509,6 @@
     "title": "Data management and analysis in R",
     "section": "Removing NA’s from dataset",
     "text": "Removing NA’s from dataset\nYou can remove observations (rows) from your dataset that include NA’s in a specific column using\n\n# remove all rows that contain NA's in the column hwy\nmpg %>% \n  filter(!is.na(hwy))\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
-  },
-  {
-    "objectID": "03_Wrangling.html#summing-up-1",
-    "href": "03_Wrangling.html#summing-up-1",
-    "title": "Data management and analysis in R",
-    "section": "Summing up",
-    "text": "Summing up"
   },
   {
     "objectID": "04_Reading.html",

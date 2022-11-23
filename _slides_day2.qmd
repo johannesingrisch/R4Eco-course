@@ -1,0 +1,146 @@
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+library(tidyverse)
+library(datasauRus)
+library(knitr)
+options("kableExtra.html.bsTable" = T)
+kable_pretty <- function(data) {
+  kable(data, "html") %>%
+    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
+}
+```
+
+
+
+## Last Session: Visualisation 
+
+```{r echo = FALSE, out.width = "15%"}
+include_graphics("./figures/ggplot.png")
+```
+
+
+```{r out.width="50%", message = FALSE}
+#| layout-ncol: 2
+#| 
+ggplot(data = mpg, aes(x = displ, y = hwy)) + 
+  geom_point(aes(color = class)) + 
+  geom_smooth()
+
+ggplot(data = mpg) + 
+  geom_violin(aes(x = class, y = hwy, 
+                  fill = class))
+```
+
+## The Big Mess
+
+```{r, include = FALSE}
+data <- read.csv("./datasets/bigmess.csv", header = TRUE)
+```
+
+
+```{r out.width="80%"}
+#| layout-ncol: 2
+#| 
+ggplot(data = data, aes(x = x, y = y)) + 
+  geom_point()
+
+ggplot(data = data, aes(x = dataset, y = x)) + 
+  geom_boxplot()
+
+```
+
+
+## The Solution?
+
+## The Solution
+
+```{r}
+
+ggplot(data = data, aes(x, y)) + 
+  geom_point(aes(color = dataset)) +
+  facet_wrap(~ dataset)
+
+
+```
+
+
+
+## On Today's Plate {background-color="SteelBlue"}
+
+::: {.r-fit-text}
+
+Data wrangling
+
+:::
+
+
+
+## Data wrangling
+
+
+```{r echo = FALSE, out.width = "15%"}
+include_graphics("./figures/dplyr.png")
+```
+
+The art of getting data into a useful form for visualisation and modelling.
+
+
+
+{{< include 03_Wrangling/_wrangling_content.qmd >}}
+
+
+
+## Data Wrangling Cheat Sheet
+
+
+https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("./figures/Cheatsheet_wrangling.png")
+```
+
+
+## Summing up
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("./figures/Data_wrangling.png")
+```
+
+```{r echo = FALSE, out.width = "35%"}
+include_graphics("./figures/tidyverse_0.png")
+```
+
+
+## Exercise Part 2
+
+
+Things are coming together...
+
+
+
+
+## Part 2 {background-color="SteelBlue"}
+
+::: {.r-fit-text}
+
+Reading data
+
+:::
+
+
+
+## Reading data
+
+
+{{< include 04_Reading/_reading_content.qmd >}}
+
+## Summing up
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("./figures/Data_wrangling.png")
+```
+
+```{r echo = FALSE, out.width = "35%"}
+include_graphics("./figures/tidyverse_1.png")
+```

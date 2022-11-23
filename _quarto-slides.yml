@@ -1,7 +1,8 @@
 project: 
   output-dir: _slides
   render:
-    - _slides_day1.qmd
+#    - _slides_day1.qmd
+    - _slides_day2.qmd
 
 execute: 
   freeze: false
