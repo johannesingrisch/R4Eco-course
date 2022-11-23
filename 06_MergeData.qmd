@@ -1,0 +1,169 @@
+# Relational data
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+library(tidyverse)
+library(datasauRus)
+library(knitr)
+library(nycflights13)
+options("kableExtra.html.bsTable" = T)
+kable_pretty <- function(data) {
+  kable(data, "html") %>%
+    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
+}
+```
+
+
+Reality: Data is spread out over multiple tables. 
+
+Solution: Join tables via relations. 
+
+__Mutating joins__: add new variables to one data frame from matching observations in another. 
+
+
+Example: We want to combine data on infection cases and population size for each year and country.
+
+
+```{r, echo = FALSE}
+table4a %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "cases")
+
+table4b %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "population")
+
+```
+
+
+## How can we link two tables?
+
+The variables that connect each pair of tables are called __keys__. 
+
+A __key__ is a variable (or set of variables) that uniquely identifies an observation. 
+
+What is a key in this dataset?
+
+```{r, echo = FALSE}
+table4a %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "cases")
+```
+
+Exercise: 
+
+Is there a unique key in mpg?
+
+```{r, echo = FALSE}
+mpg
+```
+
+
+
+## Joining tables: Example
+
+How can we join the following two tables?
+
+```{r, echo = FALSE}
+table6a <- table4a %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "cases")
+
+table6b <- table4b %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "population")
+
+```
+
+
+```{r}
+table6a
+table6b
+
+```
+
+We can use the function `left_join``
+
+```{r}
+table6a %>% 
+  left_join(table6b, by = c("country", "year"))
+```
+
+
+## Understanding joins
+
+Two tables, colored column represents the __key__, grey represents the __value__. The following figures are representing the procedure of a join. 
+
+![](./figures/join-setup.png)
+
+![](./figures/join-setup2.png)
+
+There are different ways how tables can be joined: 
+
+## (1) Inner Join
+
+Match pairs of observations whenever keys are equal. 
+
+![A inner join (Source: R4DS)](./figures/join-inner.png)
+
+```{r, eval = FALSE}
+
+x %>% 
+  inner_join(y, by = "key")
+```
+
+
+## (2) Outer Join
+
+An outer join keeps observations that appear in at least one of the tables. There are three types: 
+
+![Outer joins (Source: R4DS)](./figures/join-outer_code.png)
+
+## Defining key columns
+
+Default: use all variables that appear in both tables. 
+
+```{r, eval = FALSE}
+left_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ...)
+```
+
+
+Alternative: 
+
+- define which columns using `by = `
+
+```{r, eval = FALSE}
+flights %>% 
+  left_join(planes, by = "tailnum")
+```
+
+- join by columns with different names
+
+```{r, eval = FALSE}
+# match "dest" in table 'flights' with "faa" in table airports
+flights %>% 
+  left_join(airports, c("dest" = "faa"))
+```
+
+
+## Alternative in base R
+
+![Join vs. merge (Source R4DS)](./figures/Join_vs_merge.png)
+
+
+# Binding rows
+
+We can bind rows of multiple tables with identical columns
+
+```{r}
+a <- tibble(name = c("Hans", "Sepp"), weight = c(65,75))
+b <- tibble(name = c("Magda", "Klaus"), weight = c(65,60))
+```
+
+
+```{r}
+# rbase
+rbind(a, b)
+
+# tidyverse: pipe compatible
+a %>% 
+  bind_rows(b)
+
+```
+

@@ -1,0 +1,80 @@
+# Exercise: Tidy Data
+
+## Part 1: Which data structure is tidy?
+
+Check out these datasets and try to answer the following questions:
+
+```{r, eval = FALSE}
+library(tidyverse)
+table1
+table2
+table3
+table4a
+table4b
+```
+
+
+- how are they organised? 
+- which fulfills the criteria of tidy data? why? or why not?
+- you want to calculate the infection rate = cases / population * 1000. Describe in prose how you would do it based on the different tables?
+
+- __Which is easiest to work with? __
+
+
+## Part 2: Transform tables 
+
+Reproduce the following figure starting with `table1`,` table2`, and `table3`. 
+
+Calculate rate = cases/population * 1000
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+table1 %>% 
+  mutate(rate = cases/population * 1000) %>% 
+  pivot_longer(cols = c(cases:rate), 
+               names_to = "Variable", 
+               values_to = "Value") %>% 
+  ggplot(aes(x = year, y = Value, color = country)) + 
+  geom_point() + geom_line() +
+  facet_grid(Variable ~., scales = "free")
+```
+
+
+:::{.callout-tip collapse="true"}
+
+## Solution
+
+```{r, eval = FALSE, include = TRUE}
+table1 %>% 
+  mutate(rate = cases/population * 1000) %>% 
+  pivot_longer(cols = c(cases:rate), 
+               names_to = "Variable", 
+               values_to = "Value") %>% 
+  ggplot(aes(x = year, y = Value, color = country)) + 
+  geom_point() + 
+  facet_wrap(Variable ~., scales = "free")
+
+table2 %>% 
+  pivot_wider(names_from = "type", values_from = "count") %>% 
+  mutate(rate = cases/population * 1000) %>% 
+  pivot_longer(cols = c(cases:rate), 
+               names_to = "Variable", 
+               values_to = "Value") %>% 
+  ggplot(aes(x = year, y = Value, color = country)) + 
+  geom_point() + 
+  facet_wrap(Variable ~., scales = "free")
+
+table3 %>% 
+  separate(rate, into = c("cases", "population"), convert = TRUE) %>% 
+  mutate(rate = cases/population * 1000) %>% 
+  pivot_longer(cols = c(cases:rate), 
+               names_to = "Variable", 
+               values_to = "Value") %>% 
+  ggplot(aes(x = year, y = Value, color = country)) + 
+  geom_point() + 
+  facet_wrap(Variable ~., scales = "free")
+  
+  
+```
+
+:::

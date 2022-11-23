@@ -1,5 +1,68 @@
 [
   {
+    "objectID": "06_MergeData.html",
+    "href": "06_MergeData.html",
+    "title": "Data management and analysis in R",
+    "section": "",
+    "text": "Reality: Data is spread out over multiple tables.\nSolution: Join tables via relations.\nMutating joins: add new variables to one data frame from matching observations in another.\nExample: We want to combine data on infection cases and population size for each year and country.\n\n\n# A tibble: 6 × 3\n  country     year   cases\n  <chr>       <chr>  <int>\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\n\n# A tibble: 6 × 3\n  country     year  population\n  <chr>       <chr>      <int>\n1 Afghanistan 1999    19987071\n2 Afghanistan 2000    20595360\n3 Brazil      1999   172006362\n4 Brazil      2000   174504898\n5 China       1999  1272915272\n6 China       2000  1280428583\n\n\n\n\nThe variables that connect each pair of tables are called keys.\nA key is a variable (or set of variables) that uniquely identifies an observation.\nWhat is a key in this dataset?\n\n\n# A tibble: 6 × 3\n  country     year   cases\n  <chr>       <chr>  <int>\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\n\nExercise:\nIs there a unique key in mpg?\n\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows\n\n\n\n\n\nHow can we join the following two tables?\n\n\n\n\ntable6a\n\n# A tibble: 6 × 3\n  country     year   cases\n  <chr>       <chr>  <int>\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\ntable6b\n\n# A tibble: 6 × 3\n  country     year  population\n  <chr>       <chr>      <int>\n1 Afghanistan 1999    19987071\n2 Afghanistan 2000    20595360\n3 Brazil      1999   172006362\n4 Brazil      2000   174504898\n5 China       1999  1272915272\n6 China       2000  1280428583\n\n\nWe can use the function `left_join``\n\ntable6a %>% \n  left_join(table6b, by = c(\"country\", \"year\"))\n\n# A tibble: 6 × 4\n  country     year   cases population\n  <chr>       <chr>  <int>      <int>\n1 Afghanistan 1999     745   19987071\n2 Afghanistan 2000    2666   20595360\n3 Brazil      1999   37737  172006362\n4 Brazil      2000   80488  174504898\n5 China       1999  212258 1272915272\n6 China       2000  213766 1280428583\n\n\n\n\n\nTwo tables, colored column represents the key, grey represents the value. The following figures are representing the procedure of a join.\n\n\nThere are different ways how tables can be joined:\n\n\n\nMatch pairs of observations whenever keys are equal.\n\n\n\nA inner join (Source: R4DS)\n\n\n\nx %>% \n  inner_join(y, by = \"key\")\n\n\n\n\nAn outer join keeps observations that appear in at least one of the tables. There are three types:\n\n\n\nOuter joins (Source: R4DS)\n\n\n\n\n\nDefault: use all variables that appear in both tables.\n\nleft_join(x, y, by = NULL, copy = FALSE, suffix = c(\".x\", \".y\"), ...)\n\nAlternative:\n\ndefine which columns using by =\n\n\nflights %>% \n  left_join(planes, by = \"tailnum\")\n\n\njoin by columns with different names\n\n\n# match \"dest\" in table 'flights' with \"faa\" in table airports\nflights %>% \n  left_join(airports, c(\"dest\" = \"faa\"))\n\n\n\n\n\n\n\nJoin vs. merge (Source R4DS)"
+  },
+  {
+    "objectID": "06_Exercise.html",
+    "href": "06_Exercise.html",
+    "title": "Data management and analysis in R",
+    "section": "",
+    "text": "Reproduce the following figure using table4a and table4b\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntable4c <- table4a %>% \n  pivot_longer(cols = -country, names_to = \"year\", values_to = \"cases\")\n\ntable4b %>% \n  pivot_longer(cols = -country, names_to = \"year\", values_to = \"population\") %>% \n  left_join(table4c) %>% \n  mutate(rate = cases/population * 1000) %>% \n  pivot_longer(cols = c(cases, rate, population), \n               names_to = \"Variable\", \n               values_to = \"Value\") %>% \n  mutate(year = as.numeric(year)) %>% \n  ggplot(aes(x = year, y = Value, color = country)) + \n  geom_point() + geom_line() +\n  facet_grid(Variable ~., scales = \"free\")"
+  },
+  {
+    "objectID": "05_TidyData.html",
+    "href": "05_TidyData.html",
+    "title": "Data management and analysis in R",
+    "section": "",
+    "text": "“Happy families are all alike; every unhappy family is unhappy in its own way.” –– Leo Tolstoy\n\n\n“Tidy datasets are all alike, but every messy dataset is messy in its own way.” –– Hadley Wickham\n\n\n\n\n\n\n\n\nLink: http://www.jstatsoft.org/v59/i10/paper\n\n\n\n\n# wide representation \ntable1\n\n# A tibble: 6 × 4\n  country      year  cases population\n  <chr>       <int>  <int>      <int>\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n# long representation\ntable2\n\n# A tibble: 12 × 4\n   country      year type            count\n   <chr>       <int> <chr>           <int>\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583\n\n\n\n\n\n\ntable1\n\n# A tibble: 6 × 4\n  country      year  cases population\n  <chr>       <int>  <int>      <int>\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\ntable3\n\n# A tibble: 6 × 3\n  country      year rate             \n* <chr>       <int> <chr>            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583\n\n\nCan also be spread over multiple tables\n\n# cases\ntable4a\n\n# A tibble: 3 × 3\n  country     `1999` `2000`\n* <chr>        <int>  <int>\n1 Afghanistan    745   2666\n2 Brazil       37737  80488\n3 China       212258 213766\n\n# population\ntable4b\n\n# A tibble: 3 × 3\n  country         `1999`     `2000`\n* <chr>            <int>      <int>\n1 Afghanistan   19987071   20595360\n2 Brazil       172006362  174504898\n3 China       1272915272 1280428583\n\n\nNot all of these representations are easy to work with.\n\n\n\nA tidy dataset follows 3 Rules:\n\nEach variable must have its own column\nEach observation must have its own row\nEach value must have its own cell\n\n\n\n\nTidydata rules (Source: R4DS)\n\n\n\n\n\n\nConsistent data structure makes it easier to apply tools that work with it\nMost R-functions work vectorised.\nWorks neatly with all types of tidyverse packages"
+  },
+  {
+    "objectID": "05_TidyData.html#so-why-is-not-all-data-always-tidy",
+    "href": "05_TidyData.html#so-why-is-not-all-data-always-tidy",
+    "title": "Data management and analysis in R",
+    "section": "So why is not all data always tidy?",
+    "text": "So why is not all data always tidy?\n\nMost data is not tidy.\nMost of the time we will need to tidy up before analysis\n\n\nThe tidyverse comes for rescue. It provides a bunch of really helpful tools for efficient cleaning transformation of messy datasets. These are provided by a package called tidyr."
+  },
+  {
+    "objectID": "05_TidyData.html#pivot_wider",
+    "href": "05_TidyData.html#pivot_wider",
+    "title": "Data management and analysis in R",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\nmake a long table wide\n\nMake sure to have tidyr 1.0 or above. In previous versions this functionality was covered by the function spread().\n\ntable2 %>% \n  pivot_wider(names_from = type, \n              values_from = count)\n\n\n\n\nFunction of pivot_wider() (Source: R4DS)\n\n\nWe need to specify:\n\nnames_from: which column contains the new column names?\nvalues_from: which column contains the values?\nAdditional options:\n?pivot_wider\nvignette(\"pivot\")"
+  },
+  {
+    "objectID": "05_TidyData.html#pivot_longer",
+    "href": "05_TidyData.html#pivot_longer",
+    "title": "Data management and analysis in R",
+    "section": "pivot_longer",
+    "text": "pivot_longer\n\nMakes a wide table long.\n\nThis function does the reverse operation of pivot_wider(). It makes a wide table long.\nIn previous versions of tidyris was called gather().\n\ntable4a %>% \n  pivot_longer(cols = c('1999', '2000'), \n               names_to = \"year\", \n               values_to = \"cases\")\n\n\n\n\nFunction of pivot_longer() (Source: R4DS)\n\n\nWe need to specify:\n\ncols: choose columns to be transformed\nnames_to: column-name for the key, in quotes\nvalues_to: column-name for the values, in quotes\nAdditional options:\n?pivot_longer\nvignette(\"pivot\")\n\nSelection of columns in cols argument can be forward or backward\n\n# forward: define which columns to use\ntable4a %>% \n  pivot_longer(cols = c('1999', '2000'), \n               names_to = \"year\", \n               values_to = \"cases\")\n\n# backward: define which columns NOT to use\ntable4a %>% \n  pivot_longer(cols = c(-country), \n               names_to = \"year\", \n               values_to = \"cases\")"
+  },
+  {
+    "objectID": "05_TidyData.html#splitting-columns-separate",
+    "href": "05_TidyData.html#splitting-columns-separate",
+    "title": "Data management and analysis in R",
+    "section": "Splitting columns: separate()",
+    "text": "Splitting columns: separate()\nProblem: column table3$rate contains multiple values in one cell.\n\ntable3\n\n# A tibble: 6 × 3\n  country      year rate             \n* <chr>       <int> <chr>            \n1 Afghanistan  1999 745/19987071     \n2 Afghanistan  2000 2666/20595360    \n3 Brazil       1999 37737/172006362  \n4 Brazil       2000 80488/174504898  \n5 China        1999 212258/1272915272\n6 China        2000 213766/1280428583\n\n\nWe can solve this using the function separate().\n\ntable3 %>% \n  separate(rate, into = c(\"cases\", \"population\"))\n\n\n\n\nFunction of separate() (Source: R4DS)\n\n\n\nWhere does it separate?\n\nBy default: Whereever it sees as non-alphanumeric character.\nWe can also specify it\n\n# separate at \"/\"\ntable3 %>% \n  separate(rate, into = c(\"cases\", \"population\"), sep = \"/\") \n\n# separate at defined position\ntable3 %>% \n  separate(year, into = c(\"century\", \"year\"), sep = 2)\n\nLook careful at column types of output. New columns are stored as ‘character’. That doesn’t allow us to do calculations.\n\ntable3 %>% \n  separate(rate, into = c(\"cases\", \"population\"))\n\n# A tibble: 6 × 4\n  country      year cases  population\n  <chr>       <int> <chr>  <chr>     \n1 Afghanistan  1999 745    19987071  \n2 Afghanistan  2000 2666   20595360  \n3 Brazil       1999 37737  172006362 \n4 Brazil       2000 80488  174504898 \n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\nSolution:\nconvert = TRUE tries to change the column-types to better types\n\ntable3 %>% \n  separate(rate, into = c(\"cases\", \"population\"), convert = TRUE) \n\n# A tibble: 6 × 4\n  country      year  cases population\n  <chr>       <int>  <int>      <int>\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583"
+  },
+  {
+    "objectID": "05_TidyData.html#unite-columns-unite",
+    "href": "05_TidyData.html#unite-columns-unite",
+    "title": "Data management and analysis in R",
+    "section": "Unite columns: unite()",
+    "text": "Unite columns: unite()\nThe inverse operation of separate()\n\ntable5 %>% \n  unite(new, century, year)\n\n\n\n\n\n\n\n\n\nFunction of unite() (Source: R4DS)"
+  },
+  {
+    "objectID": "05_TidyData.html#missing-values-fill",
+    "href": "05_TidyData.html#missing-values-fill",
+    "title": "Data management and analysis in R",
+    "section": "Missing values: fill()",
+    "text": "Missing values: fill()\nQuite often columns are incomplete. fill()allows to fill a column.\nExample:\n\n# original file\ntreatment\n\n# A tibble: 4 × 3\n  person           treatment response\n  <chr>                <dbl>    <dbl>\n1 Derrick Whitmore         1        7\n2 <NA>                     2       10\n3 <NA>                     3        9\n4 Katherine Burke          1        4\n\ntreatment %>% \n  fill(person)\n\n# A tibble: 4 × 3\n  person           treatment response\n  <chr>                <dbl>    <dbl>\n1 Derrick Whitmore         1        7\n2 Derrick Whitmore         2       10\n3 Derrick Whitmore         3        9\n4 Katherine Burke          1        4"
+  },
+  {
     "objectID": "00_Resources.html",
     "href": "00_Resources.html",
     "title": "Data management and analysis in R",
@@ -320,6 +383,13 @@
     "title": "Data management and analysis for environmental sciences",
     "section": "Wrap-up",
     "text": "Wrap-up"
+  },
+  {
+    "objectID": "05_Exercise.html",
+    "href": "05_Exercise.html",
+    "title": "Data management and analysis in R",
+    "section": "",
+    "text": "Check out these datasets and try to answer the following questions:\n\nlibrary(tidyverse)\ntable1\ntable2\ntable3\ntable4a\ntable4b\n\n\nhow are they organised?\nwhich fulfills the criteria of tidy data? why? or why not?\nyou want to calculate the infection rate = cases / population * 1000. Describe in prose how you would do it based on the different tables?\nWhich is easiest to work with? \n\n\n\n\nReproduce the following figure starting with table1,table2, and table3.\nCalculate rate = cases/population * 1000\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntable1 %>% \n  mutate(rate = cases/population * 1000) %>% \n  pivot_longer(cols = c(cases:rate), \n               names_to = \"Variable\", \n               values_to = \"Value\") %>% \n  ggplot(aes(x = year, y = Value, color = country)) + \n  geom_point() + \n  facet_wrap(Variable ~., scales = \"free\")\n\ntable2 %>% \n  pivot_wider(names_from = \"type\", values_from = \"count\") %>% \n  mutate(rate = cases/population * 1000) %>% \n  pivot_longer(cols = c(cases:rate), \n               names_to = \"Variable\", \n               values_to = \"Value\") %>% \n  ggplot(aes(x = year, y = Value, color = country)) + \n  geom_point() + \n  facet_wrap(Variable ~., scales = \"free\")\n\ntable3 %>% \n  separate(rate, into = c(\"cases\", \"population\"), convert = TRUE) %>% \n  mutate(rate = cases/population * 1000) %>% \n  pivot_longer(cols = c(cases:rate), \n               names_to = \"Variable\", \n               values_to = \"Value\") %>% \n  ggplot(aes(x = year, y = Value, color = country)) + \n  geom_point() + \n  facet_wrap(Variable ~., scales = \"free\")"
   },
   {
     "objectID": "02_Exercise.html",

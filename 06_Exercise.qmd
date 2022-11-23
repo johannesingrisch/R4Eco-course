@@ -1,0 +1,51 @@
+# Exercise: Joining data
+
+## Part 1
+
+Reproduce the following figure using table4a and table4b
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+table4c <- table4a %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "cases")
+
+table4b %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "population") %>% 
+  left_join(table4c) %>% 
+  mutate(rate = cases/population * 1000) %>% 
+  pivot_longer(cols = c(cases, rate, population), 
+               names_to = "Variable", 
+               values_to = "Value") %>% 
+  mutate(year = as.numeric(year)) %>% 
+  ggplot(aes(x = year, y = Value, color = country)) + 
+  geom_point() + geom_line() +
+  facet_grid(Variable ~., scales = "free")
+
+```
+
+
+
+:::{.callout-tip collapse="true"}
+
+## Solution
+
+```{r, eval = FALSE}
+table4c <- table4a %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "cases")
+
+table4b %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "population") %>% 
+  left_join(table4c) %>% 
+  mutate(rate = cases/population * 1000) %>% 
+  pivot_longer(cols = c(cases, rate, population), 
+               names_to = "Variable", 
+               values_to = "Value") %>% 
+  mutate(year = as.numeric(year)) %>% 
+  ggplot(aes(x = year, y = Value, color = country)) + 
+  geom_point() + geom_line() +
+  facet_grid(Variable ~., scales = "free")
+
+```
+
+:::
+

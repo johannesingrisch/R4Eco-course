@@ -1,0 +1,355 @@
+# From Messy Data To Tidy Data
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+library(tidyverse)
+library(datasauRus)
+library(knitr)
+library(nycflights13)
+options("kableExtra.html.bsTable" = T)
+kable_pretty <- function(data) {
+  kable(data, "html") %>%
+    kable_styling(bootstrap_options = c("striped", "condensed", full_width=T, position = "center"), full_width=F)
+}
+```
+
+> “Happy families are all alike; every unhappy family is unhappy in its own way.” –– Leo Tolstoy
+
+> “Tidy datasets are all alike, but every messy dataset is messy in its own way.” –– Hadley Wickham
+
+
+## What is 'tidy data'?
+
+```{r echo = FALSE, out.width = "65%"}
+include_graphics("./figures/Wickham_tidydata_screenshot.png")
+```
+
+Link: 
+http://www.jstatsoft.org/v59/i10/paper
+
+
+## Same data can be stored in multiple ways
+
+```{r, out.height= "50%"}
+# wide representation 
+table1
+
+# long representation
+table2
+```
+
+
+
+
+## Same data can be stored in multiple ways
+
+```{r, out.height= "50%"}
+table1
+
+table3
+```
+
+
+Can also be spread over multiple tables
+
+```{r, out.height= "50%"}
+# cases
+table4a
+
+# population
+table4b
+```
+
+Not all of these representations are easy to work with. 
+
+## Rules for a tidy dataset
+
+A tidy dataset follows __3 Rules:__
+
+1. Each variable must have its own column
+2. Each observation must have its own row
+3. Each value must have its own cell
+
+![Tidydata rules (Source: R4DS)](./figures/tidydata_rules.png)
+
+## Why ensure that your data is tidy?
+
+1. Consistent data structure makes it easier to apply tools that work with it
+
+2. Most R-functions work vectorised.
+
+3. Works neatly with all types of tidyverse packages
+
+# Exercise
+
+check out the Exercise Part 1
+
+
+
+## So why is not all data always tidy?
+
+- Most data is __not__ tidy. 
+
+- Most of the time we will need to tidy up before analysis
+
+
+> The tidyverse comes for rescue. It provides a bunch of really helpful tools for efficient cleaning transformation of messy datasets. These are provided by a package called `tidyr`.
+
+# The `Tidyr` package
+
+```{r echo = FALSE, out.width = "25%"}
+include_graphics("./figures/tidyr.png")
+```
+
+Two major functions to transform tables 
+
+- pivot_wider(): make long tables wide
+
+- pivot_longer(): make wide tables long
+
+
+## pivot_wider()
+
+> make a long table wide
+
+Make sure to have tidyr 1.0 or above. In previous versions this functionality was covered by the function `spread()`. 
+
+
+```{r, eval = FALSE}
+
+table2 %>% 
+  pivot_wider(names_from = type, 
+              values_from = count)
+
+```
+
+![Function of pivot_wider() (Source: R4DS)](./figures/tidy_pivot_wider.png)
+
+
+We need to specify: 
+
+- `names_from`: which column contains the new column names?
+- `values_from`: which column contains the values?
+
+- Additional options: 
+- `?pivot_wider`
+- `vignette("pivot")`
+
+
+## pivot_longer
+
+> Makes a wide table long.  
+
+This function does the reverse operation of pivot_wider(). It makes a wide table long. 
+
+In previous versions of `tidyr`is was called `gather()`. 
+
+```{r, eval = FALSE}
+
+table4a %>% 
+  pivot_longer(cols = c('1999', '2000'), 
+               names_to = "year", 
+               values_to = "cases")
+```
+
+![Function of pivot_longer() (Source: R4DS)](./figures/tidy_pivot_longer.png)
+
+
+We need to specify: 
+
+- `cols`: choose columns to be transformed 
+- `names_to`: column-name for the key, in quotes
+- `values_to`: column-name for the values, in quotes
+
+- Additional options: 
+- `?pivot_longer`
+- `vignette("pivot")`
+
+Selection of columns in `cols` argument can be forward or backward
+
+```{r, eval = FALSE}
+# forward: define which columns to use
+table4a %>% 
+  pivot_longer(cols = c('1999', '2000'), 
+               names_to = "year", 
+               values_to = "cases")
+
+# backward: define which columns NOT to use
+table4a %>% 
+  pivot_longer(cols = c(-country), 
+               names_to = "year", 
+               values_to = "cases")
+
+
+```
+
+## Splitting columns: separate()
+
+Problem: column `table3$rate` contains multiple values in one cell. 
+
+```{r}
+table3
+```
+
+We can solve this using the function `separate()`.
+
+```{r, eval = FALSE}
+table3 %>% 
+  separate(rate, into = c("cases", "population"))
+```
+
+
+![Function of separate() (Source: R4DS)](./figures/tidy_separate.png.png)
+
+
+> Where does it separate?
+
+By default: Whereever it sees as non-alphanumeric character. 
+
+We can also specify it
+
+```{r, eval = FALSE}
+# separate at "/"
+table3 %>% 
+  separate(rate, into = c("cases", "population"), sep = "/") 
+
+# separate at defined position
+table3 %>% 
+  separate(year, into = c("century", "year"), sep = 2)
+
+```
+
+
+Look careful at column types of output. New columns are stored as 'character'. That doesn't allow us to do calculations.
+
+```{r}
+table3 %>% 
+  separate(rate, into = c("cases", "population"))
+```
+
+Solution: 
+
+`convert = TRUE` tries to change the column-types to better types
+
+```{r}
+table3 %>% 
+  separate(rate, into = c("cases", "population"), convert = TRUE) 
+```
+
+
+## Unite columns: `unite()`
+
+The inverse operation of `separate()`
+
+```{r, eval = FALSE}
+table5 %>% 
+  unite(new, century, year)
+```
+
+
+```{r echo = FALSE, out.width = "85%"}
+include_graphics("./figures/tidy_unite.png")
+```
+
+![Function of unite() (Source: R4DS)](./figures/tidy_unite.png)
+
+
+# Missing values
+
+Missing values can be either explicit or implicit. 
+
+- An explicit missing value is the presence of an absence. 
+
+- An implicit missing value is the absence of a presence. 
+
+
+```{r}
+stocks <- tibble(
+  year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016),
+  quarter    = c(   1,    2,    3,    4,    2,    3,    4),
+  return = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66)
+)
+
+stocks
+
+```
+
+
+We can make implicit NA's explicit. 
+
+```{r}
+
+# take set of columns and finds all uniqe combinations, fill with NA in case combination is missing
+stocks %>% 
+  complete(year, quarter)
+
+```
+
+Or we can make explicit NA's implicit. 
+```{r}
+stocks %>% 
+  pivot_wider(names_from=year, 
+              values_from = return) %>% 
+  pivot_longer(cols = - quarter, 
+               names_to = "year",
+               values_to = "return")
+```
+
+```{r}
+stocks %>% 
+  pivot_wider(names_from=year, 
+              values_from = return) %>% 
+  pivot_longer(cols = - quarter, 
+               names_to = "year",
+               values_to = "return", 
+               values_drop_na = TRUE)
+
+```
+
+
+## Missing values: fill()
+
+Quite often columns are incomplete. `fill()`allows to fill a column. 
+
+Example:
+
+```{r, include = FALSE}
+treatment <- tribble(
+  ~ person,           ~ treatment, ~response,
+  "Derrick Whitmore", 1,           7,
+  NA,                 2,           10,
+  NA,                 3,           9,
+  "Katherine Burke",  1,           4
+)
+
+```
+
+```{r}
+# original file
+treatment
+
+treatment %>% 
+  fill(person)
+
+```
+
+# Summary: TidyR
+
+A tidy dataset follows three rules: 
+
+1. Each variable must have its own column
+2. Each observation must have its own row
+3. Each value must have its own cell
+
+
+```{r echo = FALSE, out.width = "85%"}
+include_graphics("./figures/tidydata_rules.png")
+```
+
+![Rules of a tidy dataset (Source: R4DS)](./figures/tidydata_rules.png.png)
+
+
+The functions `pivot_longer`, `pivot_wider`and `separate` allow us to tidy up messy tables. 
+
