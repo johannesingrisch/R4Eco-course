@@ -94,3 +94,18 @@ The art of getting data into a useful form for visualisation and modelling.
 
 
 {{< include 03_Wrangling/_wrangling_content.qmd >}}
+
+
+
+
+
+## Summing up
+
+```{r echo = FALSE, out.width = "60%"}
+include_graphics("./figures/Data_wrangling.png")
+```
+
+```{r echo = FALSE, out.width = "35%"}
+include_graphics("./figures/tidyverse_0.png")
+```
+
