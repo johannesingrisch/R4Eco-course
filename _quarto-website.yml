@@ -39,10 +39,16 @@ website:
             text: "Exercise"
       - text: "Reading data"
         file: 04_Reading.qmd
-#      - text: "Tidy data"
-#        file: 05_TidyData.qmd
-#      - text: "Joining data"
-#        file: 06_MergeData.qmd
+      - text: "Tidy data"
+        file: 05_TidyData.qmd
+        contents: 
+          - href: 05_Exercise.qmd
+            text: Exercise
+      - text: "Joining data"
+        file: 06_MergeData.qmd
+        contents: 
+          - href: 06_Exercise.qmd
+            text: Exercise
 #      - section: "Data types"
 #        contents: 
 #          - href: 09_DataTypes.qmd
